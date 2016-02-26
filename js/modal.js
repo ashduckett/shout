@@ -102,7 +102,7 @@
 
             $('.modal-content').height(height);
             $('.modal-content').width(width);
-            //$('.modal-content').css('background-color', 'blue');
+            $('.modal-content').css('background-color', 'blue');
 
         });
 
