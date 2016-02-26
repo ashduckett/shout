@@ -14,7 +14,8 @@
 
     define("CONSUMER_KEY", "3oOdr2T8WDxQd99YBoVHkA");
     define("CONSUMER_SECRET", "nBMO0FqkJhk1c1saoFxlC7cbrat2TGU4xjqtAsW4A");
-    define("OAUTH_CALLBACK", "../authoriseTwitterCallback.php");
+
+    define("OAUTH_CALLBACK", "http://localhost:59165/authoriseTwitterCallback.php");
 
     session_start();
 
