@@ -1,36 +1,23 @@
-
-
 <?php
     error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-
+ini_set('display_errors', 1);
 
     require "../twitteroauth-0.6.2/autoload.php";
-    
-    //require "../classes/config.php";
+    require "../config.php";
     use Abraham\TwitterOAuth\TwitterOAuth;
-    
-
-
-    define("CONSUMER_KEY", "3oOdr2T8WDxQd99YBoVHkA");
-    define("CONSUMER_SECRET", "nBMO0FqkJhk1c1saoFxlC7cbrat2TGU4xjqtAsW4A");
-
-    define("OAUTH_CALLBACK", "http://localhost:59165/authoriseTwitterCallback.php");
-
     session_start();
 
-    $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET);
-    
-    
-    $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => OAUTH_CALLBACK));
+//    define("CONSUMER_KEY", "3oOdr2T8WDxQd99YBoVHkA");
+//    define("CONSUMER_SECRET", "nBMO0FqkJhk1c1saoFxlC7cbrat2TGU4xjqtAsW4A");
+//    define("OAUTH_CALLBACK", "http://localhost:44516/authoriseTwitterCallback.php");
 
-    
+    $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET);
+    $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => OAUTH_CALLBACK));
 
     $_SESSION['oauth_token'] = $request_token['oauth_token'];
     $_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
     $url = $connection->url('oauth/authorize', array('oauth_token' => $request_token['oauth_token']));
 ?>
-
 
 <style>
     .social-menu li {
@@ -51,12 +38,11 @@
         float: left;
         height: 100%;
         width: 60%;
-        background-color: red;
+     /*   background-color: red; */
     }
     
     
 </style>
-
 
 
 

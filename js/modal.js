@@ -99,11 +99,8 @@
 
         $.get('../modal_layouts/add_account.php', function (data) {
             $('.modal-content').html(data);
-
             $('.modal-content').height(height);
             $('.modal-content').width(width);
-            $('.modal-content').css('background-color', 'blue');
-
         });
 
 
