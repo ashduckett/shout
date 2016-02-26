@@ -11,9 +11,7 @@
         $(modalContainer).hide();
         $(overlay).hide();
     };
-
-
-
+    
     function setupModalContainer(clientWidth, clientHeight, title) {
         var modalContainer = document.createElement("div");
 
@@ -29,7 +27,7 @@
 
         var title = document.createElement("h4");
         title.innerHTML = headerText;
-        title.style.padding = "5px";
+        title.style.padding = "5px";S
         title.style.color = "#000000";
         title.style.lineHeight = headerHeight + "px";
         title.style.verticalAlign = "middle";
@@ -43,8 +41,7 @@
         header.style.borderRadius = "11px 11px 0px 0px";
 
         header.appendChild(title);
-
-
+        
         var body = document.createElement("div");
         body.style.height = height + "px";
         body.style.width = width + "px";
@@ -102,17 +99,7 @@
             $('.modal-content').height(height);
             $('.modal-content').width(width);
         });
-
-
-
-
-
-
-
-
-
-
-
+        
 
         return modalContainer;
     }
