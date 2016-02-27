@@ -1,0 +1,8 @@
+CREATE TABLE TwitterAccount(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    twitter_user_id VARCHAR(255),
+    twitter_screen_name VARCHAR(255),
+    cust_id INT(6) UNSIGNED,
+    oauth_token VARCHAR(255),
+    oauth_token_secret VARCHAR(255)
+)

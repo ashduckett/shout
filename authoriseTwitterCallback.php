@@ -1,8 +1,13 @@
 <?php
-        error_reporting(E_ALL);
+
+    error_reporting(E_ALL);
     ini_set('display_errors', 1);
+    
     require "twitteroauth-0.6.2/autoload.php";
     require "config.php";
+
+    require_once "DBObjects/TwitterAccount.class.php";
+
     //require_once "classes/TwitterAccount.class.php";
     use Abraham\TwitterOAuth\TwitterOAuth;
     
@@ -46,8 +51,8 @@
         "oauth_token_secret" => $access_token['oauth_token_secret']
     );
 
-    //$account = new TwitterAccount($data);
-    //$account->insert();*/
+    $account = new TwitterAccount($data);
+    $account->insert();
 
     echo "SUCCESS";
 ?>
