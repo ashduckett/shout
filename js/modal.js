@@ -27,7 +27,7 @@
 
         var title = document.createElement("h4");
         title.innerHTML = headerText;
-        title.style.padding = "5px";S
+        title.style.padding = "5px";
         title.style.color = "#000000";
         title.style.lineHeight = headerHeight + "px";
         title.style.verticalAlign = "middle";
