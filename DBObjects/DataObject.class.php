@@ -15,6 +15,13 @@
             } else {
                 die("Field not found");
             }
+        }
+        
+        public function setValue($field, $val) {
+            foreach($data as $key => $value) {
+                if(array_key_exists($field, $this->data))
+                    $this->data[$field] = $val;
+            }
         }    
 
         public function getValueEncoded($field) {

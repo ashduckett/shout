@@ -13,7 +13,7 @@
         
         <h1>Please log in...</h1>
         <div class="login-form">
-            <form>
+            <form action="handle_login.php" method="post">
                 <p>
                     <label>Email</label>
                     <input type="text" name="email">
@@ -21,6 +21,10 @@
                 <p>
                     <label>Password</label>
                     <input type="password" name="password">
+                </p>
+                <p>
+                    <label>Password</label>
+                    <input type="submit" name="submit">
                 </p>
 
             </form>
