@@ -1,6 +1,6 @@
 <?php
     require_once 'DBObjects/User.class.php';
-    
+    session_start();
     try {
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
@@ -29,7 +29,8 @@
 
         // At this point redirect user to a page
         echo 'Am I logged in? ' . $_SESSION['user_logged_in'];
-
+        header('HTTP/1.1 302 Redirect');
+        header('Location: index.php');
 
 
     } catch(Exception $e) {

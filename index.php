@@ -1,3 +1,17 @@
+<!--
+If the user is not logged in, send them to the login page
+
+-->
+
+<?php
+    session_start();
+    if(!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== 'yes') {
+        header('HTTP/1.1 302 Redirect');
+        header('Location: login.php');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
