@@ -8,4 +8,56 @@ CREATE TABLE TwitterAccount(
     UNIQUE (twitter_user_id)
 )
 
+CREATE TABLE Organisation(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255)
+}
 
+CREATE TABLE User(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    org_id INT(6) UNSIGNED,
+    first_name VARCHAR(255),
+    second_name VARCHAR(255),
+    email VARCHAR(255),
+    password_hash VARCHAR(255),
+)
+
+
+When a user registers for the first time it will create a new User entry.
+What will the cust_id be? It will be a new value for a new registration.
+
+So currently, one user per organisation.
+
+How will I open it up later?
+
+Let's make both cust_id and id auto increment.
+The user_id will be the primary key for each user but on registration, a new cust_id will be generated.
+
+New users for the same organisation will be created by the administrator of that organisation.
+
+When the user creates a new user for their organisation we don't want an auto increment on the cust_id.
+
+
+
+
+How about...
+
+A group table. The group holds the cust_id and a list of users?
+
+When a user registers, they are creating an administrating user and the group.
+
+
+
+On registration, stash the user details and create a new group associating the two.
+
+How will the user and the group be associated? It's going to have to be a link table.
+
+group_id user_id
+
+Will all users see the same projects and tweets? Yes. For now.
+
+
+So on a new registration, we
+    * Create an orgranisation
+    * Create a user
+    * Associate the user with the organisation. So in setup, we need to create user, organisation and the link table
