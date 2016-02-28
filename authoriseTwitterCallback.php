@@ -35,10 +35,6 @@
     
 
 
-    echo $user->screen_name;
-    echo $user->id;
-   
-    
     $screenName = $user->screen_name;
     $twitterId = $user->id;
     $cust_id = 0;
@@ -51,8 +47,14 @@
         "oauth_token_secret" => $access_token['oauth_token_secret']
     );
 
-    $account = new TwitterAccount($data);
-    $account->insert();
+    try {
+        $account = new TwitterAccount($data);
+        $account->insert();
+        echo "Account successfully added to the database.";
 
-    echo "SUCCESS";
+    } catch(Exception $e) {
+        echo "This account has already been added.";
+    }
+
+    
 ?>

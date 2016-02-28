@@ -15,8 +15,7 @@
             } else {
                 die("Field not found");
             }
-        }
-    
+        }    
 
         public function getValueEncoded($field) {
             return htmlspecialchars($this->getValue($field));
@@ -38,5 +37,4 @@
             $conn = "";
         }
     }
-    
 ?>
