@@ -1,15 +1,8 @@
 <?php
-    error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
     require "../twitteroauth-0.6.2/autoload.php";
     require "../config.php";
     use Abraham\TwitterOAuth\TwitterOAuth;
     session_start();
-
-//    define("CONSUMER_KEY", "3oOdr2T8WDxQd99YBoVHkA");
-//    define("CONSUMER_SECRET", "nBMO0FqkJhk1c1saoFxlC7cbrat2TGU4xjqtAsW4A");
-//    define("OAUTH_CALLBACK", "http://localhost:44516/authoriseTwitterCallback.php");
 
     $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET);
     $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => OAUTH_CALLBACK));
@@ -38,7 +31,6 @@ ini_set('display_errors', 1);
         float: left;
         height: 100%;
         width: 60%;
-     /*   background-color: red; */
     }
     
     
@@ -59,6 +51,4 @@ ini_set('display_errors', 1);
 <div class="account-modal-content">
     <p>To connect a Twitter account, please press the button.</p>
     <a href="<?php echo $url?>">Connect</a>
-    
-
 </div>
