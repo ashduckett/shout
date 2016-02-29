@@ -1,15 +1,5 @@
-<!--
-If the user is not logged in, send them to the login page
-
--->
-
 <?php
-    session_start();
-    if(!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== 'yes') {
-        header('HTTP/1.1 302 Redirect');
-        header('Location: login.php');
-    }
-
+   require_once 'header.php';
 ?>
 
 <!DOCTYPE html>
@@ -36,15 +26,5 @@ If the user is not logged in, send them to the login page
                 </li>
             </ul>
         </div>
-
-        <script>
-            //$.showModal("Hello Ash");
-
-
-
-            $('.menu').click(function () {
-           //     $.showModal(300, 200, "T");
-            });
-        </script>
     </body>
 </html>
