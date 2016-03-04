@@ -36,6 +36,30 @@
        
        </div>
 
+          <div class="draggable">
+       
+       </div>
+
+        <div class="draggable drag-target">
+       
+       </div>
+
+          <div class="draggable">
+       
+       </div>
+
+        <div class="draggable drag-target">
+       
+       </div>
+
+          <div class="draggable">
+       
+       </div>
+
+        <div class="draggable drag-target">
+       
+       </div>
+
 
 
 
@@ -45,24 +69,27 @@
 
                 var clickX = null;
                 var clickY = null;
-                var mouseDown = null;
+
                 var elementBeingDragged = null;
 
                 $('.draggable').mousedown(function (event) {
                     var parentOffset = $(this).offset();
                     clickX = event.pageX - parentOffset.left;
                     clickY = event.pageY - parentOffset.top;
-                    mouseDown = true;
                     elementBeingDragged = $(this);
                 });
 
                 $('.draggable').mouseup(function (event) {
-                    mouseDown = false;
                     elementBeingDragged = null;
                 });
 
-                $('html').mousemove(function (event) {
 
+                $('.html').mouseup(function (event) {
+                    elementBeingDragged = null;
+                });
+
+
+                $('html').mousemove(function (event) {
                     if (elementBeingDragged != null) {
                         $(elementBeingDragged).css({ top: event.pageY - clickY,
                             left: event.pageX - clickX
@@ -71,7 +98,9 @@
                 });
 
                 $('.draggable').mousemove(function (event) {
-                    if (mouseDown == true && clickY != null) {
+                    if(elementBeingDragged == null) console.log(elementBeingDragged);
+
+                    if (event.which == true) {
                         $(elementBeingDragged).css({ top: event.pageY - clickY,
                             left: event.pageX - clickX
                         });
