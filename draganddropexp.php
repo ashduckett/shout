@@ -53,6 +53,7 @@
                     clickX = event.pageX - parentOffset.left;
                     clickY = event.pageY - parentOffset.top;
                     mouseDown = true;
+                    elementBeingDragged = $(this);
                 });
 
                 $('.draggable').mouseup(function (event) {
@@ -70,39 +71,13 @@
                 });
 
                 $('.draggable').mousemove(function (event) {
-
-                    if (mouseDown == true && true) {
-                        $(this).css({ top: event.pageY - clickY,
+                    if (mouseDown == true && clickY != null) {
+                        $(elementBeingDragged).css({ top: event.pageY - clickY,
                             left: event.pageX - clickX
                         });
-
-                        elementBeingDragged = $(this);
-                //        elementBeingDragged.addClass('beingDragged');
-                    
-                    
-                    
-                    
-
-                        
-
-                    
                     }
-
-
-                    
-
                     event.stopPropagation();
                 });
-
-                $('.drag-target').mousemove(function (event) {
-                    
-               //     console.log('dragging');
-
-
-
-                });
-
-                
 
             });
 
