@@ -14,7 +14,8 @@
                     background-color: blue;
                     height: 50px;
                     width: 200px;
-                    position: absolute;
+                   /* position: absolute; */
+                    
                     }
                 
                 
@@ -28,37 +29,6 @@
         
 
 
-       <div class="draggable">
-       
-       </div>
-
-        <div class="draggable drag-target">
-       
-       </div>
-
-          <div class="draggable">
-       
-       </div>
-
-        <div class="draggable drag-target">
-       
-       </div>
-
-          <div class="draggable">
-       
-       </div>
-
-        <div class="draggable drag-target">
-       
-       </div>
-
-          <div class="draggable">
-       
-       </div>
-
-        <div class="draggable drag-target">
-       
-       </div>
 
 
 
@@ -67,12 +37,28 @@
 
             $(document).ready(function () {
 
+                /*         */
+
+                var draggableDiv = document.createElement("div");
+                draggableDiv.classList.add('draggable');
+                document.body.appendChild(draggableDiv);
+
+                var draggableDiv2 = document.createElement("div");
+                draggableDiv2.classList.add('draggable');
+                document.body.appendChild(draggableDiv2);
+
+
+                /*         */
+
+
+
                 var clickX = null;
                 var clickY = null;
 
                 var elementBeingDragged = null;
 
                 $('.draggable').mousedown(function (event) {
+                    $(this).css('position', 'absolute');
                     var parentOffset = $(this).offset();
                     clickX = event.pageX - parentOffset.left;
                     clickY = event.pageY - parentOffset.top;
@@ -80,11 +66,14 @@
                 });
 
                 $('.draggable').mouseup(function (event) {
+                    //  $(elementBeingDragged).css('position', 'static');
                     elementBeingDragged = null;
+
                 });
 
 
                 $('.html').mouseup(function (event) {
+
                     elementBeingDragged = null;
                 });
 
@@ -98,8 +87,6 @@
                 });
 
                 $('.draggable').mousemove(function (event) {
-                    if(elementBeingDragged == null) console.log(elementBeingDragged);
-
                     if (event.which == true) {
                         $(elementBeingDragged).css({ top: event.pageY - clickY,
                             left: event.pageX - clickX

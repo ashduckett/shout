@@ -1,0 +1,50 @@
+ ul.listview {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                
+                overflow-y:scroll;
+                
+                margin-bottom: -100px;
+            }
+            
+            ul.listview > li {
+                height: 60px;
+                padding-left: 25px;
+                padding-top: 4px;
+                border-bottom: 1px solid rgb(225, 225, 225);
+                cursor: pointer;
+                }
+            
+            .listview-container {
+                width: 200px;
+                float: left;
+                
+                }
+            
+            div.listview-header {
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 1em;
+            }
+            
+            .listview-container {
+                height: 95%;
+                overflow: no-display;
+               
+               bottom: 100%;
+                
+                }
+            
+            .listview-subheader {
+                font-family: 'Questrial', sans-serif;
+                font-weight: bold;
+                color: rgb(0, 103, 203);
+                font-size: 0.75em;
+            }
+            
+            .listview-text {
+                font-family: 'Roboto', sans-serif;
+                font-size: 0.75em;
+                
+            }
