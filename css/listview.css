@@ -6,7 +6,7 @@
                 
                 overflow-y:scroll;
                 
-                margin-bottom: -100px;
+                
             }
             
             ul.listview > li {
@@ -29,10 +29,10 @@
             }
             
             .listview-container {
-                height: 95%;
+                height: calc(100% - 50px);
                 overflow: no-display;
                
-               bottom: 100%;
+               
                 
                 }
             

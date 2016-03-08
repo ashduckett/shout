@@ -3,16 +3,24 @@ ul.sidebar-listing {
     width: 100%;
     padding: 0;
     margin: 0;
-    height: 95%;
+  /*  height: 50%; */
+    
+    
     font-family: 'Source Sans Pro', sans-serif;
     color: white;
+
 }
 
 .sidebar {
     width: 200px;
-    height: 95%;
+    height: 100%;
     background: rgb(61, 61, 61);
     float: left;
+    
+   
+     /*height: 100%; */
+    height: calc(100% - 50px);
+    
 }
 
 .sidebar-header {

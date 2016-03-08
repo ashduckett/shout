@@ -1,6 +1,6 @@
 .menu {
     width: 100%;
-    height: 5%;
+    height: 50px;
     background-color: rgb(60, 63, 65);
     /*position: fixed; */
     z-index: 9999;
@@ -52,3 +52,14 @@ ul.dropdown li:hover {
     background-color: rgb(29, 29, 29);
     cursor: pointer;
 }
+
+
+/*
+    
+    The height of the menu bar is varying.
+    The height of the sidebar...the sidebar's going odd.
+    
+    
+    Set the height of the menu bar to be 50px
+    
+    */
