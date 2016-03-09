@@ -20,6 +20,8 @@
     
     .social-menu li:hover {
         background: rgb(24, 131, 215);
+        color: #FFFFFF;
+        cursor: pointer;
     }
     
     .social-menu {

@@ -11,7 +11,7 @@
         $(modalContainer).hide();
         $(overlay).hide();
     };
-    
+
     function setupModalContainer(clientWidth, clientHeight, title) {
         var modalContainer = document.createElement("div");
 
@@ -41,7 +41,7 @@
         header.style.borderRadius = "11px 11px 0px 0px";
 
         header.appendChild(title);
-        
+
         var body = document.createElement("div");
         body.style.height = height + "px";
         body.style.width = width + "px";
@@ -49,7 +49,23 @@
         var closeButton = document.createElement("a");
         closeButton.innerHTML = "Close";
         closeButton.href = "#";
+        closeButton.style.border = "1px solid black";
+        closeButton.style.padding = "6px";
+        closeButton.style.float = "right";
 
+
+        //closeButton.style.position = "relative";
+        //closeButton.style.top = "50%";
+        //closeButton.style.transform = "translateY(-50%)";
+
+        closeButton.style.display = "inline-block";
+        closeButton.style.textDecoration = "none";
+        closeButton.style.borderRadius = "5px";
+        $(closeButton).addClass('center-v');
+
+
+
+        closeButton.style.marginRight = "25px";
 
 
 
@@ -68,6 +84,7 @@
         footer.style.borderTop = "1px solid rgb(229, 229, 229)";
         footer.style.borderRadius = "0px 0px 11px 11px";
         footer.appendChild(closeButton);
+
 
 
 
@@ -99,7 +116,7 @@
             $('.modal-content').height(height);
             $('.modal-content').width(width);
         });
-        
+
 
         return modalContainer;
     }
