@@ -22,28 +22,43 @@
             </ul>
         
         </div>
-        
-
-        
+       
          <div class="listview-container">
             <ul class="listview">
                
             </ul>
         </div>
         
-
-    
-
-
-        <div class="shout-container" style="background-color: yellow; height: 40%; width: 50%; float: left;">
-            <div class="shout-item" style="width: 100%; background-color: orange; height: 100px;">
-              
-                <div class="shout-text" style="box-sizing: border-box; padding: 15px; background-color: pink; width: 33.33%; height: 100%;">
-                <p><label>Text to shout</label></p>
-                <textarea></textarea>
-              </div>
-            
+        <div class="container" style="background-color: yellow; width: 1000px; height: 50%; margin: auto; margin-top: 10px; font-size: 0px;">
+            <div class="header" style="width: 33.33%; background-color: #0ff; display: inline-block; text-align: center; font-size: 12px;">
+                Text
             </div>
+
+            <div class="header" style="width: 33.33%; background-color: #0ff; display: inline-block; text-align: center; font-size: 12px;">
+                Date
+            </div>
+            
+            <div class="header" style="width: 33.33%; background-color: #0ff; display: inline-block; text-align: center; font-size: 12px;">
+                Time
+            </div>
+
+
+            <div class="shout-list-item">
+                <div class="shout-text" style="width: 33.33%; height: 120px; background-color: green; font-size: 12px; display: inline-block; float: left;">
+                    W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W 
+                    W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W 
+                </div>
+            
+                <div class="shout-date" style="width: 33.33%; height: 120px; background-color: green; font-size: 12px; display: inline-block; text-align: center;">
+                    30/12/1982
+                </div>
+
+                <div class="shout-time" style="width: 33.33%; height: 120px; background-color: green; font-size: 12px; display: inline-block; text-align: center;">
+                    12:00AM
+                </div>
+
+
+            </div>          
         </div>
         
 

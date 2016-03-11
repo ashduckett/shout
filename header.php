@@ -16,6 +16,8 @@
         <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
         <script src="js/nav.js"></script>
         <script src="js/modal.js"></script>
+
+        <script src="js/NewModal.js"></script>
         <script src="js/main.js"></script>
 
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300">

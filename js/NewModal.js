@@ -1,22 +1,33 @@
-(function ($) {
 
-    var modalContainer = document.createElement("div");
-    var overlay = document.createElement("div");
+function Modal(clientWidth, clientHeight, modalTitle, url) {
+    this.clientWidth = clientWidth;
+    this.clientHeight = clientHeight;
+    this.url = url;
+    this.title = modalTitle;
 
-    $.hideModal = function () {
-        $(modalContainer).hide();
-        $(overlay).hide();
-    };
+    var context = this;
+    
+    function createOverlay() {
+        var overlay = document.createElement("div");
+        overlay.style.backgroundColor = "#000000";
+        overlay.style.width = "100%";
+        overlay.style.height = "100vh";
+        overlay.style.opacity = "0.4";
+        overlay.classList.add('modal-overlay');
+        console.log('returning overlay');
+        return overlay;
+    }
 
-    function setupModalContainer(clientWidth, clientHeight, title, url) {
+    function createModalContainer() {
+      
         var modalContainer = document.createElement("div");
 
         var headerHeight = 50;
         var footerHeight = 50;
-        var width = clientWidth;
-        var height = clientHeight;
-        var headerText = title;
-
+        var width = context.clientWidth;
+        var height = context.clientHeight;
+        var headerText = context.title;
+        
         var totalHeight = headerHeight + footerHeight + height;
 
         var header = document.createElement("div");
@@ -62,14 +73,17 @@
 
 
         closeButton.style.marginRight = "25px";
-        
-        $(closeButton).click(function () {
-            $.hideModal();
-            $(modalContainer).remove();
-            $(overlay).remove();
 
-            $('document.body').remove(modalContainer);
-            $('document.body').remove(overlay);
+        $(closeButton).click(function () {
+            console.log('clicked close button');
+            //    $.hideModal();
+            //    $(modalContainer).remove();
+            //    $(overlay).remove();
+
+            //     $('document.body').remove(modalContainer);
+            //    $('document.body').remove(overlay);
+
+            context.hideModal();
         });
 
         var footer = document.createElement("div");
@@ -105,36 +119,60 @@
         modalContainer.style.marginTop = -(totalHeight / 2) + "px";
 
 
-        $.get(url, function (data) {
-            $('.modal-content').html(data);
-            $('.modal-content').height(height);
-            $('.modal-content').width(width);
-        });
+    //    $.get('../modal_layouts/add_account.php', function (data) {
+    //        $('.modal-content').html(data);
+     //       $('.modal-content').height(height);
+      //      $('.modal-content').width(width);
+       // });
 
-
+      
         return modalContainer;
     }
 
 
-    $.showModal = function (clientHeight, clientWidth, title, url) {
-
-        overlay.style.backgroundColor = "#000000";
-        overlay.style.width = "100%";
-        overlay.style.height = "100vh";
-        overlay.style.opacity = "0.4";
-
-        var modalContainer = setupModalContainer(clientHeight, clientWidth, title, url);
-
-        $(modalContainer).hide();
-        $(overlay).hide();
-        
-        document.body.appendChild(overlay);
-        document.body.appendChild(modalContainer);
-        
-        $(overlay).fadeIn('fast');
-        $(modalContainer).show();
-        
 
 
-    };
-})(jQuery);
+    if (typeof this.showModal != "function") {
+
+        Modal.prototype.showModal = function () {
+            // Create background overlay
+            context.overlay = createOverlay();
+            document.body.appendChild(context.overlay);
+            
+            //$(context.overlay).fadeIn('slow');
+
+
+
+            // First create the modal container
+            //context.modalContainer = createModalContainer();
+
+
+
+            //$(context.modalContainer).hide();
+            //$(context.modalContainer).fadeIn('slow');
+
+
+            //document.body.appendChild(context.modalContainer);
+            //$(modalContainer).show();
+        };
+
+
+
+
+
+
+        Modal.prototype.hideModal = function () {
+            document.body.removeChild(context.modalContainer);
+        };
+
+
+
+    }
+    
+    
+    
+    
+
+
+}
+
