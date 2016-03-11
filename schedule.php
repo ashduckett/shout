@@ -35,8 +35,15 @@
     
 
 
-        <div class="container" style="background-color: yellow; height: 95%; width: 100px;">
-          
+        <div class="shout-container" style="background-color: yellow; height: 40%; width: 50%; float: left;">
+            <div class="shout-item" style="width: 100%; background-color: orange; height: 100px;">
+              
+                <div class="shout-text" style="box-sizing: border-box; padding: 15px; background-color: pink; width: 33.33%; height: 100%;">
+                <p><label>Text to shout</label></p>
+                <textarea></textarea>
+              </div>
+            
+            </div>
         </div>
         
 
