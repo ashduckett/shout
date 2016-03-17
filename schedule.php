@@ -29,7 +29,9 @@
             </ul>
         </div>
         
-        <div class="container" style="background-color: yellow; width: 1000px; height: 50%; margin: auto; margin-top: 10px; font-size: 0px;">
+        <div class="container" style="background-color: yellow; width: 500px; height: 50%; margin-top: 10px; font-size: 0px; white-space: nowrap; float: left;">
+            
+            
             <div class="header" style="width: 33.33%; background-color: #0ff; display: inline-block; text-align: center; font-size: 12px;">
                 Text
             </div>
@@ -41,10 +43,10 @@
             <div class="header" style="width: 33.33%; background-color: #0ff; display: inline-block; text-align: center; font-size: 12px;">
                 Time
             </div>
+        
 
-
-            <div class="shout-list-item">
-                <div class="shout-text" style="width: 33.33%; height: 120px; background-color: green; font-size: 12px; display: inline-block; float: left;">
+            <div class="shout-list-item" style="white-space: nowrap;">
+                <div class="shout-text" style="width: 33.33%; height: 120px; background-color: green; font-size: 12px; display: inline-block; float: left; white-space: normal; ">
                     W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W 
                     W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W 
                 </div>
@@ -56,8 +58,6 @@
                 <div class="shout-time" style="width: 33.33%; height: 120px; background-color: green; font-size: 12px; display: inline-block; text-align: center;">
                     12:00AM
                 </div>
-
-
             </div>          
         </div>
         
