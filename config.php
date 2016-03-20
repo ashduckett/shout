@@ -4,6 +4,7 @@
     define("OAUTH_CALLBACK", "http://localhost:39497/authoriseTwitterCallback.php");
     define("TBL_TWITTER_ACCOUNT", "TwitterAccount");
     define("TBL_ORGANISATION", "organisation");
+    define("TBL_SCHEDULING_PROJECT", "schedulingproject");
     define("TBL_USER", "user");
 
 ?>

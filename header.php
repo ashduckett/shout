@@ -16,6 +16,8 @@
         <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
         <script src="js/nav.js"></script>
         <script src="js/Modal.js"></script>
+        <script src="js/schedule.php.js"></script>
+        <script src="js/listview.js"></script>
 
         
         <script src="js/main.js"></script>

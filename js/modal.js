@@ -121,6 +121,35 @@ function Modal(clientWidth, clientHeight, modalTitle, url) {
             $(button).addClass('center-v');
             button.style.marginRight = "25px";
 
+
+
+
+            // Primary
+
+            switch (style) {
+                case 'primary':
+                    button.style.backgroundColor = "#337ab7";
+                    button.style.borderColor = "#2e6da4";
+                    button.style.color = "#fff";
+                    break;
+                case 'default':
+                    button.style.backgroundColor = "#fff";
+                    button.style.borderColor = "#ccc";
+                    button.style.color = "#333";
+                    break;
+
+                default:
+                    button.style.backgroundColor = "#fff";
+                    button.style.borderColor = "#ccc";
+                    button.style.color = "#333";
+                    break;
+            }
+
+
+
+
+
+
             $(button).click(function () {
                 callback();
             });

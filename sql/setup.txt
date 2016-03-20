@@ -22,6 +22,11 @@ CREATE TABLE User(
     password_hash VARCHAR(255)
 );
 
+CREATE TABLE SchedulingProject(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255)
+);
+
 
 
 When a user registers for the first time it will create a new User entry.
