@@ -46,7 +46,9 @@ function Modal(clientWidth, clientHeight, modalTitle, url) {
             this.footer.style.height = footerHeight + "px";
             this.footer.style.width = width + "px";
             this.footer.style.borderTop = "1px solid rgb(229, 229, 229)";
+
             this.footer.style.borderRadius = "0px 0px 11px 11px";
+
             this.footer.classList.add('modal-footer');
 
             modalContainer.style.height = totalHeight + 'px';   // Plus 50 for header
@@ -55,7 +57,7 @@ function Modal(clientWidth, clientHeight, modalTitle, url) {
             modalContainer.style.position = "absolute";
             modalContainer.style.top = "50%";
             modalContainer.style.left = "50%";
-            modalContainer.style.borderRadius = "25px";
+            modalContainer.style.borderRadius = "11px";
             modalContainer.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)";
 
             var content = document.createElement("div");
@@ -73,7 +75,7 @@ function Modal(clientWidth, clientHeight, modalTitle, url) {
 
             modalContainer.style.display = 'none';
 
-            $.get(url, function (data) {
+            $.get(context.url, function (data) {
                 $('.modal-content').html(data);
                 $('.modal-content').height(height);
                 $('.modal-content').width(width);

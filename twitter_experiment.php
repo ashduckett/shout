@@ -13,7 +13,4 @@
         echo $e->getMessage();
     }
 
-
-        echo 'got here';
-
 ?>

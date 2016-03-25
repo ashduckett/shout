@@ -1,9 +1,9 @@
 <?php
     require_once 'header.php';
 ?>
+ 
 
-
-               <div class="sidebar">
+        <div class="sidebar">
             <ul class="sidebar-listing">
                 <li class="sidebar-header">Social Media</li>
                 <li class="sidebar-item">Dashboard</li>
@@ -25,16 +25,7 @@
        
          <div class="listview-container">
             <ul class="listview">
-                <li>
-                    <div class="listview-header">Header</div>
-                    <div class="listview-subheader">Header</div>
-                    <div class="listview-text">Header</div>
-                </li>
-                <li>
-                    <div class="listview-header">Project name</div>
-                    <div class="listview-subheader">Date of next</div>
-                    <div class="listview-text">Text for next</div>
-                </li>
+                
                
             </ul>
         </div>
@@ -78,19 +69,58 @@
         // Where should this live?
 
         // Also, how are we going to get hold of the data to give it? I guess we need to request it from the back end with a post call
-        
+
         // You will need information from the ScheduledProject table.
         // But you will also need to calculate the next shout time.
         // And you will also need to get hold of the text from the next shout.
 
         // For now, get only the account name and iterate over that.
-        
+
 
 
         // Should it be done this way? There are probably other ways.
         // It will need its data passed to it. Hitting a PHP script.
+
+        var items = [];
+
+        $.getJSON('get_all_scheduled_projects.php', function (data) {
+            $('.listview').listView(data, function (id) {
+
+                var deleteProjectModal = new Modal(400, 100, "Confirm", "modal_layouts/delete_project.php");
+
+                deleteProjectModal.addButton('No!', 'default', function () {
+                    deleteProjectModal.hideModal();
+                });
+
+                deleteProjectModal.addButton('Yip!', 'primary', function () {
+                    // alert('how we gon\' do this?');
+
+                    // Should have access to id so deletion should be simple
+
+                    $.post("delete_scheduled_project.php", { projId: id })
+                        .done(function (data) {
+                            deleteProjectModal.hideModal();
+
+                            // You'll also want to hide the project somehow.
+                            // Deleting is working though.
+
+
+
+
+
+                        });
+
+
+
+                });
+
+                deleteProjectModal.showModal();
+            });
+        });
+
+
         $('.listview').listView();
-        
+
     </script>
 
 <?php
