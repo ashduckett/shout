@@ -59,9 +59,16 @@ function Modal(clientWidth, clientHeight, modalTitle, url) {
             modalContainer.style.left = "50%";
             modalContainer.style.borderRadius = "11px";
             modalContainer.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)";
+            modalContainer.style.boxSizing = "border-box";
+
 
             var content = document.createElement("div");
+            content.style.width = "100%";
             content.classList.add("modal-content");
+            content.style.boxSizing = "border-box";
+
+            content.style.padding = "20px";
+
 
             body.appendChild(content);
 
@@ -78,7 +85,7 @@ function Modal(clientWidth, clientHeight, modalTitle, url) {
             $.get(context.url, function (data) {
                 $('.modal-content').html(data);
                 $('.modal-content').height(height);
-                $('.modal-content').width(width);
+                //$('.modal-content').width(width);
             });
 
             return modalContainer;

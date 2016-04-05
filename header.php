@@ -13,12 +13,21 @@
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="stylesheet" type="text/css" href="css/nav.css">
         <link rel="stylesheet" type="text/css" href="css/listview.css">
+
+        <link href="plugins/Calendar/calendar.css" type="text/css" rel="stylesheet">
+        <link href="plugins/TimePicker/clock.css" type="text/css" rel="stylesheet">
+
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
         <script src="js/nav.js"></script>
         <script src="js/Modal.js"></script>
         <script src="js/schedule.php.js"></script>
         <script src="js/listview.js"></script>
+        <script src="plugins/Calendar/moment.js" type="text/javascript"></script>
+        <script src="plugins/Calendar/calendar.js" type="text/javascript"></script>
+        <script src="plugins/TimePicker/clock.js" type="text/javascript"></script>
+
 
         
         <script src="js/main.js"></script>

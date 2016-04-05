@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $('#new-project').click(function () {
         var modal = new Modal(500, 200, 'Add Project', '../modal_layouts/add_project.php');
-    
+
         modal.addButton('Save', 'primary', function () {
             var name = $('#project-name').val();
 
@@ -18,6 +18,20 @@ $(document).ready(function () {
             modal.hideModal();
         });
 
+        modal.showModal();
+    });
+
+    // Code for Add item button
+    $('#new-shout').click(function () {
+
+        var modal = new Modal(300, 200, 'Add Shout', '../modal_layouts/add_shout.php');
+        modal.addButton('Save', 'primary', function () {
+
+        });
+
+        modal.addButton('Cancel', 'default', function () {
+            modal.hideModal();
+        });
         modal.showModal();
     });
 
