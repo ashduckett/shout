@@ -23,6 +23,10 @@ function Modal(clientWidth, clientHeight, modalTitle, url) {
             var title = document.createElement("h4");
 
             title.innerHTML = headerText;
+            
+            
+            
+            
             title.style.padding = "5px";
             title.style.color = "#000000";
             title.style.lineHeight = headerHeight + "px";
@@ -121,49 +125,24 @@ function Modal(clientWidth, clientHeight, modalTitle, url) {
             var button = document.createElement("a");
             button.innerHTML = caption;
             button.href = "#";
-            button.style.border = "1px solid black";
-            button.style.padding = "6px";
-            button.style.float = "right";
-            button.style.display = "inline-block";
-            button.style.textDecoration = "none";
-            button.style.borderRadius = "5px";
-            $(button).addClass('center-v');
-            button.style.marginRight = "25px";
-
-
-
-
-            // Primary
-
+            button.classList.add('modal-button');
+            button.classList.add('center-v');
+            
             switch (style) {
                 case 'primary':
-                    button.style.backgroundColor = "#337ab7";
-                    button.style.borderColor = "#2e6da4";
-                    button.style.color = "#fff";
+                    button.classList.add('btn-primary');
                     break;
                 case 'default':
-                    button.style.backgroundColor = "#fff";
-                    button.style.borderColor = "#ccc";
-                    button.style.color = "#333";
-                    break;
-
-                default:
-                    button.style.backgroundColor = "#fff";
-                    button.style.borderColor = "#ccc";
-                    button.style.color = "#333";
+                    button.classList.add('btn-default');
                     break;
             }
-
-
-
-
-
 
             $(button).click(function () {
                 callback();
             });
 
             this.footer.appendChild(button);
+
         };
 
         Modal.prototype.showModal = function () {

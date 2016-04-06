@@ -14,25 +14,25 @@
         
         var currentMomentDate = new moment();
         var locale = window.navigator.userLanguage || window.navigator.language;
-        moment.locale(locale);
-      //  var cale = $(this);           don't think this is used
 
+        // Get hold of user's browser locale       
+        moment.locale(locale);
+        
         function drawCalendar() {
 
             if (!($(globalTextField).val() === "")) {
-
+                // This will be the case if it hasn't been clicked
                 currentMomentDate.locale(locale);
-                currentMomentDate = moment(globalTextField.val(), "DD/MM/YYYY");
+                currentMomentDate = moment(globalTextField.val(), "L");
             } else {
                 currentMomentDate = new moment();
             }
 
             var today = currentMomentDate.toDate();
-            
+
             // Get hold of the number of days in the month
             var daysInMonth = new Date(today.getYear(), today.getMonth() + 1, 0).getDate();
             today.setDate(1);      // Set to the first day of the month so we can work out which day of the week we start on.
-
 
             var experimentalRow = "<tr>";
             var dayNo = 1;
@@ -83,76 +83,45 @@
             $('div.date-picker > table.calendar-table').append(experimentalRow);
         }
 
-
-
-        // Why is cal passed in?
         function setupDayClickEvents(cal) {
             // When one of the day squares is clicked...
             $('.dayNo').click(function () {
-
                 var day = $(this).data('day');                  // Get hold of the day value
 
                 currentMomentDate.locale(locale);               // Set locale of currentMomentDate
                 currentMomentDate.date(day);                    // Set the day on currentMomentDate
-
-                
                 $(cal).val(currentMomentDate.format("L"));      // Set the value of the text field
-
             });
         }
-        
+
         $('.calendar').click(function () {
 
             var cal = $(this);
             globalTextField = $(this);
             if (!($('.date-picker').is(':visible'))) {
                 $('.date-picker').remove();
-
-
-
-
                 $(cal).after(calString);
                 $('.date-picker').css('left', cal.position().left + 'px');
-
-
-
                 drawCalendar();
 
-
-                // These should only append and decrement months
                 $('.plus-month').click(function () {
                     currentMomentDate.add(1, 'months');
-
-
-
                     currentMomentDate.locale(locale);
                     $(cal).val(currentMomentDate.format("L"));
-
                     drawCalendar();
                     setupDayClickEvents(cal);
 
                 });
 
                 $('.minus-month').click(function () {
-                    currentMomentDate.add(-1, 'months');
-
-
-
-
                     currentMomentDate.locale(locale);
+                    currentMomentDate.add(-1, 'months');
                     $(cal).val(currentMomentDate.format("L"));
-
-
                     drawCalendar();
                     setupDayClickEvents(cal);
                 });
 
-
-
-
-
                 setupDayClickEvents(cal);
-
 
                 $(document).mouseup(function (e) {
                     var container = $('.date-picker');

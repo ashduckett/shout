@@ -12,6 +12,7 @@
         <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="stylesheet" type="text/css" href="css/nav.css">
+        <link rel="stylesheet" type="text/css" href="css/modal.css">
         <link rel="stylesheet" type="text/css" href="css/listview.css">
 
         <link href="plugins/Calendar/calendar.css" type="text/css" rel="stylesheet">
@@ -19,7 +20,7 @@
 
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script src="js/jquery.min.js"></script>
         <script src="js/nav.js"></script>
         <script src="js/Modal.js"></script>
         <script src="js/schedule.php.js"></script>
