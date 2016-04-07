@@ -1,4 +1,5 @@
 <?php
+
     session_start();
     if(!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== 'yes') {
         header('HTTP/1.1 302 Redirect');
@@ -25,6 +26,7 @@
         <script src="js/Modal.js"></script>
         <script src="js/schedule.php.js"></script>
         <script src="js/listview.js"></script>
+        <script src="js/shouttable.js"></script>
         <script src="plugins/Calendar/moment.js" type="text/javascript"></script>
         <script src="plugins/Calendar/calendar.js" type="text/javascript"></script>
         <script src="plugins/TimePicker/clock.js" type="text/javascript"></script>

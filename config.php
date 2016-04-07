@@ -6,5 +6,5 @@
     define("TBL_ORGANISATION", "organisation");
     define("TBL_SCHEDULING_PROJECT", "schedulingproject");
     define("TBL_USER", "user");
-
+    define("TBL_SHOUT", "shout");
 ?>

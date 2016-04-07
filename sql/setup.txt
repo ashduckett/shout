@@ -27,6 +27,30 @@ CREATE TABLE SchedulingProject(
     name VARCHAR(255)
 );
 
+CREATE TABLE Shout(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    project_id INT(6) UNSIGNED NULL,
+    text VARCHAR(255),
+    date DATETIME NULL,
+    time DATETIME NULL
+);
+
+
+
+
+Ultimately I wanted to be able to store the date and time separately so a user could add none, one or another, or both and have them save.
+
+Optionally I could get the form to react with an error if a date is specified and not a time. All or nothing approach? I think this seems reasonable.
+
+You can always change later.
+
+Scrap that. Store both as DATETIMEs. This offers the most flexibility.
+
+
+
+
+
+
 
 
 When a user registers for the first time it will create a new User entry.

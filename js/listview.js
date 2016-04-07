@@ -1,5 +1,5 @@
 (function ($) {
-    $.fn.listView = function (data, deleteCallback) {
+    $.fn.listView = function (data, deleteCallback, editCallback, projectClickCallback) {
         //var listItems = [];
         var element = null;
         var context = this;
@@ -96,6 +96,48 @@
 
             event.stopPropagation();
         });
+
+
+
+        $('.edit-side-icon').click(function (event) {
+
+            // Easy to get the modal to appear
+            // Also easy to get it to delete by hitting a backend
+            // script BUT
+            // This isn't particularly reusable
+
+            // For now you could pass in a callback for
+            // edit and delete and the callbacks could
+            // take an id?
+
+            // The callback for delete would create a modal,
+            // ask the user if they're sure and then hit the
+            // script to perform the delete based on the id passed
+            // in from here
+
+            var id = this.parentElement.parentElement.getAttribute('data-id');
+
+            editCallback(id);
+
+
+            event.stopPropagation();
+        });
+
+
+        $('.listview li').click(function () {
+
+            var id = $(this).data('id');
+            projectClickCallback(id);
+        });
+
+
+
+
+
+
+
+
+
 
 
         $('.delete-side-icon, .edit-side-icon').hover(function () {

@@ -1,1 +1,0 @@
-got here3got an id of 3just connectedDELETE FROM schedulingproject WHERE id = :idVALUE BOUND

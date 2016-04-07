@@ -20,25 +20,14 @@ function Modal(clientWidth, clientHeight, modalTitle, url) {
             var headerText = this.title;
             var totalHeight = headerHeight + footerHeight + height;
             var header = document.createElement("div");
+
             var title = document.createElement("h4");
-
             title.innerHTML = headerText;
-            
-            
-            
-            
-            title.style.padding = "5px";
-            title.style.color = "#000000";
             title.style.lineHeight = headerHeight + "px";
-            title.style.verticalAlign = "middle";
-            title.style.paddingLeft = "15px";
 
+            header.classList.add('modal-header');
             header.style.height = headerHeight + "px";
             header.style.width = width + "px";
-            header.style.backgroundColor = "#FFFFFF";
-            header.style.borderBottom = "1px solid rgb(229, 229, 229)";
-            header.style.borderRadius = "11px 11px 0px 0px";
-
             header.appendChild(title);
 
             var body = document.createElement("div");
