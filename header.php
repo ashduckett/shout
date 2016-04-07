@@ -37,6 +37,7 @@
 
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300">
         <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+        <title>Shout</title>
     </head>
     <body>
         <div class="main-container" style="height: 100vh">

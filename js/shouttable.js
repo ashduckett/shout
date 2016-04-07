@@ -1,5 +1,6 @@
 (function ($) {
-    // To be called on a table. A
+    // To be called on a table.
+    // This possibly shouldn't be a plugin unless I can make it generic.
     $.fn.shoutTable = function (data) {
         var element = null;
         var context = this;
@@ -11,15 +12,19 @@
         var shoutTableTopRow = document.createElement('tr');
 
         var shoutTableDragColHeadText = document.createElement('th');
+        shoutTableDragColHeadText.classList.add('row-drag');
         shoutTableDragColHeadText.innerHTML = 'Drag Here';
 
         var shoutTableTextColHeadText = document.createElement('th');
+        shoutTableTextColHeadText.classList.add('row-text');
         shoutTableTextColHeadText.innerHTML = 'Text';
 
         var shoutTableDateColHeadText = document.createElement('th');
+        shoutTableDateColHeadText.classList.add('row-date');
         shoutTableDateColHeadText.innerHTML = 'Date';
 
         var shoutTableTimeColHeadText = document.createElement('th');
+        shoutTableTimeColHeadText.classList.add('row-time');
         shoutTableTimeColHeadText.innerHTML = 'Time';
 
         var shoutTableBody = document.createElement('tbody');
@@ -56,9 +61,12 @@
 
 
 
-
-
-
+        $(this).css('width', '50%');
+        $(this).css('padding', '10px');
+        
+        $(shoutTable).css('border', '1px solid black');
+        $(shoutTable).css('width', '100%');
+        
 
 
         shoutTable.appendChild(shoutTableBody);

@@ -9,3 +9,27 @@
   transform: translateY(-50%);
 }
 
+.shout-table table {
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.shout-table .row-drag {
+    width: 25%;
+}
+
+.shout-table .row-text {
+    width: 25%;    
+}
+
+.shout-table .row-date {
+        width: 25%;
+}
+
+.shout-table .row-time {
+        width: 25%;
+}
+
+.shout-table > table, .shout-table table th, .shout-table table td {
+    border: 1px solid black;
+}
