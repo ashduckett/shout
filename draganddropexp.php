@@ -34,23 +34,21 @@
 
 
         <script>
-
             $(document).ready(function () {
-
-                /*         */
-
                 var draggableDiv = document.createElement("div");
                 draggableDiv.classList.add('draggable');
+                draggableDiv.style.position = 'absolute';
                 document.body.appendChild(draggableDiv);
 
                 var draggableDiv2 = document.createElement("div");
                 draggableDiv2.classList.add('draggable');
+                draggableDiv2.style.position = 'absolute';
                 document.body.appendChild(draggableDiv2);
 
-
-                /*         */
-
-
+                var draggableDiv3 = document.createElement("div");
+                draggableDiv3.classList.add('draggable');
+                draggableDiv3.style.position = 'absolute';
+                document.body.appendChild(draggableDiv3);
 
                 var clickX = null;
                 var clickY = null;
@@ -58,39 +56,40 @@
                 var elementBeingDragged = null;
 
                 $('.draggable').mousedown(function (event) {
-                    $(this).css('position', 'absolute');
                     var parentOffset = $(this).offset();
                     clickX = event.pageX - parentOffset.left;
                     clickY = event.pageY - parentOffset.top;
-                    elementBeingDragged = $(this);
+                    elementBeingDragged = event.target;
+
+                    return false;
                 });
 
                 $('.draggable').mouseup(function (event) {
-                    //  $(elementBeingDragged).css('position', 'static');
                     elementBeingDragged = null;
-
+                    event.stopPropagation();
                 });
 
 
-                $('.html').mouseup(function (event) {
-
+                $('html').mouseup(function (event) {
                     elementBeingDragged = null;
                 });
+
+
 
 
                 $('html').mousemove(function (event) {
+
+
                     if (elementBeingDragged != null) {
-                        $(elementBeingDragged).css({ top: event.pageY - clickY,
-                            left: event.pageX - clickX
-                        });
+                        elementBeingDragged.style.top = (event.pageY - clickY) + 'px';
+                        elementBeingDragged.style.left = (event.pageX - clickX) + 'px';
                     }
                 });
 
                 $('.draggable').mousemove(function (event) {
-                    if (event.which == true) {
-                        $(elementBeingDragged).css({ top: event.pageY - clickY,
-                            left: event.pageX - clickX
-                        });
+                    if (elementBeingDragged != null) {
+                        elementBeingDragged.style.top = (event.pageY - clickY) + 'px';
+                        elementBeingDragged.style.left = (event.pageX - clickX) + 'px';
                     }
                     event.stopPropagation();
                 });

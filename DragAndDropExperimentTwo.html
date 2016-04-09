@@ -3,12 +3,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title></title>
-
-
         <style>
-            
-            .drag {
+           .drag {
                 position: absolute;
                 height: 100px;
                 width: 100px;
@@ -45,13 +41,13 @@
     }
 
     function OnMouseDown(e) {
-        console.log('mouse down');
+
         if (e == null)
             e = window.event;
 
         var target = e.target != null ? e.target : e.srcElement;
 
-        debug.innerHTML = target.className == 'drag' ? 'draggable element clicked' : 'Non-draggable element clicked';
+        //debug.innerHTML = target.className == 'drag' ? 'draggable element clicked' : 'Non-draggable element clicked';
 
         if ((e.button == 1 && window.event != null || e.button == 0) && target.className == 'drag') {
             startX = e.clientX;
