@@ -33,3 +33,22 @@
 .shout-table > table, .shout-table table th, .shout-table table td {
     border: 1px solid black;
 }
+
+
+
+
+
+
+
+
+
+.account-list-container {
+    width: 200px;
+    height: calc(100% - 50px);
+    float: right;
+    background-color: red;    
+}
+
+.account-list-container .account-list-container-account-list {
+    overflow-y:scroll;
+}

@@ -14,7 +14,6 @@
                 <li class="sidebar-item">Generate Schedule...</li>
                 <li class="sidebar-item">Import To...</li>
                 <li class="sidebar-item">Export From...</li>
-                <li class="sidebar-item">Delete</li>
                 <li class="sidebar-item">Advanced...</li>
             
             </ul>
@@ -29,6 +28,19 @@
         
 
         <div class="shout-table" style="float: left;"></div>
+
+        
+
+
+        <div class="account-list-container" style="position: relative;">
+            <div class="account-list-container-buttons" style="width: 100%; height: 40px; background-color: black; bottom: 0; position: absolute;"></div>
+
+
+            <div class="account-list-container-account-list" style="width: 100%; height: calc(100% - 40px); background-color: blue;">
+            
+            </div>
+
+        </div>
 
 
 <?php

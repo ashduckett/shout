@@ -1,13 +1,7 @@
 <?php
-    require "DataObject.class.php";
+    require_once "DataObject.class.php";
     require_once __DIR__ . '/../config.php';
-
-
-
-
-
-
-
+    
 
     class Shout extends DataObject implements JsonSerializable {
         protected $data = array(

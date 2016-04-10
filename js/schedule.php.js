@@ -1,32 +1,8 @@
 $(document).ready(function () {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     var items = [];
+     
+        $.getJSON('API.php', {method: 'get_all', type: 'SchedulingProject'}, function (data) {
 
-    $.getJSON('get_all_scheduled_projects.php', function (data) {
         $('.listview').listView(data, function (id) {
 
             var deleteProjectModal = new Modal(400, 100, "Confirm", "modal_layouts/delete_project.php");
@@ -56,7 +32,7 @@ $(document).ready(function () {
             alert('edit button callback');
         }, function (id) {
 
-            $.getJSON('get_all_shouts.php', { project_id: id }, function (data) {
+            $.getJSON('API.php', { id: id, method: 'get_by_id', type: 'Shout' }, function (data) {
                 $('.shout-table').find('table').remove();
                 $('.shout-table').shoutTable(data);
             });

@@ -5,10 +5,7 @@
         <meta charset="utf-8" />
         <title></title>
         <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-   
-        
-        
-            <style>
+           <style>
                 
                 .draggable {
                     background-color: blue;
@@ -25,14 +22,6 @@
         
          </head>
     <body>
-
-        
-
-
-
-
-
-
         <script>
             $(document).ready(function () {
                 var draggableDiv = document.createElement("div");
@@ -61,6 +50,7 @@
                     clickY = event.pageY - parentOffset.top;
                     elementBeingDragged = event.target;
 
+                    // Escape default mouse down behaviour
                     return false;
                 });
 
