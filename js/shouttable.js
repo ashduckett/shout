@@ -43,14 +43,13 @@
             shoutTableHeader.appendChild(shoutTableTopRow);
             shoutTable.appendChild(shoutTableHeader);
 
+            // Put the actual data, not the headers, into the table
             $.each(data.shouts, function (key, val) {
                 var experimentRow = document.createElement('tr');
                 var col1 = document.createElement('td');
                 var col2 = document.createElement('td');
                 var col3 = document.createElement('td');
                 var col4 = document.createElement('td');
-
-
 
                 moment.locale('en-GB');
 
@@ -70,71 +69,50 @@
                 shoutTableBody.appendChild(experimentRow);
             });
 
-
-
-
-
             $(this).css('width', '50%');
             $(this).css('padding', '10px');
 
             $(shoutTable).css('border', '1px solid black');
             $(shoutTable).css('width', '100%');
 
-
-
             shoutTable.appendChild(shoutTableBody);
             $(this).append(shoutTable);
 
-            var previousButton = document.createElement('a');
-            previousButton.href = "#";
-            previousButton.innerHTML = "PREVIOUS";
+
+
+            var buttonBar = document.createElement('div');
+            buttonBar.classList.add('button-bar');
+            context.previousButton = document.createElement('a');
+            context.previousButton.href = "#";
+            context.previousButton.innerHTML = "PREVIOUS";
+
+
 
             context.nextButton = document.createElement('a');
             context.nextButton.href = "#";
             context.nextButton.innerHTML = "NEXT";
 
-            $(this).append(context.previousButton);
-            $(this).append(context.nextButton);
+
+            buttonBar.appendChild(context.previousButton);
+            buttonBar.appendChild(context.nextButton);
+
+
+            $(this).append(buttonBar);
         }
 
         // Need to give it a page no. Currently 1, but there might be none.
         // How to obtain 1 or none? Maybe it already does
 
         $.getJSON(url, obj, function (data) {
-
-            // If the number of pages is 0, then disable both the next and prev buttons.
-
-            // If it's 1 do the same.
-
-            // if it's more than one, the next button should be enabled.
-
-            /*
-            An attribute on the next button can store what the next page is, if there is one.
-            Check out what the script returns when there is 1 page. It should be none.
-
-            Basically, in all cases we need to know what the next page will be, n or none.
-            */
-
-
-
-
-
             $('.shout-table').find('table').remove();
-
-
-
+            $('.shout-table').find('.button-bar').remove();
             context.loadData(data);
-
-
-
             $(context.nextButton).attr('data-next', data.next_page);
 
             $(context.nextButton).click(function () {
-                if($(this).attr('data-next') != 'none')
+                if ($(this).attr('data-next') != 'none')
                     $('.shout-table').shoutTable(url, { project_id: obj.project_id, page_no: $(this).attr('data-next') });
-
             });
-
 
         });
 
