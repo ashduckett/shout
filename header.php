@@ -30,8 +30,7 @@
         <script src="plugins/Calendar/moment.js" type="text/javascript"></script>
         <script src="plugins/Calendar/calendar.js" type="text/javascript"></script>
         <script src="plugins/TimePicker/clock.js" type="text/javascript"></script>
-
-
+        
         
         <script src="js/main.js"></script>
 
@@ -48,7 +47,7 @@
                             <li>Social Media...</li>
                             <li>My Profile...</li>
                             <li id="menu-item-accounts">Accounts...</li>
-                            <li>Scheduling...</li>
+                            <li id="menu-item-scheduling">Scheduling...</a></li>
                         </ul>
                     </li>
                 </ul>

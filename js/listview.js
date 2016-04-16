@@ -10,6 +10,7 @@
             element.setAttribute('data-id', val.data.id);
 
 
+
             var listViewHeader = document.createElement('div');
             listViewHeader.setAttribute('class', 'listview-header');
             listViewHeader.innerHTML = val.data.name;

@@ -1,7 +1,21 @@
 $(document).ready(function () {
+
+
+    function loadPage() {
+        alert('function called');
+    }
+
+
+
+
+
+
+
+
+
     var items = [];
-     
-        $.getJSON('API.php', {method: 'get_all', type: 'SchedulingProject'}, function (data) {
+
+    $.getJSON('API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
 
         $('.listview').listView(data, function (id) {
 
@@ -32,29 +46,11 @@ $(document).ready(function () {
             alert('edit button callback');
         }, function (id) {
 
-            $.getJSON('API.php', { id: id, method: 'get_by_id', type: 'Shout' }, function (data) {
-                $('.shout-table').find('table').remove();
-                $('.shout-table').shoutTable(data);
-            });
-
-
-
-
-
-
-
-
-
-
-
-
-            // In here I guess we want to ajax the table into the table area.
-
-            // Is this going to be a plugin or just a file? File sounds okay for now. The file will have to:
-            //  Get all shouts
-            // Iterate over them adding them to the table
-
-            // That should do for now
+            // What does the script return if it finds nothing? It returns 0.
+            var url = "get_shout_page.php";
+            $('.shout-table').shoutTable(url, {project_id: id, page_no: 1});
+            
+            
 
         });
     });
@@ -114,6 +110,9 @@ $(document).ready(function () {
         });
         modal.showModal();
     });
+
+
+
 
 
 

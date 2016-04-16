@@ -1,8 +1,6 @@
 <?php
-    
-  //  error_reporting(E_ALL);
- //   ini_set('display_errors', 1);
-    require "DataObject.class.php";
+
+    require_once "DataObject.class.php";
     require_once __DIR__ . '/../config.php';
     
     class SchedulingProject extends DataObject implements JsonSerializable {
@@ -48,6 +46,56 @@
         }
     }
 
+   public static function findByProjectId($project_id) {
+            $conn = DataObject::connect();
+            $sql = "SELECT * FROM " . TBL_SCHEDULING_PROJECT . " WHERE id = :project_id";
+            $st = $conn->prepare($sql);
+            $st->bindValue(":project_id", $project_id);
+            $st->execute();
+            $projects = array();
+                    
+            foreach($st->fetchAll() as $row) {
+                $projects[] = new SchedulingProject($row);
+            }
+
+
+
+
+            parent::disconnect($conn);
+            return $projects[0];
+
+       }
+
+
+
+       public function getShoutCount() {
+         $conn = DataObject::connect();
+         $sql = "SELECT COUNT(id) FROM " . TBL_SHOUT . " WHERE project_id = :project_id";
+         $st = $conn->prepare($sql);
+          $st->bindValue(":project_id", $this->getValue('id'), PDO::PARAM_INT);
+          $st->execute();
+          $count = $st->fetchColumn();
+          parent::disconnect($conn);
+
+
+
+//          select count(id) from shout where project_id = 3
+
+
+
+          return $count;
+
+          
+       }
+
+   //    public function getName() {
+          //return $this->getValue('name');
+
+     //     return '100';
+      // }
+
+
+
     public static function deleteById($id) {
         $conn = parent::connect();
         $sql = "DELETE FROM " . TBL_SCHEDULING_PROJECT . " WHERE id = :id";
@@ -58,13 +106,11 @@
         DataObject::disconnect($conn);
 
     }
-
-     public function JsonSerialize()
-    {
+    
+     public function JsonSerialize() {
         $vars = get_object_vars($this);
-
         return $vars;
     }
-    }
+}
 
 ?>

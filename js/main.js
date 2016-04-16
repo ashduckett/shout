@@ -9,4 +9,8 @@ $(document).ready(function () {
 
         modal.showModal();
     });
+
+    $('#menu-item-scheduling').click(function () {
+        window.open('../schedule.php');
+    });
 });

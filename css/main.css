@@ -31,22 +31,17 @@
 }
 
 .shout-table > table, .shout-table table th, .shout-table table td {
-    border: 1px solid black;
+    border: 1px solid rgb(221, 221, 221);
+    height: 50px;
+    word-wrap:break-word;
 }
-
-
-
-
-
-
-
-
 
 .account-list-container {
     width: 200px;
     height: calc(100% - 50px);
     float: right;
-    background-color: red;    
+    border-left: solid 1px rgb(221, 221, 221);
+    box-sizing: border-box;
 }
 
 .account-list-container .account-list-container-account-list {

@@ -1,23 +1,10 @@
 
 <?php
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
+
 
     require_once 'DBObjects/SchedulingProject.php';
     require_once 'DBObjects/Shout.class.php';
-/*
-    This file is here to spit out anything it needs to
-
-
-    A URL will need to be hit maybe a POST
-
-    A POST would send the name of the method and the object to save
-    // Gets will have to be here
-    // Get alls
-    // Saves because the JS needs to get here
-
-*/
+-
 
 $method = $_GET['method'];
 $type = $_GET['type'];
@@ -29,6 +16,9 @@ switch($method) {
         switch($type) {
             case 'SchedulingProject':
                 $projects = SchedulingProject::getAll();
+                error_log('hit the get all method', 3, 'error_log.log');
+                error_log(count($projects), 3, 'error_log.log');
+
                 echo json_encode($projects);
                 break;
         }
@@ -42,6 +32,16 @@ switch($method) {
         }
 }
 
+
+// mapping urls to methods?
+
+// Hit the URL. The URL should contain the get, get_all, whatever, the object type.
+
+// If you have the object type name then you can call a static method on it.
+
+// SchedulingProject::get_all()
+
+// So when you hit the Url, use both of these to form the method call.
 
 /*
 So how would you use this?
