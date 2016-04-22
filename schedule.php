@@ -12,46 +12,22 @@
                 <li class="sidebar-item">Import To...</li>
                 <li class="sidebar-item">Export From...</li>
                 <li class="sidebar-item">Advanced...</li>
-            
             </ul>
         </div>
-       
         <div class="listview-container">
             <ul class="listview">
-                
-               
             </ul>
         </div>
-        
-
-
-
-
-        <div class="schedule-workspace" style="height: calc(100% - 50px); width: calc(100% - 600px); float: left;">
-        
-                <div class="shout-table" style="margin: auto;"></div>        
+        <div class="schedule-workspace">
+            <div class="shout-table"></div>        
         </div>
-
-        
-
-
-        <div class="account-list-container" style="position: relative;">
-            
-
-
-            <div class="account-list-container-account-list" style="width: 100%; height: calc(100% - 40px);">
-            
+        <div class="account-list-container">
+            <div class="account-list-container-account-list">
             </div>
-            <div class="account-list-container-buttons" style="width: 100%; height: 40px; bottom: 0; position: absolute; border-top: 1px solid rgb(211, 211, 211);">
+            <div class="account-list-container-buttons">
                 <a href="#">Add/Remove Accounts...</a>
             </div>
         </div>
-
-
 <?php
     require_once 'footer.php';
 ?>
-
-
-
-
