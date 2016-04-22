@@ -1,8 +1,7 @@
 (function ($) {
     // To be called on a table.
     // This possibly shouldn't be a plugin unless I can make it generic.
-
-
+    
 
 
 
@@ -11,7 +10,6 @@
         var context = this;
 
         context.nextButton = null;
-
 
         context.loadData = function (data) {
             var shoutTable = document.createElement('table');

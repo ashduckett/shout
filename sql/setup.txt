@@ -32,7 +32,8 @@ CREATE TABLE Shout(
     project_id INT(6) UNSIGNED NULL,
     text VARCHAR(255),
     date DATETIME NULL,
-    time DATETIME NULL
+    time DATETIME NULL,
+    FOREIGN KEY (project_id) REFERENCES SchedulingProject (id) ON DELETE CASCADE
 );
 
 

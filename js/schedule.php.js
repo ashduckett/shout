@@ -1,18 +1,5 @@
 $(document).ready(function () {
-
-
-    function loadPage() {
-        alert('function called');
-    }
-
-
-
-
-
-
-
-
-
+    
     var items = [];
 
     $.getJSON('API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
@@ -48,6 +35,9 @@ $(document).ready(function () {
 
             // What does the script return if it finds nothing? It returns 0.
             var url = "get_shout_page.php";
+
+
+
             $('.shout-table').shoutTable(url, {project_id: id, page_no: 1});
             
             
@@ -85,8 +75,7 @@ $(document).ready(function () {
             projectId = $('li.selected').data('id');
 
             var locale = window.navigator.userLanguage || window.navigator.language;
-
-
+            
             moment.locale(locale);
             var shoutDate = moment($('.calendar').val(), "L").format('YYYY-MM-DD 00:00:00');
             var shoutTime = moment($('.clock').val(), "h:mm A").format('YYYY-MM-DD HH:mm:00');
@@ -101,8 +90,6 @@ $(document).ready(function () {
 
                 modal.hideModal();
             });
-
-
         });
 
         modal.addButton('Cancel', 'default', function () {
