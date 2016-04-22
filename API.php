@@ -16,9 +16,6 @@ switch($method) {
         switch($type) {
             case 'SchedulingProject':
                 $projects = SchedulingProject::getAll();
-                error_log('hit the get all method', 3, 'error_log.log');
-                error_log(count($projects), 3, 'error_log.log');
-
                 echo json_encode($projects);
                 break;
         }
@@ -30,6 +27,7 @@ switch($method) {
                 echo json_encode($shouts);
                 break;
         }
+        break;
 }
 
 

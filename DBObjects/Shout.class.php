@@ -65,7 +65,7 @@
         // The limit clause will do it all
         // limit here will be 10, page No 1, 2, 3...1 10 1 is passed in.
 
-        public static function getPage($pageNo, $limit, $project_id, &$shout_count, &$next_page) {
+        public static function getPage($pageNo, $limit, $project_id, &$shout_count, &$next_page, &$prev_page) {
             // Get the total number of records
             $conn = parent::connect();
             $sql = "SELECT COUNT(*) FROM " . TBL_SHOUT . " WHERE project_id = :project_id";
@@ -88,11 +88,11 @@
             // Now we have the total number of pages...
             $numberOfPages = intval($numberOfPages);
 
-            error_log('number of pages where empty: ' . $numberOfPages, 3, 'error_log.log');
-
 
             $next_page = $pageNo == $numberOfPages || $numberOfPages == 0 ? 'none' : $pageNo + 1;
             
+            // Can pageNo be 0 if there are no shouts?
+            $prev_page = ($pageNo == 1 || $pageNo == 0) ? 'none' : $pageNo - 1;
             
             $shout_count = $numberOfPages;
 
