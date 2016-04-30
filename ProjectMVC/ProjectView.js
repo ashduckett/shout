@@ -23,10 +23,14 @@ function SchedulingProjectView(model, element) {
 
 
     $('#new-project').click(function () {
+        console.log('calling notify on addButtonClicked which is an event inside ProjectView');
+
         _this.addButtonClicked.notify();
-            // This is working
-              //alert('');
-            //    _this.model.itemAdded.notify();
+
+
+        // This is working
+
+        //    _this.model.itemAdded.notify();
     });
 
 
@@ -38,11 +42,14 @@ function SchedulingProjectView(model, element) {
 }
 
 SchedulingProjectView.prototype.draw = function () {
+    console.log('draw method called');
     var _this = this;
     var list = document.createElement('ul');
     var projects = this.model.getProjects();
+            _this.element.innerHTML = "";
 
     for (var i in projects) {
+        
         var element = document.createElement('li');
         element.setAttribute('data-id', this.model.getProjectById(i).id);
 

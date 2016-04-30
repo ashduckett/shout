@@ -1,17 +1,35 @@
 $(document).ready(function () {
 
-    var items = [];
+    //var items = [];
 
-
+    console.log('Javascript start');
     var projectModel = new SchedulingProjectModel();
+
+
     projectModel.loadProjects(function () {
+        console.log('inside loadProjects callback');
         var element = document.getElementsByClassName('listview')[0];
         var projectView = new SchedulingProjectView(projectModel, element);
+
+
+        var controller = new ProjectController(projectModel, projectView);
+
+        console.log('about to call draw');
         projectView.draw();
     });
+    console.log('projects loaded');
 
 
-    
+
+
+
+
+    // function ProjectController(model, view) {
+    // function SchedulingProjectModel() {
+    // function SchedulingProjectView(model, element) {
+
+
+
 
     /*$.getJSON('API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
 
@@ -54,7 +72,7 @@ $(document).ready(function () {
     });*/
 
 
-    $('#new-project').click(function () {
+  /*  $('#new-project').click(function () {
         var modal = new Modal(500, 200, 'Add Project', '../modal_layouts/add_project.php');
 
         modal.addButton('Save', 'primary', function () {
@@ -73,7 +91,7 @@ $(document).ready(function () {
         });
 
         modal.showModal();
-    });
+    });*/
 
     // Code for Add item button
     $('#new-shout').click(function () {

@@ -18,26 +18,24 @@ function ProjectController(model, view) {
     });*/
 }
 
-ListController.prototype.addItem = function () {
-    alert('hooray');
-}
-/*
-ListController.prototype = {
-    addItem: function () {
-        var item = window.prompt('Add item:', '');
-        if (item) {
-            this._model.addItem(item);
-        }
-    },
-    delItem: function () {
-        var index;
-        index = this._model.getSelectedIndex();
-        if (index !== -1) {
-            this._model.removeItemAt(this._model.getSelectedIndex());
-        }
-    },
+ProjectController.prototype.addItem = function () {
+    var _this = this;
+    
+    var modal = new Modal(500, 200, 'Add Project', '../modal_layouts/add_project.php');
 
-    updateSelected: function (index) {
-        this._model.setSelectedIndex(index);
-    }
-};*/
+    modal.addButton('Save', 'primary', function () {
+        var name = $('#project-name').val();
+                var projectName = $('#project-name').val();
+        $.post("../save_project.php", { name: projectName }, function (data) {
+            var newProject = new SchedulingProject(data, projectName);
+            _this._model.addItem(newProject);
+            modal.hideModal();
+        });
+    });
+
+    modal.addButton('Close', 'default', function () {
+        modal.hideModal();
+    });
+
+    modal.showModal();
+}

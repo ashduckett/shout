@@ -24,6 +24,7 @@
         <script src="js/jquery.min.js"></script>
         
         <script src="ProjectMVC/Event.js"></script>
+        <script src="ProjectMVC/ProjectController.js"></script>
         <script src="ProjectMVC/ProjectModel.js"></script>
         <script src="ProjectMVC/ProjectView.js"></script>
 
