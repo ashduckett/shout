@@ -1,11 +1,19 @@
 (function ($) {
+
+
+    // MVC will mean that you don't need to pass in these callbacks. I think.
+
+
+
+
+
     $.fn.listView = function (data, deleteCallback, editCallback, projectClickCallback) {
         //var listItems = [];
         var element = null;
         var context = this;
 
 
-        $.each(data, function (key, val) {
+        /*$.each(data, function (key, val) {
             var element = document.createElement('li');
             element.setAttribute('data-id', val.data.id);
 
@@ -71,26 +79,12 @@
 
 
 
-        });
+        });*/
 
 
         $('.delete-side-icon').click(function (event) {
 
-            // Easy to get the modal to appear
-            // Also easy to get it to delete by hitting a backend
-            // script BUT
-            // This isn't particularly reusable
-
-            // For now you could pass in a callback for
-            // edit and delete and the callbacks could
-            // take an id?
-
-            // The callback for delete would create a modal,
-            // ask the user if they're sure and then hit the
-            // script to perform the delete based on the id passed
-            // in from here
-
-            var id = this.parentElement.parentElement.getAttribute('data-id');
+               var id = this.parentElement.parentElement.getAttribute('data-id');
 
             deleteCallback(id);
 
@@ -126,21 +120,10 @@
 
 
         $('.listview li').click(function () {
-
             var id = $(this).data('id');
             projectClickCallback(id);
         });
-
-
-
-
-
-
-
-
-
-
-
+        
         $('.delete-side-icon, .edit-side-icon').hover(function () {
             $(this).css('color', 'black');
         }, function () {

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <script src="Controller.js"></script>
+        <script src="../js/jquery.min.js"></script>
+    </head>
+    <body>
+        
+        <select id="list" size="10"></select>
+        <button id="plusBtn"> + </button>
+        <button id="minusBtn"> - </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <script>
+        $(function () {
+            
+            // This line is simple enough. All we have by doing this is the items stored in the object, a default selected index and some initialised Event objects.
+            var model = new ListModel(['PHP', 'JavaScript']);
+            
+            
+            
+            var view = new ListView(model, { 'list': $('#list'), 'addButton': $('#plusBtn'), 'delButton': $('#minusBtn') });
+            
+            
+            
+            
+            var controller = new ListController(model, view);
+
+            view.show();
+
+
+
+        });
+    </script>
+    </body>
+
+
+
+    
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <script src="Event.js"></script>
+        <script src="SchedulingProjectController.js"></script>
+        <script src="SchedulingProjectView.js"></script>
+        <script src="Controller.js"></script>
+        <script src="AshController.js"></script>
+        <script src="SchedulingProject.js"></script>
+        <script src="../js/jquery.min.js"></script>
+    </head>
+    <body>
+        
+        <select id="list" size="10"></select>
+        <button id="plusBtn"> + </button>
+        <button id="minusBtn"> - </button>
+
+
+
+
+
+
+        <button id="ash">Ash</button>
+
+
+
+
+        <div id="myDiv"></div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    <script>
+        $(function () {
+
+
+
+            // Create the model. This involves:
+            //  * Stashing the strings in an instance variable
+            //  * Setting a default selected value to store
+            //  * Adding model events for itemAdded, itemRemoved and selectedIndexChanged
+            //  * Creating methods on the model:
+            //      * getItems just returns the items as a string array
+            //      * addItem adds an item to the stashed items array, but also calls notify on itemAdded, passing in an object with the item added in it
+            var model = new ListModel(['PHP', 'JavaScript']);
+
+
+
+            var view = new ListView(model, { 'list': $('#list'), 'addButton': $('#plusBtn'), 'delButton': $('#minusBtn') });
+
+
+
+
+            var controller = new ListController(model, view);
+
+            view.show();
+
+
+
+            // Here's where the experiment begins
+
+            // How are we going to create a modal? One thing we need to do is to load in all the objects instead
+            // of providing an array.
+
+
+            // Here we are populating the model. Why not have a model that can load its own data?
+            // Keep this for now. Change later.
+            //     var projects = new Array();
+            //     $.getJSON('../API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
+            //         var projectItem = data;
+            // element.setAttribute('data-id', val.data.id);
+            //        $.each(data, function (key, val) {
+            //          projects.push(new SchedulingProject(val.data.id, val.data.name));
+            //      });
+            //  });
+
+
+
+            /*
+            This whole MVC stuff, it occurred to me tonight, involving the list view of projects as well. So the view will contain that. The modal is part of it but not the whole.
+            You'll still need the code below, however.
+            */
+
+            var anotherModel = new SchedulingProjectModel();
+            anotherModel.loadProjects(function () {
+
+
+                // anotherModel.removeProjectWithId(1);
+
+
+
+                var elementOnWhichToDraw = document.getElementById('myDiv');
+                var view = new SchedulingProjectView(anotherModel, elementOnWhichToDraw);
+
+                var controller = new SchedulingProjectController(anotherModel, view);
+                
+                view.draw();
+
+
+            });
+
+
+        });
+
+
+
+
+
+
+
+    </script>
+    </body>
+
+
+
+    
+</html>

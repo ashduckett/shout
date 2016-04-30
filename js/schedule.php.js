@@ -1,59 +1,62 @@
 $(document).ready(function () {
 
-
-    function loadPage() {
-        alert('function called');
-    }
-
-
-
-
-
-
-
-
-
     var items = [];
 
-    $.getJSON('API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
-
-        $('.listview').listView(data, function (id) {
-
-            var deleteProjectModal = new Modal(400, 100, "Confirm", "modal_layouts/delete_project.php");
-
-            deleteProjectModal.addButton('No!', 'default', function () {
-                deleteProjectModal.hideModal();
-            });
-
-            deleteProjectModal.addButton('Yip!', 'primary', function () {
-
-                // Should have access to id so deletion should be simple
-
-                $.post("delete_scheduled_project.php", { projId: id })
-                        .done(function (data) {
-                            deleteProjectModal.hideModal();
-
-                            // You'll also want to hide the project somehow.
-                            // Deleting is working though.
-                        });
 
 
+    var projectModel = new SchedulingProjectModel();
 
-            });
+    projectModel.loadProjects(function () {
+            var element = document.getElementsByClassName('listview')[0];
 
-            deleteProjectModal.showModal();
-        }, function (id) {
-            alert('edit button callback');
-        }, function (id) {
+    // model, element
+    var projectView = new SchedulingProjectView(projectModel, element);
 
-            // What does the script return if it finds nothing? It returns 0.
-            var url = "get_shout_page.php";
-            $('.shout-table').shoutTable(url, {project_id: id, page_no: 1});
-            
-            
-
-        });
+    projectView.draw();
     });
+
+
+    
+
+    /*$.getJSON('API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
+
+    $('.listview').listView(data, function (id) {
+
+    var deleteProjectModal = new Modal(400, 100, "Confirm", "modal_layouts/delete_project.php");
+
+    deleteProjectModal.addButton('No!', 'default', function () {
+    deleteProjectModal.hideModal();
+    });
+
+    deleteProjectModal.addButton('Yip!', 'primary', function () {
+
+    // Should have access to id so deletion should be simple
+
+    $.post("delete_scheduled_project.php", { projId: id })
+    .done(function (data) {
+    deleteProjectModal.hideModal();
+
+    // You'll also want to hide the project somehow.
+    // Deleting is working though.
+    });
+
+
+
+    });
+
+    deleteProjectModal.showModal();
+    }, function (id) {
+    alert('edit button callback');
+    }, function (id) {
+
+    // What does the script return if it finds nothing? It returns 0.
+    var url = "get_shout_page.php";
+    $('.shout-table').shoutTable(url, {project_id: id, page_no: 1});
+            
+            
+
+    });
+    });*/
 
 
     $('#new-project').click(function () {
