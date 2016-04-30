@@ -3,16 +3,11 @@ $(document).ready(function () {
     var items = [];
 
 
-
     var projectModel = new SchedulingProjectModel();
-
     projectModel.loadProjects(function () {
-    var element = document.getElementsByClassName('listview')[0];
-
-    // model, element
-    var projectView = new SchedulingProjectView(projectModel, element);
-
-    projectView.draw();
+        var element = document.getElementsByClassName('listview')[0];
+        var projectView = new SchedulingProjectView(projectModel, element);
+        projectView.draw();
     });
 
 
