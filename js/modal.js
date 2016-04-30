@@ -1,5 +1,5 @@
 
-function Modal(clientWidth, clientHeight, modalTitle, url) {
+function Modal(clientWidth, clientHeight, modalTitle, url, callMeAfterLoading) {
     this.clientWidth = clientWidth;
     this.clientHeight = clientHeight;
     this.url = url;
@@ -79,6 +79,7 @@ function Modal(clientWidth, clientHeight, modalTitle, url) {
                 $('.modal-content').html(data);
                 $('.modal-content').height(height);
                 //$('.modal-content').width(width);
+                callMeAfterLoading();
             });
 
             return modalContainer;

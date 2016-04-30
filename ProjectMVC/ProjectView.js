@@ -5,6 +5,7 @@ function SchedulingProjectView(model, element) {
 
     this.addButtonClicked = new Event(this);
     this.delButtonClicked = new Event(this);
+    this.editButtonClicked = new Event(this);
 
     this.model.itemAdded.attach(function () {
         _this.rebuildList();
@@ -12,6 +13,10 @@ function SchedulingProjectView(model, element) {
 
     this.model.itemRemoved.attach(function () {
         _this.rebuildList();
+    });
+
+    this.model.itemUpdated.attach(function () {
+         _this.rebuildList();
     });
 
 
@@ -141,10 +146,40 @@ SchedulingProjectView.prototype.draw = function () {
 
         console.log('attempting to delete item ' + id);
 
-        _this.delButtonClicked.notify({id: id});
+        _this.delButtonClicked.notify({ id: id });
 
         event.stopPropagation();
     });
+
+
+
+    $('.edit-side-icon').click(function (event) {
+        console.log('event fired');
+        var id = this.parentElement.parentElement.getAttribute('data-id');
+        console.log('id ' + id);
+
+        // Now you can get hold of the project from the current list
+        var projectToUpdate = _this.model.getProjectById(id);
+
+        
+
+        // Update the project with a new name
+        _this.editButtonClicked.notify({ project: projectToUpdate });
+
+        event.stopPropagation();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
 };
 
 SchedulingProjectView.prototype.rebuildList = function () {

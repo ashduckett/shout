@@ -8,6 +8,7 @@ function SchedulingProjectModel() {
 
     this.itemAdded = new Event(this);
     this.itemRemoved = new Event(this);
+    this.itemUpdated = new Event(this);
 }
 
 SchedulingProjectModel.prototype.loadProjects = function (callMeOnSuccess) {
@@ -38,8 +39,12 @@ SchedulingProjectModel.prototype.addItem = function (project) {
 };
 
 SchedulingProjectModel.prototype.removeProjectWithId = function (id) {
-    console.log('remove item methos');
     var project = this.projects[id];
     delete this.projects[id];
+    // I'm not using the passed in project anywhere am I?
     this.itemRemoved.notify({ item: project });
 };
+
+SchedulingProjectModel.prototype.updateProject = function (project) {
+    console.log('edit event fired. Do we have a project? This will be the new project, same id though');
+}
