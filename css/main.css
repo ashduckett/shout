@@ -9,6 +9,10 @@
   transform: translateY(-50%);
 }
 
+.shout-table {
+    margin: auto;
+}
+
 .shout-table table {
     table-layout: fixed;
     border-collapse: collapse;
@@ -42,8 +46,28 @@
     float: right;
     border-left: solid 1px rgb(221, 221, 221);
     box-sizing: border-box;
+    position: relative;
 }
 
 .account-list-container .account-list-container-account-list {
     overflow-y:scroll;
+    width: 100%;
+    height: calc(100% - 40px);
 }
+
+.schedule-workspace {
+    height: calc(100% - 50px);
+    width: calc(100% - 600px);
+    float: left;
+}
+
+.account-list-container-buttons {
+    width: 100%;
+    height: 40px;
+    bottom: 0;
+    position: absolute;
+    border-top: 1px solid rgb(211, 211, 211);
+}
+
+
+

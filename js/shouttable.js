@@ -5,13 +5,11 @@
 
 
 
-
     $.fn.shoutTable = function (url, obj) {
         var element = null;
         var context = this;
 
         context.nextButton = null;
-
 
         context.loadData = function (data) {
             var shoutTable = document.createElement('table');
@@ -84,13 +82,13 @@
             buttonBar.classList.add('button-bar');
             context.previousButton = document.createElement('a');
             context.previousButton.href = "#";
-            context.previousButton.innerHTML = "PREVIOUS";
+            context.previousButton.innerHTML = "Previous";
 
 
 
             context.nextButton = document.createElement('a');
             context.nextButton.href = "#";
-            context.nextButton.innerHTML = "NEXT";
+            context.nextButton.innerHTML = "Next";
 
 
             buttonBar.appendChild(context.previousButton);
@@ -108,10 +106,18 @@
             $('.shout-table').find('.button-bar').remove();
             context.loadData(data);
             $(context.nextButton).attr('data-next', data.next_page);
+            $(context.previousButton).attr('data-prev', data.prev_page);
 
             $(context.nextButton).click(function () {
-                if ($(this).attr('data-next') != 'none')
+                if ($(this).attr('data-next') != 'none') {
                     $('.shout-table').shoutTable(url, { project_id: obj.project_id, page_no: $(this).attr('data-next') });
+                }
+            });
+
+            $(context.previousButton).click(function () {
+                if ($(this).attr('data-next') != 'none') {
+                    $('.shout-table').shoutTable(url, { project_id: obj.project_id, page_no: $(this).attr('data-prev') });
+                }
             });
 
         });

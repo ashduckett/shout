@@ -7,7 +7,7 @@ $(document).ready(function () {
     var projectModel = new SchedulingProjectModel();
 
     projectModel.loadProjects(function () {
-            var element = document.getElementsByClassName('listview')[0];
+    var element = document.getElementsByClassName('listview')[0];
 
     // model, element
     var projectView = new SchedulingProjectView(projectModel, element);
