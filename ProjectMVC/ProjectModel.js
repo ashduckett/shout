@@ -13,18 +13,9 @@ function SchedulingProjectModel() {
 SchedulingProjectModel.prototype.loadProjects = function (callMeOnSuccess) {
     var _this = this;
 
-    console.log('about to get data');
     $.getJSON('../API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
-        console.log('success callback hit');
-        
-        $.each(data, function (key, val) {
+         $.each(data, function (key, val) {
             _this.projects[val.data.id] = new SchedulingProject(val.data.id, val.data.name);
-
-
-
-
-
-        
         });
         callMeOnSuccess();
     });
@@ -47,6 +38,7 @@ SchedulingProjectModel.prototype.addItem = function (project) {
 };
 
 SchedulingProjectModel.prototype.removeProjectWithId = function (id) {
+    console.log('remove item methos');
     var project = this.projects[id];
     delete this.projects[id];
     this.itemRemoved.notify({ item: project });

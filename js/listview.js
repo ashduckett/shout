@@ -81,10 +81,10 @@
 
         });*/
 
-
+        /*
         $('.delete-side-icon').click(function (event) {
 
-               var id = this.parentElement.parentElement.getAttribute('data-id');
+            var id = this.parentElement.parentElement.getAttribute('data-id');
 
             deleteCallback(id);
 
@@ -92,7 +92,7 @@
             event.stopPropagation();
         });
 
-
+        */
 
         $('.edit-side-icon').click(function (event) {
 

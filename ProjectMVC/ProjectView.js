@@ -6,50 +6,41 @@ function SchedulingProjectView(model, element) {
     this.addButtonClicked = new Event(this);
     this.delButtonClicked = new Event(this);
 
-    
-    /*
-        Here is where one time setup goes. No adding of items to the list happens here.
-    */
-    
-    this.addItemButton = document.createElement('a');
-    this.addItemButton.innerHTML = 'Add Item';
-    this.addItemButton.href = '#';
-
-    
-    this.model.itemAdded.attach(function () {                          // Attach a listener to the item addede method. This tells the model to rebuild the list when the itemAdded gets notify called on it.
+    this.model.itemAdded.attach(function () {
         _this.rebuildList();
-        console.log('attached function called');
     });
+
+    this.model.itemRemoved.attach(function () {
+        _this.rebuildList();
+    });
+
 
 
     $('#new-project').click(function () {
-        console.log('calling notify on addButtonClicked which is an event inside ProjectView');
-
         _this.addButtonClicked.notify();
-
-
-        // This is working
-
-        //    _this.model.itemAdded.notify();
     });
+
+
+    // We also need to think about the delete button and edit button.
+    // The difference here between those and the add button is that there is
+    // an edit and delete button on each project, rather than just the one.
 
 
    // An event handler for the add project button will need to be attached to the menu thing.
     //this.addItemButton.addEventListener("click", function () {
     //    _this.addButtonClicked.notify();
     //});
-
 }
 
 SchedulingProjectView.prototype.draw = function () {
-    console.log('draw method called');
     var _this = this;
     var list = document.createElement('ul');
     var projects = this.model.getProjects();
-            _this.element.innerHTML = "";
+
+    _this.element.innerHTML = "";
 
     for (var i in projects) {
-        
+
         var element = document.createElement('li');
         element.setAttribute('data-id', this.model.getProjectById(i).id);
 
@@ -142,6 +133,18 @@ SchedulingProjectView.prototype.draw = function () {
 
 
     };
+
+    $('.delete-side-icon').click(function (event) {
+        var id = this.parentElement.parentElement.getAttribute('data-id');
+
+        // deleteCallback(id);
+
+        console.log('attempting to delete item ' + id);
+
+        _this.delButtonClicked.notify({id: id});
+
+        event.stopPropagation();
+    });
 };
 
 SchedulingProjectView.prototype.rebuildList = function () {

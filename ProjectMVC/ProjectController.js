@@ -13,9 +13,10 @@ function ProjectController(model, view) {
         _this.addItem();
     });
 
-    /*this._view.delButtonClicked.attach(function () {
-        _this.delItem();
-    });*/
+    this._view.delButtonClicked.attach(function (sender, args) {
+        console.log(args.id);
+        _this.delItem(args.id);
+    });
 }
 
 ProjectController.prototype.addItem = function () {
@@ -25,7 +26,7 @@ ProjectController.prototype.addItem = function () {
 
     modal.addButton('Save', 'primary', function () {
         var name = $('#project-name').val();
-                var projectName = $('#project-name').val();
+        var projectName = $('#project-name').val();
         $.post("../save_project.php", { name: projectName }, function (data) {
             var newProject = new SchedulingProject(data, projectName);
             _this._model.addItem(newProject);
@@ -38,4 +39,23 @@ ProjectController.prototype.addItem = function () {
     });
 
     modal.showModal();
+}
+
+ProjectController.prototype.delItem = function (id) {
+    var _this = this;
+
+    var deleteProjectModal = new Modal(400, 100, "Confirm", "modal_layouts/delete_project.php");
+    deleteProjectModal.addButton('No!', 'default', function () {
+        deleteProjectModal.hideModal();
+    });
+
+    deleteProjectModal.addButton('Yip!', 'primary', function () {
+        $.post("delete_scheduled_project.php", { projId: id })
+        .done(function (data) {
+            _this._model.removeProjectWithId(id);
+            deleteProjectModal.hideModal();
+        });
+    });
+    deleteProjectModal.showModal();
+
 }
