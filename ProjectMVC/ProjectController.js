@@ -1,7 +1,7 @@
 function ProjectController(model, view) {
     this._model = model;
     this._view = view;
-
+    
     var _this = this;
 
     /*this._view.listModified.attach(function (sender, args) {
@@ -9,7 +9,6 @@ function ProjectController(model, view) {
     });*/
 
     this._view.editButtonClicked.attach(function (sender, args) {
-        console.log(args);
         _this.updateItem(args.project);
     });
 
@@ -19,6 +18,11 @@ function ProjectController(model, view) {
 
     this._view.delButtonClicked.attach(function (sender, args) {
         _this.delItem(args.id);
+    });
+
+    this._view.projectItemClicked.attach(function (sender, args) {
+        //alert('click!');
+        _this.updateShoutTable(args.id);
     });
 }
 
@@ -64,6 +68,7 @@ ProjectController.prototype.delItem = function (id) {
 ProjectController.prototype.updateItem = function (project) {
     this.name = project.name;
     var _this = this;
+    
     var modal = new Modal(500, 200, 'Add Project', '../modal_layouts/add_project.php', function () {
         $('#project-name').val(_this.name);
     });
@@ -84,6 +89,34 @@ ProjectController.prototype.updateItem = function (project) {
     });
 
     modal.showModal();
-
-
 }
+
+ProjectController.prototype.updateShoutTable = function (id) {
+    // Here we need to know the project id.
+    // Also, which page to draw. Which will be 1.
+
+
+    var shoutModel = new ShoutModel();
+
+    // Once this is called, the shouts will exist on the ShoutModel object
+
+    // So you need to know which project has just been clicked on.
+
+    // Nothing should be loaded until the project is clicked. So you need an event on each project that brings out the id.
+    shoutModel.loadShouts(id, function () {
+
+        var element = document.getElementsByClassName('shout-table');
+        var shoutView = new ShoutView(shoutModel, element);
+
+        console.log('about to call draw on shout view');
+
+        // This is fixed. It needs to be dynamic!
+        shoutView.draw();
+
+
+        // Get hold of the element to put the table on
+    });
+
+
+
+};

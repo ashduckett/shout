@@ -102,7 +102,6 @@
             if($pageNo <= $numberOfPages) {
                 $sql = "SELECT * FROM " . TBL_SHOUT . " WHERE project_id = :project_id LIMIT 10 OFFSET :offset";
           
-
                 $st = $conn->prepare($sql);
                 $st->bindValue(":project_id", $project_id);
                 $st->bindValue(":offset", $offset, PDO::PARAM_INT);

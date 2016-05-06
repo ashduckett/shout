@@ -6,6 +6,7 @@ function SchedulingProjectView(model, element) {
     this.addButtonClicked = new Event(this);
     this.delButtonClicked = new Event(this);
     this.editButtonClicked = new Event(this);
+    this.projectItemClicked = new Event(this);
 
     this.model.itemAdded.attach(function () {
         _this.rebuildList();
@@ -38,6 +39,12 @@ function SchedulingProjectView(model, element) {
 }
 
 SchedulingProjectView.prototype.draw = function () {
+
+    // shout-table
+
+    
+
+
     var _this = this;
     var list = document.createElement('ul');
     var projects = this.model.getProjects();
@@ -91,9 +98,6 @@ SchedulingProjectView.prototype.draw = function () {
 
         $(this.element).append($(element));
 
-
-
-
         $('.delete-side-icon, .edit-side-icon').hover(function () {
             $(this).css('color', 'black');
         }, function () {
@@ -105,6 +109,11 @@ SchedulingProjectView.prototype.draw = function () {
             $(this).css('background', 'rgb(191, 212, 234)');
             $('ul.listview > li').removeClass('selected');
             $(this).addClass('selected');
+
+            // Get hold of the id
+            var id = $(this).data('id');
+
+            _this.projectItemClicked.notify({ id: id });
 
 
         });
@@ -137,7 +146,12 @@ SchedulingProjectView.prototype.draw = function () {
 
 
 
+
+
     };
+
+
+
 
     $('.delete-side-icon').click(function (event) {
         var id = this.parentElement.parentElement.getAttribute('data-id');

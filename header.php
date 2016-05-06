@@ -27,6 +27,8 @@
         <script src="ProjectMVC/ProjectController.js"></script>
         <script src="ProjectMVC/ProjectModel.js"></script>
         <script src="ProjectMVC/ProjectView.js"></script>
+        <script src="ProjectMVC/ShoutModel.js"></script>
+        <script src="ProjectMVC/ShoutView.js"></script>
 
         <script src="js/nav.js"></script>
         <script src="js/Modal.js"></script>

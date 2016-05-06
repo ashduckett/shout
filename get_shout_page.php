@@ -11,8 +11,5 @@
     
     // Echoes both the shouts for the selected page, and the number of shouts for the selected project
     echo json_encode(array('shouts' => $shouts, 'page_count' => $page_count, 'next_page' => $next_page, 'prev_page' => $prev_page));
- 
-
-    // One idea for speed is to pass in yet another parameter for the current or previous page to be remembered?
 
 ?>

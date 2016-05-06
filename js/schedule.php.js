@@ -20,7 +20,28 @@ $(document).ready(function () {
     console.log('projects loaded');
 
 
+    var shoutModel = new ShoutModel();
 
+    // Once this is called, the shouts will exist on the ShoutModel object
+    
+    // So you need to know which project has just been clicked on.
+    
+    // Nothing should be loaded until the project is clicked. So you need an event on each project that brings out the id.
+    //shoutModel.loadShouts(3, function () {
+        
+    //    var element = document.getElementsByClassName('shout-table');
+//        var shoutView = new ShoutView(shoutModel, element);
+
+
+
+  //      console.log('about to call draw on shout view');
+    
+        // This is fixed. It needs to be dynamic!
+    //    shoutView.draw();
+
+
+        // Get hold of the element to put the table on
+    //});
 
 
 
@@ -72,25 +93,25 @@ $(document).ready(function () {
     });*/
 
 
-  /*  $('#new-project').click(function () {
-        var modal = new Modal(500, 200, 'Add Project', '../modal_layouts/add_project.php');
+    /*  $('#new-project').click(function () {
+    var modal = new Modal(500, 200, 'Add Project', '../modal_layouts/add_project.php');
 
-        modal.addButton('Save', 'primary', function () {
-            var name = $('#project-name').val();
+    modal.addButton('Save', 'primary', function () {
+    var name = $('#project-name').val();
 
-            $.post("../save_project.php", { name: name }, function (data) {
-                //    $( ".result" ).html( data );
-                // This is where you'll add the project to the UI
+    $.post("../save_project.php", { name: name }, function (data) {
+    //    $( ".result" ).html( data );
+    // This is where you'll add the project to the UI
 
-                modal.hideModal();
-            });
-        });
+    modal.hideModal();
+    });
+    });
 
-        modal.addButton('Close', 'default', function () {
-            modal.hideModal();
-        });
+    modal.addButton('Close', 'default', function () {
+    modal.hideModal();
+    });
 
-        modal.showModal();
+    modal.showModal();
     });*/
 
     // Code for Add item button
