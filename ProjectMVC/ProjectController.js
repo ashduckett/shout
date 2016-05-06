@@ -69,11 +69,9 @@ ProjectController.prototype.updateItem = function (project) {
     });
 
     modal.addButton('Save', 'primary', function () {
-        var name = $('#project-name').val();
         var projectName = $('#project-name').val();
         var projectId = project.id;
-
-
+        
         $.post('../update_project.php', { id: projectId, name: projectName }, function () {
             var project = new SchedulingProject(projectId, projectName);
             _this._model.updateProject(project);
