@@ -62,40 +62,30 @@ ProjectController.prototype.delItem = function (id) {
 };
 
 ProjectController.prototype.updateItem = function (project) {
-
-
-    //alert(project.name);
-
     this.name = project.name;
     var _this = this;
     var modal = new Modal(500, 200, 'Add Project', '../modal_layouts/add_project.php', function () {
-
-        // Get this to work. It keeps bringing back the same id.
-
-    
-  
         $('#project-name').val(_this.name);
     });
 
-    console.log('PROJECT FOUND!');
-
     modal.addButton('Save', 'primary', function () {
-        //    var name = $('#project-name').val();
-        //    var projectName = $('#project-name').val();
-        //    $.post("../save_project.php", { name: projectName }, function (data) {
-        //        var newProject = new SchedulingProject(data, projectName);
-        //        _this._model.addItem(newProject);
-        //        modal.hideModal();
-        //    });
+        var name = $('#project-name').val();
+        var projectName = $('#project-name').val();
+        var projectId = project.id;
+
+
+        $.post('../update_project.php', { id: projectId, name: projectName }, function () {
+            var project = new SchedulingProject(projectId, projectName);
+            _this._model.updateProject(project);
+            modal.hideModal();
+        });
     });
 
     modal.addButton('Close', 'default', function () {
         modal.hideModal();
     });
 
-    modal.showModal(function () {
-        //$('#project-name').hide();    
-    });
+    modal.showModal();
 
 
 }

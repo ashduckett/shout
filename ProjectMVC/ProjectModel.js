@@ -47,4 +47,10 @@ SchedulingProjectModel.prototype.removeProjectWithId = function (id) {
 
 SchedulingProjectModel.prototype.updateProject = function (project) {
     console.log('edit event fired. Do we have a project? This will be the new project, same id though');
+
+    // Hopefully update the list?
+    this.projects[project.id] = project;
+    this.itemUpdated.notify({ item: project });
+
+
 }

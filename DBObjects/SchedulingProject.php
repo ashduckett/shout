@@ -111,6 +111,23 @@
         $vars = get_object_vars($this);
         return $vars;
     }
+
+    // This method will assume that the id is correct and update
+    public function update() {
+        try {
+            $conn = parent::connect();
+            // marakash.tbl_sheduling_project
+            $sql = 'UPDATE ' . TBL_SCHEDULING_PROJECT . ' SET name = :name WHERE id = :id';
+                               
+            $st = $conn->prepare($sql);
+            $st->bindValue(':name', $this->getValue('name'), PDO::PARAM_STR);
+            $st->bindValue(':id', $this->getValue('id'), PDO::PARAM_INT);
+            $st->execute();
+            DataObject::disconnect($conn);
+        } catch(Exception $e) {
+            error_log($e->getMessage(), 3, 'error_log.log');
+        }
+    }
 }
 
 ?>

@@ -144,41 +144,24 @@ SchedulingProjectView.prototype.draw = function () {
 
         // deleteCallback(id);
 
-        console.log('attempting to delete item ' + id);
-
         _this.delButtonClicked.notify({ id: id });
-
         event.stopPropagation();
     });
 
 
 
     $('.edit-side-icon').click(function (event) {
-        console.log('event fired');
+
         var id = this.parentElement.parentElement.getAttribute('data-id');
-        console.log('id ' + id);
 
         // Now you can get hold of the project from the current list
         var projectToUpdate = _this.model.getProjectById(id);
-
-        
 
         // Update the project with a new name
         _this.editButtonClicked.notify({ project: projectToUpdate });
 
         event.stopPropagation();
     });
-
-
-
-
-
-
-
-
-
-
-
 
 };
 
