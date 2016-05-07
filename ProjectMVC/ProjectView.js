@@ -42,7 +42,7 @@ SchedulingProjectView.prototype.draw = function () {
 
     // shout-table
 
-    
+
 
 
     var _this = this;
@@ -97,59 +97,44 @@ SchedulingProjectView.prototype.draw = function () {
         element.appendChild(icon);
 
         $(this.element).append($(element));
-
-        $('.delete-side-icon, .edit-side-icon').hover(function () {
-            $(this).css('color', 'black');
-        }, function () {
-            $(this).css('color', 'rgb(102, 102, 102)');
-        });
-
-        $(this.element).children('li').click(function () {
-            $('ul.listview > li').css('background', 'white');
-            $(this).css('background', 'rgb(191, 212, 234)');
-            $('ul.listview > li').removeClass('selected');
-            $(this).addClass('selected');
-
-            // Get hold of the id
-            var id = $(this).data('id');
-
-            _this.projectItemClicked.notify({ id: id });
-
-
-        });
-
-        $(this.element).children('li').hover(function () {
-
-            if ($(this).hasClass('selected')) {
-                $(this).css('background', 'rgb(191, 212, 234)');
-            } else {
-                $(this).css('background', 'rgb(229, 238, 248)');
-            }
-
-            $(this).children('.icon-area').css('display', 'block');
-
-
-
-
-        }, function () {
-            if ($(this).hasClass('selected')) {
-                $(this).css('background', 'rgb(213, 229, 242)');
-            } else {
-                $(this).css('background', 'white');
-            }
-            $(this).children('.icon-area').css('display', 'none');
-        });
-
-
-
-
-
-
-
-
-
     };
 
+    $('.delete-side-icon, .edit-side-icon').hover(function () {
+        $(this).css('color', 'black');
+    }, function () {
+        $(this).css('color', 'rgb(102, 102, 102)');
+    });
+    
+    $(this.element).children('li').hover(function () {
+
+        if ($(this).hasClass('selected')) {
+            $(this).css('background', 'rgb(191, 212, 234)');
+        } else {
+            $(this).css('background', 'rgb(229, 238, 248)');
+        }
+
+        $(this).children('.icon-area').css('display', 'block');
+    }, function () {
+        if ($(this).hasClass('selected')) {
+            $(this).css('background', 'rgb(213, 229, 242)');
+        } else {
+            $(this).css('background', 'white');
+        }
+        $(this).children('.icon-area').css('display', 'none');
+    });
+    
+    $(this.element).children('li').click(function () {
+        alert('fired!');
+
+        $('ul.listview > li').css('background', 'white');
+        $(this).css('background', 'rgb(191, 212, 234)');
+        $('ul.listview > li').removeClass('selected');
+        $(this).addClass('selected');
+
+        // Get hold of the id
+        var id = $(this).data('id');
+        _this.projectItemClicked.notify({ id: id });
+    });
 
 
 

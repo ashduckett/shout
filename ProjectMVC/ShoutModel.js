@@ -52,6 +52,8 @@ function ShoutModel() {
 
 // You need the project_id. Could this method live on a project? I should certainly be called from the project on click.
 ShoutModel.prototype.loadShouts = function (project_id, callMeOnSuccess) {
+    // This is getting called once for each item, this item inclusive downwards. How weird!
+    // I think this must be where you've attached the event handler in the view.
     var _this = this;
 
     // How're we gonna get the project id?

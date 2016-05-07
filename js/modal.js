@@ -79,7 +79,7 @@ function Modal(clientWidth, clientHeight, modalTitle, url, callMeAfterLoading) {
                 $('.modal-content').html(data);
                 $('.modal-content').height(height);
                 //$('.modal-content').width(width);
-                callMeAfterLoading();
+                //callMeAfterLoading();
             });
 
             return modalContainer;
