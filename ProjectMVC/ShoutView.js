@@ -3,7 +3,13 @@ function ShoutView(model, element) {
     this.element = element;
     var _this = this;
 
+
+
     // We have the element on which to draw.
+
+    this.prevButtonClicked = new Event(this);
+    this.nextButtonClicked = new Event(this);
+
 
 
 
@@ -44,9 +50,12 @@ ShoutView.prototype.draw = function () {
     // This seems to be the only way to clear the table
     $('.shout-table').empty();
     var _this = this;
-    // You should be able to just use this method to render what's in the model
 
-    
+
+    // Now we need a pair of events for the next and prev buttons.
+
+
+
 
     var shoutTable = document.createElement('table');
     var shoutTableHeader = document.createElement('thead');
@@ -118,6 +127,28 @@ ShoutView.prototype.draw = function () {
     _this.nextButton = document.createElement('a');
     _this.nextButton.href = "#";
     _this.nextButton.innerHTML = "Next";
+
+
+    // Maybe you could just do a notify and pass in the next and prev parameters?
+    $(_this.nextButton).attr('data-next', _this.model.nextPage);
+    $(_this.previousButton).attr('data-prev', _this.model.prevPage);
+
+
+    // Maybe these should be put into one page change event? Though you'd still need to know which one it was? Maybe.
+    $(_this.nextButton).click(function () {
+        _this.nextButtonClicked.notify();
+    });
+
+    $(_this.previousButton).click(function () {
+        _this.prevButtonClicked.notify();
+    });
+
+
+
+
+
+
+
     buttonBar.appendChild(_this.previousButton);
     buttonBar.appendChild(_this.nextButton);
 
@@ -130,4 +161,6 @@ ShoutView.prototype.draw = function () {
 
 ShoutView.prototype.rebuildList = function () {
      //this.draw();
+
+
 };

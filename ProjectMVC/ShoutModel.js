@@ -10,62 +10,28 @@ function Shout(id, project_id, text, date, time) {
 
 function ShoutModel() {
     this.shouts = {};
-
-    /*this.itemAdded = new Event(this);
-    this.itemRemoved = new Event(this);
-    this.itemUpdated = new Event(this);*/
+    this.nextPage = null;
+    this.prevPage = null;
 }
+    ShoutModel.prototype.loadShouts = function (project_id, pageNo, callMeOnSuccess) {
+        // This is getting called once for each item, this item inclusive downwards. How weird!
+        // I think this must be where you've attached the event handler in the view.
+        var _this = this;
 
-/*
+        // How're we gonna get the project id?
+        _this.shouts = {};
+        $.getJSON('../get_shout_page.php', { page_no: pageNo, project_id: project_id }, function (data) {
+            var allShouts = data.shouts;
 
-        $.getJSON(url, obj, function (data) {
-            $('.shout-table').find('table').remove();
-            $('.shout-table').find('.button-bar').remove();
-            context.loadData(data);
-            $(context.nextButton).attr('data-next', data.next_page);
-            $(context.previousButton).attr('data-prev', data.prev_page);
-
-            $(context.nextButton).click(function () {
-                if ($(this).attr('data-next') != 'none') {
-                    $('.shout-table').shoutTable(url, { project_id: obj.project_id, page_no: $(this).attr('data-next') });
-                }
+            _this.nextPage = data.next_page;
+            _this.prevPage = data.prev_page;
+    
+            $.each(allShouts, function (key, val) {
+                _this.shouts[val.data.id] = new Shout(val.data.id, val.data.project_id, val.data.text, val.data.date, val.data.time);
             });
-
-            $(context.previousButton).click(function () {
-                if ($(this).attr('data-next') != 'none') {
-                    $('.shout-table').shoutTable(url, { project_id: obj.project_id, page_no: $(this).attr('data-prev') });
-                }
-            });
-
+            callMeOnSuccess();
         });
-
-*/
-
-/*
-
-    $page_no = $_GET['page_no'];
-    $project_id = $_GET['project_id'];
-
-
-*/
-
-
-// You need the project_id. Could this method live on a project? I should certainly be called from the project on click.
-ShoutModel.prototype.loadShouts = function (project_id, callMeOnSuccess) {
-    // This is getting called once for each item, this item inclusive downwards. How weird!
-    // I think this must be where you've attached the event handler in the view.
-    var _this = this;
-
-    // How're we gonna get the project id?
-
-    $.getJSON('../get_shout_page.php', { page_no: 1, project_id: project_id }, function (data) {
-        var allShouts = data.shouts;
-        $.each(allShouts, function (key, val) {
-            _this.shouts[val.data.id] = new Shout(val.data.id, val.data.project_id, val.data.text, val.data.date, val.data.time);
-        });
-        callMeOnSuccess();
-    });
-};
+    };
 
 ShoutModel.prototype.getShouts = function () {
     return this.projects;

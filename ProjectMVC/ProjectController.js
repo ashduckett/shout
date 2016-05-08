@@ -4,10 +4,6 @@ function ProjectController(model, view) {
     
     var _this = this;
 
-    /*this._view.listModified.attach(function (sender, args) {
-        _this.updateSelected(args.index);
-    });*/
-
     this._view.editButtonClicked.attach(function (sender, args) {
         _this.updateItem(args.project);
     });
@@ -21,8 +17,7 @@ function ProjectController(model, view) {
     });
 
     this._view.projectItemClicked.attach(function (sender, args) {
-        //alert('click!');
-        _this.updateShoutTable(args.id);
+        _this.updateShoutTable(args.id, 1);
     });
 }
 
@@ -91,30 +86,32 @@ ProjectController.prototype.updateItem = function (project) {
     modal.showModal();
 }
 
-ProjectController.prototype.updateShoutTable = function (id) {
-    // Here we need to know the project id.
-    // Also, which page to draw. Which will be 1.
-
-
+ProjectController.prototype.updateShoutTable = function (id, pageNo) {
+    var element = document.getElementsByClassName('shout-table');
     var shoutModel = new ShoutModel();
+    var shoutView = new ShoutView(shoutModel, element);
 
-    // Once this is called, the shouts will exist on the ShoutModel object
+    shoutModel.loadShouts(id, pageNo, function () {
+        shoutView.nextButtonClicked.attach(function () {
+            var nextPage = $(shoutView.nextButton).attr('data-next');
 
-    // So you need to know which project has just been clicked on.
+            shoutModel.loadShouts(id, nextPage, function () {
+                var element = document.getElementsByClassName('shout-table');
+                shoutView.draw();
+            });
+        });
 
-    // Nothing should be loaded until the project is clicked. So you need an event on each project that brings out the id.
-    shoutModel.loadShouts(id, function () {
+        shoutView.prevButtonClicked.attach(function () {
+            var prevPage = $(shoutView.previousButton).attr('data-prev');
 
-        var element = document.getElementsByClassName('shout-table');
-        var shoutView = new ShoutView(shoutModel, element);
+             shoutModel.loadShouts(id, prevPage, function () {
+                 var element = document.getElementsByClassName('shout-table');
+                 shoutView.draw();
+             });
+        });
 
-        console.log('about to call draw on shout view');
 
-        // This is fixed. It needs to be dynamic!
         shoutView.draw();
-
-
-        // Get hold of the element to put the table on
     });
 
 

@@ -8,7 +8,3 @@
 <?php
     require_once 'footer.php';
 ?>
-
-<script>
-    $('.shout-table').shoutTable();
-</script>

@@ -20,30 +20,12 @@ function SchedulingProjectView(model, element) {
          _this.rebuildList();
     });
 
-
-
     $('#new-project').click(function () {
         _this.addButtonClicked.notify();
     });
-
-
-    // We also need to think about the delete button and edit button.
-    // The difference here between those and the add button is that there is
-    // an edit and delete button on each project, rather than just the one.
-
-
-   // An event handler for the add project button will need to be attached to the menu thing.
-    //this.addItemButton.addEventListener("click", function () {
-    //    _this.addButtonClicked.notify();
-    //});
 }
 
 SchedulingProjectView.prototype.draw = function () {
-
-    // shout-table
-
-
-
 
     var _this = this;
     var list = document.createElement('ul');
@@ -124,8 +106,6 @@ SchedulingProjectView.prototype.draw = function () {
     });
     
     $(this.element).children('li').click(function () {
-        alert('fired!');
-
         $('ul.listview > li').css('background', 'white');
         $(this).css('background', 'rgb(191, 212, 234)');
         $('ul.listview > li').removeClass('selected');
@@ -136,18 +116,11 @@ SchedulingProjectView.prototype.draw = function () {
         _this.projectItemClicked.notify({ id: id });
     });
 
-
-
     $('.delete-side-icon').click(function (event) {
         var id = this.parentElement.parentElement.getAttribute('data-id');
-
-        // deleteCallback(id);
-
         _this.delButtonClicked.notify({ id: id });
         event.stopPropagation();
     });
-
-
 
     $('.edit-side-icon').click(function (event) {
 
