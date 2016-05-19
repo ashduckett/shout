@@ -1,6 +1,6 @@
 <?php
     require_once 'DBObjects/Shout.class.php';
-    require_once 'DBObjects/SchedulingProject.php';
+    require_once 'DBObjects/SchedulingProject.class.php';
     
     $page_no = $_GET['page_no'];
     $project_id = $_GET['project_id'];

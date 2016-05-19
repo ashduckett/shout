@@ -2,7 +2,7 @@
 <?php
 
 
-    require_once 'DBObjects/SchedulingProject.php';
+    require_once 'DBObjects/SchedulingProject.class.php';
     require_once 'DBObjects/Shout.class.php';
 -
 

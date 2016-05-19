@@ -5,7 +5,6 @@ function SchedulingProject(id, name) {
 
 function SchedulingProjectModel() {
     this.projects = {};
-
     this.itemAdded = new Event(this);
     this.itemRemoved = new Event(this);
     this.itemUpdated = new Event(this);
@@ -26,12 +25,11 @@ SchedulingProjectModel.prototype.getProjects = function () {
     return this.projects;
 };
 
-SchedulingProjectModel.prototype.getProjectById = function(id) {
-    return this.projects[id];    
-}
+SchedulingProjectModel.prototype.getProjectById = function (id) {
+    return this.projects[id];
+};
 
 
-// This definitely works
 SchedulingProjectModel.prototype.addItem = function (project) {
     console.log('addItem method in SchedulingProjectModel hit');
     this.projects[project.id] = project;
@@ -41,16 +39,10 @@ SchedulingProjectModel.prototype.addItem = function (project) {
 SchedulingProjectModel.prototype.removeProjectWithId = function (id) {
     var project = this.projects[id];
     delete this.projects[id];
-    // I'm not using the passed in project anywhere am I?
     this.itemRemoved.notify({ item: project });
 };
 
 SchedulingProjectModel.prototype.updateProject = function (project) {
-    console.log('edit event fired. Do we have a project? This will be the new project, same id though');
-
-    // Hopefully update the list?
     this.projects[project.id] = project;
     this.itemUpdated.notify({ item: project });
-
-
-}
+};
