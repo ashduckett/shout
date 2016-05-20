@@ -33,6 +33,7 @@
             $st->bindValue(":project_id", $project_id);
             $st->execute();
             $shouts = array();
+
             foreach($st->fetchAll() as $row) {
                 $shouts[] = new Shout($row);
             }
