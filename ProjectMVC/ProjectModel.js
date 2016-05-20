@@ -29,9 +29,11 @@ SchedulingProjectModel.prototype.getProjectById = function (id) {
     return this.projects[id];
 };
 
+// Event handlers for these are attached in the view.
 
+// Call this method and you're notifying the event that something's been added.
+// The view knows then to do something.
 SchedulingProjectModel.prototype.addItem = function (project) {
-    console.log('addItem method in SchedulingProjectModel hit');
     this.projects[project.id] = project;
     this.itemAdded.notify({ item: project });
 };

@@ -12,34 +12,60 @@ function ShoutModel() {
     this.shouts = {};
     this.nextPage = null;
     this.prevPage = null;
+    this.currentPage = 1;
+    this.pageChanged = new Event(this);
 }
-    ShoutModel.prototype.loadShouts = function (project_id, pageNo, callMeOnSuccess) {
-        // This is getting called once for each item, this item inclusive downwards. How weird!
-        // I think this must be where you've attached the event handler in the view.
-        var _this = this;
 
-        // How're we gonna get the project id?
-        _this.shouts = {};
-        $.getJSON('../get_shout_page.php', { page_no: pageNo, project_id: project_id }, function (data) {
-            var allShouts = data.shouts;
+// I think the model
+ShoutModel.prototype.setToFirstPage = function (project_id, callMeOnSuccess) {
+    // Update the model
+    var _this = this;
 
-            _this.nextPage = data.next_page;
-            _this.prevPage = data.prev_page;
-    
-            $.each(allShouts, function (key, val) {
-                _this.shouts[val.data.id] = new Shout(val.data.id, val.data.project_id, val.data.text, val.data.date, val.data.time);
-            });
-            callMeOnSuccess();
+    this.loadShouts(project_id, 1, function () {
+        _this.pageChanged.notify();
+        callMeOnSuccess();
+    });
+};
+
+// I think the model
+ShoutModel.prototype.setNextPage = function (project_id, callMeOnSuccess) {
+    // Update the model
+    var _this = this;
+
+    this.loadShouts(project_id, 2, function () {
+        _this.pageChanged.notify();
+    });
+};
+
+
+
+ShoutModel.prototype.loadShouts = function (project_id, pageNo, callMeOnSuccess) {
+    // This is getting called once for each item, this item inclusive downwards. How weird!
+    // I think this must be where you've attached the event handler in the view.
+    var _this = this;
+
+    _this.shouts = {};
+    $.getJSON('../get_shout_page.php', { page_no: pageNo, project_id: project_id }, function (data) {
+        var allShouts = data.shouts;
+        _this.nextPage = data.next_page;
+        _this.prevPage = data.prev_page;
+
+        $.each(allShouts, function (key, val) {
+            console.log('in for each');
+            _this.shouts[val.data.id] = new Shout(val.data.id, val.data.project_id, val.data.text, val.data.date, val.data.time);
         });
-    };
+        callMeOnSuccess();
+        //_this.pageChanged.notify();
+    });
+};
 
 ShoutModel.prototype.getShouts = function () {
     return this.projects;
 };
 
-ShoutModel.prototype.getShoutById = function(id) {
-    return this.shouts[id];    
-}
+ShoutModel.prototype.getShoutById = function (id) {
+    return this.shouts[id];
+};
 
 // This definitely works
 //ShoutModel.prototype.addItem = function (project) {

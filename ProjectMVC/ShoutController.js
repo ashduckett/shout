@@ -1,13 +1,17 @@
-function ProjectController(model, view) {
-    
-    
-    
+function ShoutController(model, view) {
     this._model = model;
     this._view = view;
-    
     var _this = this;
 
-    this._view.editButtonClicked.attach(function (sender, args) {
+    this._view.nextButtonClicked.attach(function (sender, args) {
+        console.log('next button clicked');
+    });
+
+    this._view.prevButtonClicked.attach(function (sender, args) {
+        console.log('previous button clicked');
+    });
+}
+    /*this._view.editButtonClicked.attach(function (sender, args) {
         _this.updateItem(args.project);
     });
 
@@ -24,7 +28,7 @@ function ProjectController(model, view) {
     });
 }
 
-ProjectController.prototype.addItem = function () {
+/*ShoutController.prototype.addItem = function () {
     var _this = this;
     var modal = new Modal(500, 200, 'Add Project', '../modal_layouts/add_project.php');
 
@@ -42,10 +46,10 @@ ProjectController.prototype.addItem = function () {
         modal.hideModal();
     });
 
-    modal.showModal();
-};
+    modal.showModal();*/
+//};
 
-ProjectController.prototype.delItem = function (id) {
+/*ProjectController.prototype.delItem = function (id) {
     var _this = this;
     var deleteProjectModal = new Modal(400, 100, "Confirm", "modal_layouts/delete_project.php");
 
@@ -94,32 +98,9 @@ ProjectController.prototype.updateShoutTable = function (id, pageNo) {
 
     var element = document.getElementsByClassName('shout-table');
     var shoutModel = new ShoutModel();
+    shoutModel.setToFirstPage(id);
+    var shoutView = new ShoutView(shoutModel, element);
 
 
 
-
-
-
-    /*
-    projectModel.loadProjects(function () {
-    var element = document.getElementsByClassName('listview')[0];
-    var projectView = new SchedulingProjectView(projectModel, element);
-    var controller = new ProjectController(projectModel, projectView);
-    projectView.draw();
-    });
-    */
-
-    shoutModel.setToFirstPage(id, function () {
-        console.log('first page loaded');
-        
-        var element = document.getElementsByClassName('shout-table')[0];
-        var shoutView = new ShoutView(shoutModel, element);
-        var controller = new ShoutController(shoutModel, shoutView);
-        shoutView.draw();
-    });
-
-
-    //var shoutController = new shoutController(shoutModel, shoutView);
-
-
-};
+};*/

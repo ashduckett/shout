@@ -1,48 +1,21 @@
 function ShoutView(model, element) {
-    this.model = model;
+    this.model = model;                 
     this.element = element;
     var _this = this;
-
-
-
-    // We have the element on which to draw.
-
+    
     this.prevButtonClicked = new Event(this);
     this.nextButtonClicked = new Event(this);
 
+    
+    // How are you gonna know which project id?
 
-
-
-/*    this.addButtonClicked = new Event(this);
-    this.delButtonClicked = new Event(this);
-    this.editButtonClicked = new Event(this);
-
-    this.model.itemAdded.attach(function () {
+    // Attach the model's event handlers
+    this.model.pageChanged.attach(function () {
         _this.rebuildList();
     });
 
-    this.model.itemRemoved.attach(function () {
-        _this.rebuildList();
-    });
 
-    this.model.itemUpdated.attach(function () {
-         _this.rebuildList();
-    });
-
-    */
-    // We also need to think about the delete button and edit button.
-    // The difference here between those and the add button is that there is
-    // an edit and delete button on each project, rather than just the one.
-
-
-   // An event handler for the add project button will need to be attached to the menu thing.
-    //this.addItemButton.addEventListener("click", function () {
-    //    _this.addButtonClicked.notify();
-    //});
 }
-
-
-// When this gets drawn it's could be either showing something or not. It
 
 // Currently drawing a whole new table.
 ShoutView.prototype.draw = function () {
@@ -53,9 +26,6 @@ ShoutView.prototype.draw = function () {
 
 
     // Now we need a pair of events for the next and prev buttons.
-
-
-
 
     var shoutTable = document.createElement('table');
     var shoutTableHeader = document.createElement('thead');
@@ -143,24 +113,12 @@ ShoutView.prototype.draw = function () {
         _this.prevButtonClicked.notify();
     });
 
-
-
-
-
-
-
     buttonBar.appendChild(_this.previousButton);
     buttonBar.appendChild(_this.nextButton);
 
     $(_this.element).append(buttonBar);
 };
 
-
-
-
-
 ShoutView.prototype.rebuildList = function () {
-     //this.draw();
-
-
+     this.draw();
 };
