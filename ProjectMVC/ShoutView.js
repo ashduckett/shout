@@ -97,20 +97,17 @@ ShoutView.prototype.draw = function () {
     _this.nextButton = document.createElement('a');
     _this.nextButton.href = "#";
     _this.nextButton.innerHTML = "Next";
-
-
-    // Maybe you could just do a notify and pass in the next and prev parameters?
-    $(_this.nextButton).attr('data-next', _this.model.nextPage);
-    $(_this.previousButton).attr('data-prev', _this.model.prevPage);
-
-
+    
     // Maybe these should be put into one page change event? Though you'd still need to know which one it was? Maybe.
+    // Get the id here.
     $(_this.nextButton).click(function () {
-        _this.nextButtonClicked.notify();
+        var id = $('li.selected').attr('data-id');
+        _this.nextButtonClicked.notify({ id: id });
     });
 
     $(_this.previousButton).click(function () {
-        _this.prevButtonClicked.notify();
+        var id = $('li.selected').attr('data-id');
+        _this.prevButtonClicked.notify({ id: id });
     });
 
     buttonBar.appendChild(_this.previousButton);
@@ -122,3 +119,6 @@ ShoutView.prototype.draw = function () {
 ShoutView.prototype.rebuildList = function () {
      this.draw();
 };
+
+
+

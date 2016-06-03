@@ -89,6 +89,7 @@
             // Now we have the total number of pages...
             $numberOfPages = intval($numberOfPages);
 
+        //    $pageCount = $numberOfPages;
 
             $next_page = $pageNo == $numberOfPages || $numberOfPages == 0 ? 'none' : $pageNo + 1;
             

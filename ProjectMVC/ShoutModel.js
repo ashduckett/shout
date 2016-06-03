@@ -10,9 +10,8 @@ function Shout(id, project_id, text, date, time) {
 
 function ShoutModel() {
     this.shouts = {};
-    this.nextPage = null;
-    this.prevPage = null;
     this.currentPage = 1;
+    this.totalNumberOfPages = 0;
     this.pageChanged = new Event(this);
 }
 
@@ -20,24 +19,34 @@ function ShoutModel() {
 ShoutModel.prototype.setToFirstPage = function (project_id, callMeOnSuccess) {
     // Update the model
     var _this = this;
-
-    this.loadShouts(project_id, 1, function () {
+    this.currentPage = 1;
+    this.loadShouts(project_id, _this.currentPage, function () {
         _this.pageChanged.notify();
         callMeOnSuccess();
     });
 };
 
-// I think the model
 ShoutModel.prototype.setNextPage = function (project_id, callMeOnSuccess) {
-    // Update the model
     var _this = this;
 
-    this.loadShouts(project_id, 2, function () {
-        _this.pageChanged.notify();
-    });
+    if (this.totalNumberOfPages > this.currentPage) {
+        this.currentPage++;
+        this.loadShouts(project_id, this.currentPage, function () {
+            _this.pageChanged.notify();
+        });
+    }
 };
 
+ShoutModel.prototype.setPrevPage = function (project_id, callMeOnSuccess) {
+    var _this = this;
 
+    if (this.currentPage != 1) {
+        this.currentPage--;
+        this.loadShouts(project_id, this.currentPage, function () {
+            _this.pageChanged.notify();
+        });
+    }
+};
 
 ShoutModel.prototype.loadShouts = function (project_id, pageNo, callMeOnSuccess) {
     // This is getting called once for each item, this item inclusive downwards. How weird!
@@ -47,15 +56,14 @@ ShoutModel.prototype.loadShouts = function (project_id, pageNo, callMeOnSuccess)
     _this.shouts = {};
     $.getJSON('../get_shout_page.php', { page_no: pageNo, project_id: project_id }, function (data) {
         var allShouts = data.shouts;
-        _this.nextPage = data.next_page;
-        _this.prevPage = data.prev_page;
 
+        // On to data, place the total number of pages
+        _this.totalNumberOfPages = data.page_count;
+        //console.log('setting totalnumberofpages ' + _this.totalNumberOfPages);
         $.each(allShouts, function (key, val) {
-            console.log('in for each');
             _this.shouts[val.data.id] = new Shout(val.data.id, val.data.project_id, val.data.text, val.data.date, val.data.time);
         });
         callMeOnSuccess();
-        //_this.pageChanged.notify();
     });
 };
 
@@ -66,27 +74,3 @@ ShoutModel.prototype.getShouts = function () {
 ShoutModel.prototype.getShoutById = function (id) {
     return this.shouts[id];
 };
-
-// This definitely works
-//ShoutModel.prototype.addItem = function (project) {
- //   console.log('addItem method in SchedulingProjectModel hit');
-    //this.projects[project.id] = project;
-    //this.itemAdded.notify({ item: project });
-//};
-
-//SchedulingProjectModel.prototype.removeProjectWithId = function (id) {
-//    var project = this.projects[id];
-//    delete this.projects[id];
-    // I'm not using the passed in project anywhere am I?
-//    this.itemRemoved.notify({ item: project });
-//};
-
-//SchedulingProjectModel.prototype.updateProject = function (project) {
-//    console.log('edit event fired. Do we have a project? This will be the new project, same id though');
-
-    // Hopefully update the list?
-//    this.projects[project.id] = project;
-//    this.itemUpdated.notify({ item: project });
-
-
-//}

@@ -5,10 +5,15 @@ function ShoutController(model, view) {
 
     this._view.nextButtonClicked.attach(function (sender, args) {
         console.log('next button clicked');
+        
+        _this._model.setNextPage(args.id, function () { });
     });
 
     this._view.prevButtonClicked.attach(function (sender, args) {
-        console.log('previous button clicked');
+        _this._model.setPrevPage(args.id, function () { });
+        
+
+        
     });
 }
     /*this._view.editButtonClicked.attach(function (sender, args) {
