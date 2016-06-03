@@ -15,9 +15,7 @@ function ShoutModel() {
     this.pageChanged = new Event(this);
 }
 
-// I think the model
 ShoutModel.prototype.setToFirstPage = function (project_id, callMeOnSuccess) {
-    // Update the model
     var _this = this;
     this.currentPage = 1;
     this.loadShouts(project_id, _this.currentPage, function () {
@@ -49,17 +47,14 @@ ShoutModel.prototype.setPrevPage = function (project_id, callMeOnSuccess) {
 };
 
 ShoutModel.prototype.loadShouts = function (project_id, pageNo, callMeOnSuccess) {
-    // This is getting called once for each item, this item inclusive downwards. How weird!
-    // I think this must be where you've attached the event handler in the view.
     var _this = this;
 
     _this.shouts = {};
     $.getJSON('../get_shout_page.php', { page_no: pageNo, project_id: project_id }, function (data) {
         var allShouts = data.shouts;
 
-        // On to data, place the total number of pages
         _this.totalNumberOfPages = data.page_count;
-        //console.log('setting totalnumberofpages ' + _this.totalNumberOfPages);
+
         $.each(allShouts, function (key, val) {
             _this.shouts[val.data.id] = new Shout(val.data.id, val.data.project_id, val.data.text, val.data.date, val.data.time);
         });
