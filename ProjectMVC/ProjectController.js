@@ -54,10 +54,12 @@ ProjectController.prototype.delItem = function (id) {
     });
 
     deleteProjectModal.addButton('Yip!', 'primary', function () {
-        $.post("delete_scheduled_project.php", { projId: id })
+
+        $.post("../API.php", { object_id: id, method: 'delete_by_id', type: 'SchedulingProject' })
         .done(function (data) {
             _this._model.removeProjectWithId(id);
             deleteProjectModal.hideModal();
+
         });
     });
     deleteProjectModal.showModal();

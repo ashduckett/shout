@@ -13,10 +13,12 @@ function SchedulingProjectModel() {
 SchedulingProjectModel.prototype.loadProjects = function (callMeOnSuccess) {
     var _this = this;
 
-    $.getJSON('../API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
-         $.each(data, function (key, val) {
+    $.post('../API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
+        var obj = JSON.parse(data);
+        $.each(obj, function (key, val) {
             _this.projects[val.data.id] = new SchedulingProject(val.data.id, val.data.name);
         });
+
         callMeOnSuccess();
     });
 };

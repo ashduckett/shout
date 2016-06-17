@@ -120,7 +120,6 @@
             } else {
                 parent::disconnect($conn);
                 // Page number was invalid! Maybe should throw exception. But it's not exceptional. People use exceptions too often these days...
-              error_log('no more pages!', 3, 'error_log.log');
                 return false;
             }
             

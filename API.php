@@ -1,18 +1,19 @@
-
 <?php
+// Turn this into a POST thing?
 
+require_once 'DBObjects/SchedulingProject.class.php';
+require_once 'DBObjects/Shout.class.php';
 
-    require_once 'DBObjects/SchedulingProject.class.php';
-    require_once 'DBObjects/Shout.class.php';
--
+console.log('script hit');
 
-$method = $_GET['method'];
-$type = $_GET['type'];
+$method = $_POST['method'];
+$type = $_POST['type'];
 
 
 
 switch($method) {
     case 'get_all':
+        console.log('got to the right case');
         switch($type) {
             case 'SchedulingProject':
                 $projects = SchedulingProject::getAll();
@@ -25,6 +26,14 @@ switch($method) {
             case 'Shout':
                 $shouts = Shout::findByProjectId($_GET['id']);
                 echo json_encode($shouts);
+                break;
+        }
+        break;
+    case 'delete_by_id':
+        switch($type) {
+            case 'SchedulingProject':
+                $id = $_POST['object_id'];
+                SchedulingProject::deleteById($id);
                 break;
         }
         break;
