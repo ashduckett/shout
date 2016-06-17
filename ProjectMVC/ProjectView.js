@@ -86,7 +86,7 @@ SchedulingProjectView.prototype.draw = function () {
     }, function () {
         $(this).css('color', 'rgb(102, 102, 102)');
     });
-    
+
     $(this.element).children('li').hover(function () {
 
         if ($(this).hasClass('selected')) {
@@ -104,12 +104,16 @@ SchedulingProjectView.prototype.draw = function () {
         }
         $(this).children('.icon-area').css('display', 'none');
     });
-    
+
     $(this.element).children('li').click(function () {
         $('ul.listview > li').css('background', 'white');
         $(this).css('background', 'rgb(191, 212, 234)');
         $('ul.listview > li').removeClass('selected');
         $(this).addClass('selected');
+
+        $('#new-shout').removeClass('disabled');
+        $('#generate-schedule').removeClass('disabled');
+
 
         // Get hold of the id
         var id = $(this).data('id');

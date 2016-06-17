@@ -49,17 +49,15 @@ ProjectController.prototype.delItem = function (id) {
     var _this = this;
     var deleteProjectModal = new Modal(400, 100, "Confirm", "modal_layouts/delete_project.php");
 
-    deleteProjectModal.addButton('No!', 'default', function () {
+    deleteProjectModal.addButton('Cancel', 'default', function () {
         deleteProjectModal.hideModal();
     });
 
-    deleteProjectModal.addButton('Yip!', 'primary', function () {
-
+    deleteProjectModal.addButton('Confirm', 'primary', function () {
         $.post("../API.php", { object_id: id, method: 'delete_by_id', type: 'SchedulingProject' })
         .done(function (data) {
             _this._model.removeProjectWithId(id);
             deleteProjectModal.hideModal();
-
         });
     });
     deleteProjectModal.showModal();
@@ -97,20 +95,6 @@ ProjectController.prototype.updateShoutTable = function (id, pageNo) {
     var element = document.getElementsByClassName('shout-table');
     var shoutModel = new ShoutModel();
 
-
-
-
-
-
-    /*
-    projectModel.loadProjects(function () {
-    var element = document.getElementsByClassName('listview')[0];
-    var projectView = new SchedulingProjectView(projectModel, element);
-    var controller = new ProjectController(projectModel, projectView);
-    projectView.draw();
-    });
-    */
-
     shoutModel.setToFirstPage(id, function () {
         console.log('first page loaded');
         
@@ -119,9 +103,4 @@ ProjectController.prototype.updateShoutTable = function (id, pageNo) {
         var controller = new ShoutController(shoutModel, shoutView);
         shoutView.draw();
     });
-
-
-    //var shoutController = new shoutController(shoutModel, shoutView);
-
-
 };

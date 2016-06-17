@@ -10,7 +10,7 @@ ul.sidebar-listing {
     color: white;
 
 }
-
+ /* 130 153 153 disabled? */
 .sidebar {
     width: 200px;
     height: 100%;
@@ -41,7 +41,28 @@ ul.sidebar-listing {
     cursor: pointer;
 }
 
+.sidebar-item.disabled {
+    cursor: default;
+}
+
+
+/*
+    Add item won't work without a selected project. Disabled it by default, then stop it being disabled when a project is clicked.
+    
+    */
 .sidebar > ul > li > a {
     text-decoration: none;
     color: white;
 }
+
+.sidebar li.sidebar-item:hover:not(.disabled) {
+    background-color: rgb(38, 38, 38);
+
+}
+
+.sidebar li.sidebar-item.disabled {
+    color: #999999;
+}
+
+
+
