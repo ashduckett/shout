@@ -20,4 +20,7 @@
 
 <!--
 In both cases, the one where you specify a range, and the one where you're specifying a single date, you're always asking for a start date.
+
+
+Maybe you could have one option where the end date is optional.
 -->
