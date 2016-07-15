@@ -20,13 +20,16 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         
         <script src="js/jquery.min.js"></script>
-        <script src="ProjectMVC/Event.js"></script>
-        <script src="ProjectMVC/ProjectController.js"></script>
-        <script src="ProjectMVC/ProjectModel.js"></script>
-        <script src="ProjectMVC/ProjectView.js"></script>
-        <script src="ProjectMVC/ShoutController.js"></script>
-        <script src="ProjectMVC/ShoutModel.js"></script>
-        <script src="ProjectMVC/ShoutView.js"></script>
+        <script src="mvc/Event.js"></script>
+        <script src="mvc/controllers/ProjectController.js"></script>
+        <script src="mvc/models/ProjectModel.js"></script>
+        <script src="mvc/views/ProjectView.js"></script>
+        <script src="mvc/controllers/ShoutController.js"></script>
+        <script src="mvc/models/ShoutModel.js"></script>
+        <script src="mvc/views/ShoutView.js"></script>
+        
+        
+        
         <script src="js/nav.js"></script>
         <script src="js/Modal.js"></script>
         <script src="js/schedule.php.js"></script>
