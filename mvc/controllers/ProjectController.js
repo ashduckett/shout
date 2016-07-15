@@ -67,7 +67,7 @@ ProjectController.prototype.updateItem = function (project) {
     this.name = project.name;
     var _this = this;
     
-    var modal = new Modal(500, 200, 'Add Project', '../modal_layouts/add_project.php', function () {
+    var modal = new Modal(500, 200, 'Edit Project...', '../modal_layouts/add_project.php', function () {
         $('#project-name').val(_this.name);
     });
 
