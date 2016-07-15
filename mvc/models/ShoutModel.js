@@ -46,6 +46,17 @@ ShoutModel.prototype.setPrevPage = function (project_id, callMeOnSuccess) {
     }
 };
 
+ShoutModel.prototype.setToLastPage = function (project_id, callMeOnSuccess) {
+    var _this = this;
+
+    if (this.totalNumberOfPages > 0) {
+        this.currentPage = this.totalNumberOfPages;
+        this.loadShouts(project_id, this.totalNumberOfPages, function () {
+            _this.pageChanged.notify();
+        });
+    }
+}
+
 ShoutModel.prototype.loadShouts = function (project_id, pageNo, callMeOnSuccess) {
     var _this = this;
 
