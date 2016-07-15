@@ -11,7 +11,18 @@
 
 .shout-table {
     margin: auto;
+    padding: 0;
+    height: 700px;
+    position: relative;
 }
+
+.button-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
 
 .shout-table table {
     table-layout: fixed;
@@ -69,5 +80,24 @@
     border-top: 1px solid rgb(211, 211, 211);
 }
 
+#prev-shout-page {
+    float: left;
+    padding: 6px;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 5px;
+}
 
+#next-shout-page {
+    float: right;
+    padding: 6px;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 5px;
+}
 
+.btn-primary-disabled {
+    background-color: rgb(123, 169, 208);
+    color: white;
+    cursor: default;
+}
