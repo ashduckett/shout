@@ -160,6 +160,7 @@ ShoutView.prototype.draw = function () {
 
     // Are we on the last page or are there zero pages?
     var lastPageButtonEnabled = !(_this.model.currentPage == _this.model.totalNumberOfPages || _this.model.totalNumberOfPages == 0);
+
     var nextPageButtonEnabled = !(_this.model.currentPage == _this.model.totalNumberOfPages || _this.model.totalNumberOfPages == 0);
 
 
@@ -170,7 +171,7 @@ ShoutView.prototype.draw = function () {
     console.log('last page button enabled ' + lastPageButtonEnabled);
     console.log('next page button enabled ' + nextPageButtonEnabled);
 
-    if(firstPageButtonEnabled) {
+    /*if(firstPageButtonEnabled) {
         // enable
         $(_this.firstPageButton).removeClass('btn-primary-disabled');
         $(_this.firstPageButton).addClass('btn-primary');
@@ -186,13 +187,13 @@ ShoutView.prototype.draw = function () {
     } else {
         $(_this.nextPageButton).addClass('btn-primary-disabled');
         $(_this.nextPageButton).removeClass('btn-primary');
-    }
+    }*/
 
 
 
     if (_this.model.currentPage == 1) {
         $(_this.previousButton).addClass('btn-primary-disabled');
-        //$(_this.firstPageButton).addClass('btn-primary-disabled');
+        $(_this.firstPageButton).addClass('btn-primary-disabled');
 
         if (_this.model.totalNumberOfPages > 1) {
             $(_this.lastPageButton).removeClass('btn-primary-disabled');
@@ -200,8 +201,8 @@ ShoutView.prototype.draw = function () {
         }
     } else {
         if (_this.model.currentPage != _this.model.totalNumberOfPages) {
-            //$(_this.nextButton).removeClass('btn-primary-disabled');
-            //$(_this.nextButton).addClass('btn-primary');
+            $(_this.nextButton).removeClass('btn-primary-disabled');
+            $(_this.nextButton).addClass('btn-primary');
 
             $(_this.lastPageButton).removeClass('btn-primary-disabled');
             $(_this.lastPageButton).addClass('btn-primary');
@@ -209,14 +210,14 @@ ShoutView.prototype.draw = function () {
             $(_this.previousButton).removeClass('btn-primary-disabled');
             $(_this.previousButton).addClass('btn-primary');
 
-          //  $(_this.firstPageButton).removeClass('btn-primary-disabled');
-          //  $(_this.firstPageButton).addClass('btn-primary');
+            $(_this.firstPageButton).removeClass('btn-primary-disabled');
+            $(_this.firstPageButton).addClass('btn-primary');
         }
     }
 
     if (_this.model.currentPage == _this.model.totalNumberOfPages) {
-        //$(_this.nextButton).removeClass('btn-primary');
-        //$(_this.nextButton).addClass('btn-primary-disabled');
+        $(_this.nextButton).removeClass('btn-primary');
+        $(_this.nextButton).addClass('btn-primary-disabled');
 
         $(_this.lastPageButton).removeClass('btn-primary');
         $(_this.lastPageButton).addClass('btn-primary-disabled');
@@ -224,13 +225,13 @@ ShoutView.prototype.draw = function () {
         $(_this.previousButton).removeClass('btn-primary-disabled');
         $(_this.previousButton).addClass('btn-primary');
 
-        //$(_this.firstPageButton).removeClass('btn-primary-disabled');
-        //$(_this.firstPageButton).addClass('btn-primary');
+        $(_this.firstPageButton).removeClass('btn-primary-disabled');
+        $(_this.firstPageButton).addClass('btn-primary');
     }
 
     if (_this.model.totalNumberOfPages == 0) {
-        //$(_this.nextButton).removeClass('btn-primary');
-        //$(_this.nextButton).addClass('btn-primary-disabled');
+        $(_this.nextButton).removeClass('btn-primary');
+        $(_this.nextButton).addClass('btn-primary-disabled');
 
         $(_this.previousButton).removeClass('btn-primary');
         $(_this.previousButton).addClass('btn-primary-disabled');
@@ -238,8 +239,8 @@ ShoutView.prototype.draw = function () {
         $(_this.lastPageButton).removeClass('btn-primary');
         $(_this.lastPageButton).addClass('btn-primary-disabled');
 
-       // $(_this.firstPageButton).removeClass('btn-primary');
-       // $(_this.firstPageButton).addClass('btn-primary-disabled');
+        $(_this.firstPageButton).removeClass('btn-primary');
+        $(_this.firstPageButton).addClass('btn-primary-disabled');
 
 
     }
