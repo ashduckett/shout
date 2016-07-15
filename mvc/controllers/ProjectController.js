@@ -66,7 +66,7 @@ ProjectController.prototype.delItem = function (id) {
 ProjectController.prototype.updateItem = function (project) {
     this.name = project.name;
     var _this = this;
-
+    
     var modal = new Modal(500, 200, 'Add Project', '../modal_layouts/add_project.php', function () {
         $('#project-name').val(_this.name);
     });
@@ -75,7 +75,7 @@ ProjectController.prototype.updateItem = function (project) {
         var projectName = $('#project-name').val();
         var projectId = project.id;
 
-        $.post('../update_project.php', { id: projectId, name: projectName }, function () {
+        $.post('../../update_project.php', { id: projectId, name: projectName }, function () {
             var project = new SchedulingProject(projectId, projectName);
             _this._model.updateProject(project);
             modal.hideModal();

@@ -1,5 +1,6 @@
 <?php
-    require_once 'DBObjects/SchedulingProject.php';
+    require_once 'DBObjects/SchedulingProject.class.php';
+
     // Will need to post the id and the name
     $name = $_POST['name'];
     $id = $_POST['id'];
@@ -14,5 +15,4 @@
 
     // This should just work?
     $project->update();
-
 ?>
