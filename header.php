@@ -15,6 +15,7 @@
         <link rel="stylesheet" type="text/css" href="css/nav.css">
         <link rel="stylesheet" type="text/css" href="css/modal.css">
         <link rel="stylesheet" type="text/css" href="css/listview.css">
+        <link rel="stylesheet" type="text/css" href="css/schedule.css">
         <link href="plugins/Calendar/calendar.css" type="text/css" rel="stylesheet">
         <link href="plugins/TimePicker/clock.css" type="text/css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">

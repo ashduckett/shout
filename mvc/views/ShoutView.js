@@ -101,10 +101,8 @@ ShoutView.prototype.draw = function () {
     _this.firstPageButton.style.textAlign = "center";
     _this.firstPageButton.classList.add('fa');
     _this.firstPageButton.classList.add('fa-fast-backward');
-
-
-
-
+    _this.firstPageButton.classList.add('btn-shout-nav');
+    
     _this.previousButton = document.createElement('a');
     _this.previousButton.href = "#";
     _this.previousButton.id = "prev-shout-page";
@@ -112,7 +110,7 @@ ShoutView.prototype.draw = function () {
     _this.previousButton.style.textAlign = "center";
     _this.previousButton.classList.add('fa');
     _this.previousButton.classList.add('fa-step-backward');
-
+    _this.previousButton.classList.add('btn-shout-nav');
 
 
     // You can't do this here because it'll overwrite when you go to the next page! Which might make it easier if we know what page we're on...
@@ -128,6 +126,8 @@ ShoutView.prototype.draw = function () {
     _this.nextButton.style.width = "50px";
     _this.nextButton.style.textAlign = "center";
     _this.nextButton.classList.add('btn-primary');
+    _this.nextButton.classList.add('btn-shout-nav');
+
     _this.nextButton.classList.add('fa');
     _this.nextButton.classList.add('fa-step-forward');
 
@@ -141,7 +141,7 @@ ShoutView.prototype.draw = function () {
     _this.lastPageButton.classList.add('fa');
     _this.lastPageButton.classList.add('fa-fast-forward');
     _this.lastPageButton.style.float = "right";
-
+    _this.lastPageButton.classList.add('btn-shout-nav');
 
 
     /*
@@ -160,16 +160,8 @@ ShoutView.prototype.draw = function () {
 
     // Are we on the last page or are there zero pages?
     var lastPageButtonEnabled = !(_this.model.currentPage == _this.model.totalNumberOfPages || _this.model.totalNumberOfPages == 0);
-
     var nextPageButtonEnabled = !(_this.model.currentPage == _this.model.totalNumberOfPages || _this.model.totalNumberOfPages == 0);
 
-
-
-    console.log('first page button enabled ' + firstPageButtonEnabled);
-    console.log('prev page button enabled ' + prevPageButtonEnabled);
-
-    console.log('last page button enabled ' + lastPageButtonEnabled);
-    console.log('next page button enabled ' + nextPageButtonEnabled);
 
     /*if(firstPageButtonEnabled) {
         // enable
