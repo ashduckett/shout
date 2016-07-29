@@ -6,7 +6,6 @@
 
 .btn-primary:hover {
     background-color: rgb(40, 96, 144);
-        margin: 5px;
 }
 
 .btn-default:hover {
@@ -29,7 +28,7 @@
 }
 
 .modal-header {
-    background-color: #FFFFFF;
+    background-color: #fff;
     border-bottom: 1px solid rgb(229, 229, 229);
     border-radius: 11px 11px 0px 0px;
 }
