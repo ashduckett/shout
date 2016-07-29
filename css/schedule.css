@@ -2,3 +2,19 @@
 .btn-shout-nav {
     margin: 5px;
 }
+
+.btn-hover-shout {
+    border-radius: 0;
+    border: none;
+   padding: 0;
+    display: inline;
+    margin: 0;
+
+}
+
+.fa.btn-hover-shout {
+    /* set font size for hover buttons here */
+    font-size: 20px;
+    /*height: 100%;*/
+    /*line-height: 100%;*/
+}

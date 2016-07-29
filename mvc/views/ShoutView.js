@@ -46,21 +46,50 @@ ShoutView.prototype.draw = function () {
     shoutTableTimeColHeadText.classList.add('row-time');
     shoutTableTimeColHeadText.innerHTML = 'Time';
 
+    var shoutTableInvisibleEditCol = document.createElement('th');
+    shoutTableInvisibleEditCol.classList.add('row-edit');
+    shoutTableInvisibleEditCol.innerHTML = '';
+
+
+
     var shoutTableBody = document.createElement('tbody');
     shoutTableTopRow.appendChild(shoutTableDragColHeadText);
     shoutTableTopRow.appendChild(shoutTableTextColHeadText);
     shoutTableTopRow.appendChild(shoutTableDateColHeadText);
     shoutTableTopRow.appendChild(shoutTableTimeColHeadText);
+    shoutTableTopRow.appendChild(shoutTableInvisibleEditCol);
 
     shoutTableHeader.appendChild(shoutTableTopRow);
     shoutTable.appendChild(shoutTableHeader);
 
     $.each(_this.model.shouts, function (key, val) {
         var experimentRow = document.createElement('tr');
+
+
+
+
+
         var col1 = document.createElement('td');
         var col2 = document.createElement('td');
         var col3 = document.createElement('td');
         var col4 = document.createElement('td');
+        var col5 = document.createElement('td');
+
+        col5.classList.add('edit-data');
+
+
+        // How you gonna use this to get a specific column's cell to show or hide? first try hiding the specific bit of the table?
+        $(experimentRow).mouseover(function () {
+            // Access a col from above?
+
+            $('.edit-data').find('a').hide();
+            $(col5).find('a').show();
+
+            // You want to hide everything that has a class of edit-col
+        });
+
+
+
 
         moment.locale('en-GB');
 
@@ -70,15 +99,50 @@ ShoutView.prototype.draw = function () {
         col3.style.textAlign = "center";
         col4.innerHTML = moment(val.time).format("h:mm A");
         col4.style.textAlign = "center";
+        //   col5.style.textAlign = "center";
 
+        // col5.innerHTML = 'Drag Here';
+
+        var editButton = document.createElement('a');
+        //var linkText = document.createTextNode('Edit');
+        //editButton.appendChild(linkText);
+        editButton.href = '#';
+        editButton.classList.add('btn-default');
+        editButton.classList.add('btn-hover-shout');
+        editButton.classList.add('fa');
+        editButton.classList.add('fa-edit');
+        /*editButton.classList.add('center-v');*/
+        editButton.style.textAlign = 'center';
+        editButton.style.borderStyle = 'border-box';
+        editButton.style.width = '50%';
+
+
+        var deleteButton = document.createElement('a');
+        deleteButton.href = '#';
+        deleteButton.classList.add('btn-default');
+        deleteButton.classList.add('btn-hover-shout');
+        /*deleteButton.classList.add('center-v');*/
+
+        deleteButton.style.width = '50%';
+        deleteButton.classList.add('fa');
+        deleteButton.classList.add('fa-trash');
+        deleteButton.style.textAlign = 'center';
+
+
+
+
+        col5.appendChild(editButton);
+        col5.appendChild(deleteButton);
+        // $(col5).hide();
         experimentRow.appendChild(col1);
         experimentRow.appendChild(col2);
         experimentRow.appendChild(col3);
         experimentRow.appendChild(col4);
+        experimentRow.appendChild(col5);
         shoutTableBody.appendChild(experimentRow);
     });
 
-    $(_this.element).css('width', '50%');
+    $(_this.element).css('width', '70%');
 
 
     $(shoutTable).css('border', '1px solid black');
@@ -89,7 +153,8 @@ ShoutView.prototype.draw = function () {
 
     var buttonBar = document.createElement('div');
     buttonBar.classList.add('button-bar');
-    
+
+    // Buttons should probably be objects...
     // first page
     _this.firstPageButton = document.createElement('a');
     _this.firstPageButton.href = "#";
@@ -109,13 +174,6 @@ ShoutView.prototype.draw = function () {
     _this.previousButton.classList.add('fa-step-backward');
     _this.previousButton.classList.add('btn-shout-nav');
 
-
-    // You can't do this here because it'll overwrite when you go to the next page! Which might make it easier if we know what page we're on...
-    //$(_this.previousButton).addClass('btn-primary-disabled');
-
-    // I think this isn't working because it's already got the primary class
-    //_this.previousButton.classList.add('btn-primary-disabled');
-
     _this.nextButton = document.createElement('a');
     _this.nextButton.href = "#";
     _this.nextButton.id = "next-shout-page";
@@ -124,10 +182,8 @@ ShoutView.prototype.draw = function () {
     _this.nextButton.style.textAlign = "center";
     _this.nextButton.classList.add('btn-primary');
     _this.nextButton.classList.add('btn-shout-nav');
-
     _this.nextButton.classList.add('fa');
     _this.nextButton.classList.add('fa-step-forward');
-
 
     // first page
     _this.lastPageButton = document.createElement('a');
@@ -149,8 +205,8 @@ ShoutView.prototype.draw = function () {
     var nextPageButtonEnabled = !((_this.model.totalNumberOfPages == 0) || (_this.model.currentPage == _this.model.totalNumberOfPages));
     var previousPageButtonEnabled = !((_this.model.totalNumberOfPages == 0) || (_this.model.currentPage == 1));
     var firstPageButtonEnabled = !((_this.model.totalNumberOfPages == 0) || (_this.model.currentPage == 1));
-    
-    if(lastPageButtonEnabled) {
+
+    if (lastPageButtonEnabled) {
         $(_this.lastPageButton).addClass('btn-primary');
         $(_this.lastPageButton).removeClass('btn-primary-disabled');
     } else {
@@ -158,7 +214,7 @@ ShoutView.prototype.draw = function () {
         $(_this.lastPageButton).addClass('btn-primary-disabled');
     }
 
-    if(nextPageButtonEnabled) {
+    if (nextPageButtonEnabled) {
         $(_this.nextButton).addClass('btn-primary');
         $(_this.nextButton).removeClass('btn-primary-disabled');
     } else {
@@ -166,7 +222,7 @@ ShoutView.prototype.draw = function () {
         $(_this.nextButton).addClass('btn-primary-disabled');
     }
 
-    if(previousPageButtonEnabled) {
+    if (previousPageButtonEnabled) {
         $(_this.previousButton).addClass('btn-primary');
         $(_this.previousButton).removeClass('btn-primary-disabled');
     } else {
@@ -174,7 +230,7 @@ ShoutView.prototype.draw = function () {
         $(_this.previousButton).addClass('btn-primary-disabled');
     }
 
-    if(firstPageButtonEnabled) {
+    if (firstPageButtonEnabled) {
         $(_this.firstPageButton).addClass('btn-primary');
         $(_this.firstPageButton).removeClass('btn-primary-disabled');
     } else {
@@ -208,8 +264,11 @@ ShoutView.prototype.draw = function () {
     buttonBar.appendChild(_this.previousButton);
     buttonBar.appendChild(_this.lastPageButton);
     buttonBar.appendChild(_this.nextButton);
-    
+
     $(_this.element).append(buttonBar);
+
+    // Initially hide all the edit buttons...
+    $('.edit-data a').hide();
 };
 
 ShoutView.prototype.rebuildList = function () {

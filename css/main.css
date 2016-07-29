@@ -30,7 +30,7 @@
 }
 
 .shout-table .row-drag {
-    width: 25%;
+    width: 20%;
 }
 
 .shout-table .row-text {
@@ -38,17 +38,31 @@
 }
 
 .shout-table .row-date {
-        width: 25%;
+        width: 20%;
 }
 
 .shout-table .row-time {
-        width: 25%;
+        width: 10%;
+}
+
+.shout-table .row-edit {
+    width: 25%;
 }
 
 .shout-table > table, .shout-table table th, .shout-table table td {
     border: 1px solid rgb(221, 221, 221);
     height: 50px;
     word-wrap:break-word;
+}
+
+.shout-table > table th.row-edit {
+    border: 1px solid white;
+}
+
+.shout-table > table td.edit-data {
+    border-right: 1px solid white;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
 }
 
 .account-list-container {
@@ -106,4 +120,11 @@
     background-color: rgb(123, 169, 208);
     color: white;
     cursor: pointer;
+}
+
+.btn-default {
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 25px;
+    padding: 6px;
 }
