@@ -89,10 +89,7 @@ ShoutView.prototype.draw = function () {
 
     var buttonBar = document.createElement('div');
     buttonBar.classList.add('button-bar');
-
-
-
-
+    
     // first page
     _this.firstPageButton = document.createElement('a');
     _this.firstPageButton.href = "#";
@@ -102,7 +99,7 @@ ShoutView.prototype.draw = function () {
     _this.firstPageButton.classList.add('fa');
     _this.firstPageButton.classList.add('fa-fast-backward');
     _this.firstPageButton.classList.add('btn-shout-nav');
-    
+
     _this.previousButton = document.createElement('a');
     _this.previousButton.href = "#";
     _this.previousButton.id = "prev-shout-page";
@@ -144,97 +141,45 @@ ShoutView.prototype.draw = function () {
     _this.lastPageButton.classList.add('btn-shout-nav');
 
 
-    /*
-    This is hacky. Would be good to have a disable method on button objects.
-    Actually it would be good to have button objects. These are just links.
-    It works though.
-    */
 
-    // if we're on the first page, disable anything that goes backwards. This is horribly written. Sort it out...
 
-    // Should the first page button be enabled?
-
-    var firstPageButtonEnabled = !(_this.model.currentPage == 1 || _this.model.totalNumberOfPages == 0);
-    var prevPageButtonEnabled = !(_this.model.currentPage == 1 || _this.model.totalNumberOfPages == 0);
+    // Notice the order that the logical expressions are in. If there are 0 pages, then the current page comes back as 1. Is that relevant?
+    // This is better than it was anyway.
+    var lastPageButtonEnabled = !((_this.model.totalNumberOfPages == 0) || (_this.model.currentPage == _this.model.totalNumberOfPages));
+    var nextPageButtonEnabled = !((_this.model.totalNumberOfPages == 0) || (_this.model.currentPage == _this.model.totalNumberOfPages));
+    var previousPageButtonEnabled = !((_this.model.totalNumberOfPages == 0) || (_this.model.currentPage == 1));
+    var firstPageButtonEnabled = !((_this.model.totalNumberOfPages == 0) || (_this.model.currentPage == 1));
     
-
-    // Are we on the last page or are there zero pages?
-    var lastPageButtonEnabled = !(_this.model.currentPage == _this.model.totalNumberOfPages || _this.model.totalNumberOfPages == 0);
-    var nextPageButtonEnabled = !(_this.model.currentPage == _this.model.totalNumberOfPages || _this.model.totalNumberOfPages == 0);
-
-
-    /*if(firstPageButtonEnabled) {
-        // enable
-        $(_this.firstPageButton).removeClass('btn-primary-disabled');
-        $(_this.firstPageButton).addClass('btn-primary');
+    if(lastPageButtonEnabled) {
+        $(_this.lastPageButton).addClass('btn-primary');
+        $(_this.lastPageButton).removeClass('btn-primary-disabled');
     } else {
-        $(_this.firstPageButton).addClass('btn-primary-disabled');
-        $(_this.firstPageButton).removeClass('btn-primary');
+        $(_this.lastPageButton).removeClass('btn-primary');
+        $(_this.lastPageButton).addClass('btn-primary-disabled');
     }
 
     if(nextPageButtonEnabled) {
-        // enable
-        $(_this.nextPageButton).removeClass('btn-primary-disabled');
-        $(_this.nextPageButton).addClass('btn-primary');
+        $(_this.nextButton).addClass('btn-primary');
+        $(_this.nextButton).removeClass('btn-primary-disabled');
     } else {
-        $(_this.nextPageButton).addClass('btn-primary-disabled');
-        $(_this.nextPageButton).removeClass('btn-primary');
-    }*/
-
-
-
-    if (_this.model.currentPage == 1) {
-        $(_this.previousButton).addClass('btn-primary-disabled');
-        $(_this.firstPageButton).addClass('btn-primary-disabled');
-
-        if (_this.model.totalNumberOfPages > 1) {
-            $(_this.lastPageButton).removeClass('btn-primary-disabled');
-            $(_this.lastPageButton).addClass('btn-primary');
-        }
-    } else {
-        if (_this.model.currentPage != _this.model.totalNumberOfPages) {
-            $(_this.nextButton).removeClass('btn-primary-disabled');
-            $(_this.nextButton).addClass('btn-primary');
-
-            $(_this.lastPageButton).removeClass('btn-primary-disabled');
-            $(_this.lastPageButton).addClass('btn-primary');
-
-            $(_this.previousButton).removeClass('btn-primary-disabled');
-            $(_this.previousButton).addClass('btn-primary');
-
-            $(_this.firstPageButton).removeClass('btn-primary-disabled');
-            $(_this.firstPageButton).addClass('btn-primary');
-        }
-    }
-
-    if (_this.model.currentPage == _this.model.totalNumberOfPages) {
         $(_this.nextButton).removeClass('btn-primary');
         $(_this.nextButton).addClass('btn-primary-disabled');
+    }
 
-        $(_this.lastPageButton).removeClass('btn-primary');
-        $(_this.lastPageButton).addClass('btn-primary-disabled');
-
-        $(_this.previousButton).removeClass('btn-primary-disabled');
+    if(previousPageButtonEnabled) {
         $(_this.previousButton).addClass('btn-primary');
-
-        $(_this.firstPageButton).removeClass('btn-primary-disabled');
-        $(_this.firstPageButton).addClass('btn-primary');
-    }
-
-    if (_this.model.totalNumberOfPages == 0) {
-        $(_this.nextButton).removeClass('btn-primary');
-        $(_this.nextButton).addClass('btn-primary-disabled');
-
+        $(_this.previousButton).removeClass('btn-primary-disabled');
+    } else {
         $(_this.previousButton).removeClass('btn-primary');
         $(_this.previousButton).addClass('btn-primary-disabled');
+    }
 
-        $(_this.lastPageButton).removeClass('btn-primary');
-        $(_this.lastPageButton).addClass('btn-primary-disabled');
-
+    if(firstPageButtonEnabled) {
+        $(_this.firstPageButton).addClass('btn-primary');
+        $(_this.firstPageButton).removeClass('btn-primary-disabled');
+    } else {
         $(_this.firstPageButton).removeClass('btn-primary');
         $(_this.firstPageButton).addClass('btn-primary-disabled');
-
-
     }
 
     // Maybe these should be put into one page change event? Though you'd still need to know which one it was? Maybe.
@@ -263,8 +208,7 @@ ShoutView.prototype.draw = function () {
     buttonBar.appendChild(_this.previousButton);
     buttonBar.appendChild(_this.lastPageButton);
     buttonBar.appendChild(_this.nextButton);
-
-
+    
     $(_this.element).append(buttonBar);
 };
 
