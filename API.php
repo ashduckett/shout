@@ -35,6 +35,10 @@ switch($method) {
                 $id = $_POST['object_id'];
                 SchedulingProject::deleteById($id);
                 break;
+            case 'Shout':
+                $id = $_POST['object_id'];
+                Shout::deleteById($id);
+                break;
         }
         break;
 }

@@ -10,6 +10,8 @@ function SchedulingProjectModel() {
     this.itemUpdated = new Event(this);
 }
 
+
+
 SchedulingProjectModel.prototype.loadProjects = function (callMeOnSuccess) {
     var _this = this;
 

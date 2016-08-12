@@ -53,6 +53,7 @@ ProjectController.prototype.delItem = function (id) {
         deleteProjectModal.hideModal();
     });
 
+    // This is where the deletion happens!
     deleteProjectModal.addButton('Confirm', 'primary', function () {
         $.post("../API.php", { object_id: id, method: 'delete_by_id', type: 'SchedulingProject' })
         .done(function (data) {

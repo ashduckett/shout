@@ -149,6 +149,21 @@ function Modal(clientWidth, clientHeight, modalTitle, url, callMeAfterLoading) {
             // Bring this, too, in slowly
             $(this.modalContainer).fadeIn('slow');
         };
+
+
+        Modal.prototype.showYesNoModal = function (message, callbackOnYes) {
+            // Append currently invisible overlay
+            document.body.appendChild(this.overlay);
+
+            // Bring it into view slowly
+            $(this.overlay).fadeIn('slow');
+
+            // Append the currently invisible modal
+            document.body.appendChild(this.modalContainer);
+
+            // Bring this, too, in slowly
+            $(this.modalContainer).fadeIn('slow');
+        };
     }
     this.overlay = this.createOverlay();
     this.modalContainer = this.createModalContainer();

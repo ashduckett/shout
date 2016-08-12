@@ -11,7 +11,7 @@
             "time" => ""
         );
 
-         public function insert() {
+        public function insert() {
             $conn = DataObject::connect();
             $sql = "INSERT INTO " . TBL_SHOUT . "(project_id, text, date, time) VALUES (:project_id, :text, :date, :time)";
             $st = $conn->prepare($sql);
@@ -23,6 +23,15 @@
             $lastInsertId = $conn->lastInsertId();
             DataObject::disconnect($conn);
             return $lastInsertId;
+        }
+
+        public static function deleteById($id) {
+            $conn = parent::connect();
+            $sql = "DELETE FROM " . TBL_SHOUT . " WHERE id = :id";
+            $st = $conn->prepare($sql);
+            $st->bindValue(":id", $id, PDO::PARAM_STR);
+            $st->execute();
+            DataObject::disconnect($conn);
         }
 
 
@@ -158,6 +167,9 @@
 
             return $vars;
         }
+
+
+
 
 
 }
