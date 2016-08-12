@@ -55,8 +55,13 @@
     word-wrap:break-word;
 }
 
-.shout-table > table th.row-edit {
-    border: 1px solid white;
+.shout-table > table th.row-edit:hover {
+/*    border: 1px solid white; */
+ /*   background-color: red; */
+}
+
+.shout-table tbody tr:hover {
+    background-color: rgb(234, 234, 234);
 }
 
 .shout-table > table td.edit-data {

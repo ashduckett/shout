@@ -30,13 +30,17 @@ ShoutView.prototype.draw = function () {
     var shoutTableHeader = document.createElement('thead');
     var shoutTableTopRow = document.createElement('tr');
 
-    var shoutTableDragColHeadText = document.createElement('th');
-    shoutTableDragColHeadText.classList.add('row-drag');
-    shoutTableDragColHeadText.innerHTML = 'Drag Here';
+    //var shoutTableDragColHeadText = document.createElement('th');
+    //shoutTableDragColHeadText.classList.add('row-drag');
+    //shoutTableDragColHeadText.innerHTML = 'Drag Here';
 
     var shoutTableTextColHeadText = document.createElement('th');
     shoutTableTextColHeadText.classList.add('row-text');
     shoutTableTextColHeadText.innerHTML = 'Text';
+
+    var shoutTableEditColHeadText = document.createElement('th');
+    shoutTableEditColHeadText.classList.add('row-edit');
+    shoutTableEditColHeadText.innerHTML = 'Edit';
 
     var shoutTableDateColHeadText = document.createElement('th');
     shoutTableDateColHeadText.classList.add('row-date');
@@ -46,54 +50,63 @@ ShoutView.prototype.draw = function () {
     shoutTableTimeColHeadText.classList.add('row-time');
     shoutTableTimeColHeadText.innerHTML = 'Time';
 
-    var shoutTableInvisibleEditCol = document.createElement('th');
-    shoutTableInvisibleEditCol.classList.add('row-edit');
-    shoutTableInvisibleEditCol.innerHTML = '';
+    // var shoutTableInvisibleEditCol = document.createElement('th');
+    // shoutTableInvisibleEditCol.classList.add('row-edit');
+    // shoutTableInvisibleEditCol.innerHTML = '';
 
 
 
     var shoutTableBody = document.createElement('tbody');
-    shoutTableTopRow.appendChild(shoutTableDragColHeadText);
+    //shoutTableTopRow.appendChild(shoutTableDragColHeadText);
+
     shoutTableTopRow.appendChild(shoutTableTextColHeadText);
+    shoutTableTopRow.appendChild(shoutTableEditColHeadText);
+
+
     shoutTableTopRow.appendChild(shoutTableDateColHeadText);
     shoutTableTopRow.appendChild(shoutTableTimeColHeadText);
-    shoutTableTopRow.appendChild(shoutTableInvisibleEditCol);
+    //shoutTableTopRow.appendChild(shoutTableInvisibleEditCol);
 
     shoutTableHeader.appendChild(shoutTableTopRow);
     shoutTable.appendChild(shoutTableHeader);
 
+
+    $(shoutTable).mouseleave(function () {
+        $('.button-box').hide();
+    });
+
     $.each(_this.model.shouts, function (key, val) {
         var experimentRow = document.createElement('tr');
-
-
-
-
-
-        var col1 = document.createElement('td');
+        // var col1 = document.createElement('td');
         var col2 = document.createElement('td');
+        var editCol = document.createElement('td');
         var col3 = document.createElement('td');
         var col4 = document.createElement('td');
-        var col5 = document.createElement('td');
+        //        var col5 = document.createElement('td');
 
-        col5.classList.add('edit-data');
+        //col5.classList.add('edit-data');
 
 
         // How you gonna use this to get a specific column's cell to show or hide? first try hiding the specific bit of the table?
         $(experimentRow).mouseover(function () {
             // Access a col from above?
 
-            $('.edit-data').find('a').hide();
-            $(col5).find('a').show();
-
+            $('.button-box').hide();
+            //   $(col5).find('a').show();
+            $(this).find('.button-box').show();
             // You want to hide everything that has a class of edit-col
+
+            console.log('hovering');
         });
+
+
 
 
 
 
         moment.locale('en-GB');
 
-        col1.innerHTML = 'Drag Here';
+        // col1.innerHTML = 'Drag Here';
         col2.innerHTML = val.text;
         col3.innerHTML = moment(val.date).format("L");
         col3.style.textAlign = "center";
@@ -103,6 +116,10 @@ ShoutView.prototype.draw = function () {
 
         // col5.innerHTML = 'Drag Here';
 
+        var buttonBox = document.createElement('div');
+        buttonBox.classList.add('button-box');
+
+
         var editButton = document.createElement('a');
         //var linkText = document.createTextNode('Edit');
         //editButton.appendChild(linkText);
@@ -111,34 +128,49 @@ ShoutView.prototype.draw = function () {
         editButton.classList.add('btn-hover-shout');
         editButton.classList.add('fa');
         editButton.classList.add('fa-edit');
+        editButton.style.float = 'right';
+        editButton.style.marginRight = '8px';
+        editButton.style.marginLeft = '8px';
+        editButton.style.backgroundColor = 'inherit';
+
         /*editButton.classList.add('center-v');*/
-        editButton.style.textAlign = 'center';
-        editButton.style.borderStyle = 'border-box';
-        editButton.style.width = '50%';
+        //editButton.style.textAlign = 'center';
+        // editButton.style.borderStyle = 'border-box';
+        // editButton.style.width = '50%';
 
 
         var deleteButton = document.createElement('a');
         deleteButton.href = '#';
         deleteButton.classList.add('btn-default');
         deleteButton.classList.add('btn-hover-shout');
-        /*deleteButton.classList.add('center-v');*/
+        deleteButton.style.backgroundColor = 'inherit';
 
-        deleteButton.style.width = '50%';
+        deleteButton.style.marginRight = '8px';
+        deleteButton.style.marginLeft = '8px';
+
+        /*deleteButton.classList.add('center-v');*/
+        deleteButton.style.float = 'right';
+        //deleteButton.style.width = '50%';
         deleteButton.classList.add('fa');
         deleteButton.classList.add('fa-trash');
-        deleteButton.style.textAlign = 'center';
+        //deleteButton.style.textAlign = 'center';
 
 
+        buttonBox.appendChild(deleteButton);
+        buttonBox.appendChild(editButton);
 
 
-        col5.appendChild(editButton);
-        col5.appendChild(deleteButton);
+        //editCol.appendChild(editButton);
+        //editCol.appendChild(deleteButton);
+        editCol.appendChild(buttonBox);
         // $(col5).hide();
-        experimentRow.appendChild(col1);
+        //experimentRow.appendChild(col1);
         experimentRow.appendChild(col2);
+        experimentRow.appendChild(editCol);
+
         experimentRow.appendChild(col3);
         experimentRow.appendChild(col4);
-        experimentRow.appendChild(col5);
+        //  experimentRow.appendChild(col5);
         shoutTableBody.appendChild(experimentRow);
     });
 
@@ -268,7 +300,7 @@ ShoutView.prototype.draw = function () {
     $(_this.element).append(buttonBar);
 
     // Initially hide all the edit buttons...
-    $('.edit-data a').hide();
+    $('.button-box').hide();
 };
 
 ShoutView.prototype.rebuildList = function () {
