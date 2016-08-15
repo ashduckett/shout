@@ -26,6 +26,7 @@ ShoutModel.prototype.removeItem = function (args) {
     this.itemRemoved.notify({ id: args.shout_id });
 
     
+
     // reload the page...
     this.loadShouts(args.project_id, _this.currentPage, function () {
         _this.pageChanged.notify();

@@ -135,6 +135,8 @@ ShoutView.prototype.draw = function () {
             // Get the id of the shout you've hit the delete button for
             var id = $(this).parent().parent().parent().data('id');
             var project_id = $('li.selected').attr('data-id');
+
+
             _this.deleteShoutButtonClicked.notify({ shout_id: id, project_id: project_id});
         });
 
