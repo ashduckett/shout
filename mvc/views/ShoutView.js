@@ -8,7 +8,7 @@ function ShoutView(model, element) {
     this.firstPageButtonClicked = new Event(this);
     this.lastPageButtonClicked = new Event(this);
     this.deleteShoutButtonClicked = new Event(this);
-    this.newShoutButtonClicked = new Event(this);
+    this.addButtonClicked = new Event(this);
     
     // Attach the model's event handlers
     this.model.pageChanged.attach(function () {
@@ -23,6 +23,10 @@ function ShoutView(model, element) {
         _this.rebuildList();
     });
 
+    // This can't go into the draw function or it'll be added every time the table gets redrawn...
+    $('#new-shout').click(function () {
+        _this.addButtonClicked.notify();
+    });
 
 }
 
@@ -33,19 +37,6 @@ ShoutView.prototype.draw = function () {
     $('.shout-table').empty();
 
     var _this = this;
-
-
-    console.log($('#new-shout'));
-    $('#new-shout').click(function () {
-        // This works!
-        _this.newShoutButtonClicked.notify();
-    });
-
-
-
-
-    var addShoutMenuItem = $('#new-shout');
-    console.log(addShoutMenuItem);
 
     var shoutTable = document.createElement('table');
     var shoutTableHeader = document.createElement('thead');
@@ -153,8 +144,6 @@ ShoutView.prototype.draw = function () {
             // Get the id of the shout you've hit the delete button for
             var id = $(this).parent().parent().parent().data('id');
             var project_id = $('li.selected').attr('data-id');
-
-
             _this.deleteShoutButtonClicked.notify({ shout_id: id, project_id: project_id });
         });
 

@@ -238,4 +238,316 @@ SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invali
         )
 
 )
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 1
+            [text] => 
+            [date] => 2016-08-04 00:00:00
+            [time] => 2016-08-26 21:17:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 1
+            [text] => 
+            [date] => Invalid date
+            [time] => Invalid date
+        )
+
+)
+SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invalid date' for column 'date' at row 1insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 1
+            [text] => 
+            [date] => Invalid date
+            [time] => Invalid date
+        )
+
+)
+SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invalid date' for column 'date' at row 1insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 1
+            [text] => 
+            [date] => Invalid date
+            [time] => Invalid date
+        )
+
+)
+SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invalid date' for column 'date' at row 1insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 1
+            [text] => 
+            [date] => Invalid date
+            [time] => Invalid date
+        )
+
+)
+SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invalid date' for column 'date' at row 1insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 1
+            [text] => 
+            [date] => Invalid date
+            [time] => Invalid date
+        )
+
+)
+SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invalid date' for column 'date' at row 1insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 1
+            [text] => 
+            [date] => Invalid date
+            [time] => Invalid date
+        )
+
+)
+SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invalid date' for column 'date' at row 1insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 1
+            [text] => 
+            [date] => Invalid date
+            [time] => Invalid date
+        )
+
+)
+SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invalid date' for column 'date' at row 1insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 1
+            [text] => 
+            [date] => 2016-08-03 00:00:00
+            [time] => 2016-08-26 21:28:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 3
+            [text] => 
+            [date] => 2016-08-02 00:00:00
+            [time] => 2016-08-26 21:51:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 3
+            [text] => 
+            [date] => Invalid date
+            [time] => Invalid date
+        )
+
+)
+SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invalid date' for column 'date' at row 1insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 3
+            [text] => 
+            [date] => 2016-08-03 00:00:00
+            [time] => 2016-08-26 21:52:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 3
+            [text] => 
+            [date] => 2016-08-03 00:00:00
+            [time] => 2016-08-26 21:55:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 3
+            [text] => 
+            [date] => 2016-08-11 00:00:00
+            [time] => 2016-08-26 21:56:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 3
+            [text] => 
+            [date] => 2016-08-03 00:00:00
+            [time] => 2016-08-26 21:57:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 3
+            [text] => 
+            [date] => 2016-08-03 00:00:00
+            [time] => 2016-08-26 21:59:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 3
+            [text] => 
+            [date] => 2016-08-02 00:00:00
+            [time] => 2016-08-26 21:59:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 1
+            [text] => 
+            [date] => Invalid date
+            [time] => Invalid date
+        )
+
+)
+SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invalid date' for column 'date' at row 1insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 1
+            [text] => 
+            [date] => 2016-08-11 00:00:00
+            [time] => 2016-08-26 22:06:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 2
+            [text] => 
+            [date] => 2016-08-03 00:00:00
+            [time] => 2016-08-26 22:14:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 1
+            [text] => 
+            [date] => 2016-08-01 00:00:00
+            [time] => 2016-08-26 22:17:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 3
+            [text] => 
+            [date] => 2016-08-01 00:00:00
+            [time] => 2016-08-26 22:30:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 3
+            [text] => Shout 1
+            [date] => 2016-08-01 00:00:00
+            [time] => 2016-08-26 22:31:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 3
+            [text] => Shout 2
+            [date] => 2016-08-02 00:00:00
+            [time] => 2016-08-26 22:32:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 3
+            [text] => 
+            [date] => 2016-08-09 00:00:00
+            [time] => 2016-08-26 22:32:00
+        )
+
+)
+insertHITrequire once passeddata passednew shout passedinside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 3
+            [text] => 
+            [date] => 2016-08-01 00:00:00
+            [time] => 2016-08-26 22:33:00
+        )
+
+)
 insert

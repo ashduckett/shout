@@ -43,9 +43,9 @@ ShoutModel.prototype.addItem = function (shout) {
     //this.projects[project.id] = project;
     //this.itemAdded.notify({ item: project });
 
-    
+    alert('notify');
     this.shouts[shout.id] = shout;
-    this.itemAdded.notify({item: shout});
+    this.itemAdded.notify({ item: shout });
 };
 
 
