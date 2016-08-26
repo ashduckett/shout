@@ -22,6 +22,8 @@ function ProjectController(model, view) {
     this._view.projectItemClicked.attach(function (sender, args) {
         _this.updateShoutTable(args.id, 1);
     });
+
+
 }
 
 ProjectController.prototype.addItem = function () {
@@ -33,6 +35,7 @@ ProjectController.prototype.addItem = function () {
         var projectName = $('#project-name').val();
         $.post("../save_project.php", { name: projectName }, function (data) {
             var newProject = new SchedulingProject(data, projectName);
+            console.log('adding project to model with id of ' + newProject.id);
             _this._model.addItem(newProject);
             modal.hideModal();
         });

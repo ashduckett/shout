@@ -13,8 +13,8 @@ function ShoutModel() {
     this.currentPage = 1;
     this.totalNumberOfPages = 0;
     this.pageChanged = new Event(this);
-
     this.itemRemoved = new Event(this);
+    this.itemAdded = new Event(this);
 }
 
 
@@ -25,23 +25,27 @@ ShoutModel.prototype.removeItem = function (args) {
     delete this.shouts[args.shout_id];
     this.itemRemoved.notify({ id: args.shout_id });
 
-    
-
-    // reload the page...
+    // reload the page...maybe I should ditch the extra visits to the db and load everything
+    // at once?
     this.loadShouts(args.project_id, _this.currentPage, function () {
         _this.pageChanged.notify();
-        callMeOnSuccess();
     });
-
-
-
-
-
 }
+
+/*
 
 SchedulingProjectModel.prototype.addItem = function (project) {
     this.projects[project.id] = project;
     this.itemAdded.notify({ item: project });
+};*/
+
+ShoutModel.prototype.addItem = function (shout) {
+    //this.projects[project.id] = project;
+    //this.itemAdded.notify({ item: project });
+
+    
+    this.shouts[shout.id] = shout;
+    this.itemAdded.notify({item: shout});
 };
 
 

@@ -12,16 +12,29 @@
         );
 
         public function insert() {
-            $conn = DataObject::connect();
-            $sql = "INSERT INTO " . TBL_SHOUT . "(project_id, text, date, time) VALUES (:project_id, :text, :date, :time)";
-            $st = $conn->prepare($sql);
-            $st->bindValue(":project_id", intval($this->data["project_id"]), PDO::PARAM_INT);
-            $st->bindValue(":text", $this->data["text"], PDO::PARAM_STR);
-            $st->bindValue(":date", $this->data["date"], PDO::PARAM_STR);
-            $st->bindValue(":time", $this->data["time"], PDO::PARAM_STR);
-            $st->execute();
-            $lastInsertId = $conn->lastInsertId();
-            DataObject::disconnect($conn);
+
+            error_log('inside insert function!', 3, 'error_log.log');
+         
+            error_log(print_r($this, true), 3, 'error_log.log');
+         
+            // On the second run of this, without a refresh, the date and time are showing as invalid.
+            try {
+         
+                $conn = DataObject::connect();
+                $sql = "INSERT INTO " . TBL_SHOUT . "(project_id, text, date, time) VALUES (:project_id, :text, :date, :time)";
+                $st = $conn->prepare($sql);
+                $st->bindValue(":project_id", intval($this->data["project_id"]), PDO::PARAM_INT);
+                $st->bindValue(":text", $this->data["text"], PDO::PARAM_STR);
+                $st->bindValue(":date", $this->data["date"], PDO::PARAM_STR);
+                $st->bindValue(":time", $this->data["time"], PDO::PARAM_STR);
+                $st->execute();
+                $lastInsertId = $conn->lastInsertId();
+                DataObject::disconnect($conn);
+            } catch(Exception $e) {
+
+                // logging invalid date and time
+                error_log($e->getMessage(), 3, 'error_log.log');
+            }
             return $lastInsertId;
         }
 

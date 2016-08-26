@@ -8,6 +8,7 @@ function ShoutView(model, element) {
     this.firstPageButtonClicked = new Event(this);
     this.lastPageButtonClicked = new Event(this);
     this.deleteShoutButtonClicked = new Event(this);
+    this.newShoutButtonClicked = new Event(this);
     
     // Attach the model's event handlers
     this.model.pageChanged.attach(function () {
@@ -15,6 +16,10 @@ function ShoutView(model, element) {
     });
 
     this.model.itemRemoved.attach(function () {
+        _this.rebuildList();
+    });
+
+    this.model.itemAdded.attach(function () {
         _this.rebuildList();
     });
 
@@ -28,6 +33,19 @@ ShoutView.prototype.draw = function () {
     $('.shout-table').empty();
 
     var _this = this;
+
+
+    console.log($('#new-shout'));
+    $('#new-shout').click(function () {
+        // This works!
+        _this.newShoutButtonClicked.notify();
+    });
+
+
+
+
+    var addShoutMenuItem = $('#new-shout');
+    console.log(addShoutMenuItem);
 
     var shoutTable = document.createElement('table');
     var shoutTableHeader = document.createElement('thead');
@@ -137,7 +155,7 @@ ShoutView.prototype.draw = function () {
             var project_id = $('li.selected').attr('data-id');
 
 
-            _this.deleteShoutButtonClicked.notify({ shout_id: id, project_id: project_id});
+            _this.deleteShoutButtonClicked.notify({ shout_id: id, project_id: project_id });
         });
 
         buttonBox.appendChild(_this.deleteButton);
@@ -271,6 +289,11 @@ ShoutView.prototype.draw = function () {
         var id = $('li.selected').attr('data-id');
         _this.lastPageButtonClicked.notify({ id: id });
     });
+
+
+
+
+
 
 
 

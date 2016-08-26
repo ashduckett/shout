@@ -79,7 +79,10 @@ function Modal(clientWidth, clientHeight, modalTitle, url, callMeAfterLoading) {
                 $('.modal-content').html(data);
                 $('.modal-content').height(height);
                 //$('.modal-content').width(width);
-                callMeAfterLoading();
+
+                if (callMeAfterLoading) {
+                    callMeAfterLoading();
+                }
             });
 
             return modalContainer;
@@ -150,22 +153,52 @@ function Modal(clientWidth, clientHeight, modalTitle, url, callMeAfterLoading) {
             $(this.modalContainer).fadeIn('slow');
         };
 
-
-        Modal.prototype.showYesNoModal = function (message, callbackOnYes) {
-            // Append currently invisible overlay
-            document.body.appendChild(this.overlay);
-
-            // Bring it into view slowly
-            $(this.overlay).fadeIn('slow');
-
-            // Append the currently invisible modal
-            document.body.appendChild(this.modalContainer);
-
-            // Bring this, too, in slowly
-            $(this.modalContainer).fadeIn('slow');
-        };
     }
     this.overlay = this.createOverlay();
     this.modalContainer = this.createModalContainer();
 }
+
+
+// Code for common modals. Starting with a yes no modal.
+// function Modal(clientWidth, clientHeight, modalTitle, url, callMeAfterLoading) {
+function CommonModal(title, prompt, type, buttonEventHandlers) {
+    _this = this;
+    this.type = type;
+    this.yesHandler = null;
+
+    this.modal = new Modal(300, 100, title, "../modal_layouts/standard_modal.php", function() {
+        $('.modal-prompt').text(prompt);
+    });
+
+    // Modal.prototype.addButton = function (caption, style, callback) {
+    switch(type) {
+        case CommonModal.YES_NO:
+            this.modal.addButton("No", 'default', function () {
+                _this.modal.hideModal();
+            });
+
+            this.modal.addButton("Yes", 'primary', function () {
+                _this.yesHandler();
+            });
+            break;
+    }
+    
+
+
+    CommonModal.prototype.show = function () {
+        _this.modal.showModal();
+    };
+
+    CommonModal.prototype.hide = function () {
+        _this.modal.hideModal();
+    }
+
+    CommonModal.prototype.addYesHandler = function (yesHandler) {
+        if (yesHandler) {
+            _this.yesHandler = yesHandler;
+        }
+    };
+}
+
+CommonModal.YES_NO = 1;
 
