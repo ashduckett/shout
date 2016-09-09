@@ -9,16 +9,6 @@ $(document).ready(function () {
     });
 
     // Code for Add item button
-    $('#new-shout').click(function () {
-
-        
-    });
-
-
-
-
-
-    // Code for Add item button
     $('#generate-schedule').click(function () {
 
         var modal = new Modal(300, 200, 'Generate Schedule', '../modal_layouts/generate_schedule.php');
