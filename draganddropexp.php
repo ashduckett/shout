@@ -11,9 +11,8 @@
                     background-color: blue;
                     height: 50px;
                     width: 200px;
-                   /* position: absolute; */
-                    
-                    }
+                    position: absolute;
+                }
                 
                 
             </style>
@@ -26,18 +25,18 @@
             $(document).ready(function () {
                 var draggableDiv = document.createElement("div");
                 draggableDiv.classList.add('draggable');
-                draggableDiv.style.position = 'absolute';
                 document.body.appendChild(draggableDiv);
 
                 var draggableDiv2 = document.createElement("div");
                 draggableDiv2.classList.add('draggable');
-                draggableDiv2.style.position = 'absolute';
                 document.body.appendChild(draggableDiv2);
 
                 var draggableDiv3 = document.createElement("div");
                 draggableDiv3.classList.add('draggable');
-                draggableDiv3.style.position = 'absolute';
                 document.body.appendChild(draggableDiv3);
+
+
+
 
                 var clickX = null;
                 var clickY = null;
@@ -64,12 +63,7 @@
                     elementBeingDragged = null;
                 });
 
-
-
-
                 $('html').mousemove(function (event) {
-
-
                     if (elementBeingDragged != null) {
                         elementBeingDragged.style.top = (event.pageY - clickY) + 'px';
                         elementBeingDragged.style.left = (event.pageX - clickX) + 'px';
@@ -87,8 +81,5 @@
             });
 
         </script>
-
-
-        
     </body>
 </html>
