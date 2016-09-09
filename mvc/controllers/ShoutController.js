@@ -79,17 +79,11 @@ function ShoutController(model, view) {
             var shoutTime = moment($('.clock').val(), "h:mm A").format('YYYY-MM-DD HH:mm:00');
             var shoutText = $('#shoutText').val();
 
-
             // This adds a new shout...you want to update a shout. This could very possibly be done better using a JSONed Shout JS object
             $.post("../updateShout.php", { shoutDate: shoutDate, shoutTime: shoutTime, projectId: projectId, shoutText: shoutText, shoutId: shout.id }, function (data) {
-                
-                //Shout(id, project_id, text, date, time) {
                 var newShout = new Shout(shout.id, projectId, shoutText, shoutDate, shoutTime);
 
-                
-
                 _this._model.updateItem(newShout);
-
                 modal.hideModal();
             });
         });

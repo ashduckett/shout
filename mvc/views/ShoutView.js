@@ -25,8 +25,6 @@ function ShoutView(model, element) {
     });
 
     this.model.itemUpdated.attach(function () {
-        console.log('list about to be rebuilt');
-        console.log(_this.model.shouts);
         _this.rebuildList();
     });
 
@@ -142,13 +140,9 @@ ShoutView.prototype.draw = function () {
 
         $(_this.editButton).click(function () {
             // Get the id of the shout you've hit the delete button for
-            alert('edit button clicked');
-            
             var id = $(this).parent().parent().parent().data('id');
             var project_id = $('li.selected').attr('data-id');
             _this.editShoutButtonClicked.notify({ shout_id: id, project_id: project_id });
-            
-            
         });
         
         buttonBox.appendChild(_this.deleteButton);
