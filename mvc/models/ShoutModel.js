@@ -15,6 +15,7 @@ function ShoutModel() {
     this.pageChanged = new Event(this);
     this.itemRemoved = new Event(this);
     this.itemAdded = new Event(this);
+    this.itemUpdated = new Event(this);
 }
 
 
@@ -32,20 +33,14 @@ ShoutModel.prototype.removeItem = function (args) {
     });
 }
 
-/*
-
-SchedulingProjectModel.prototype.addItem = function (project) {
-    this.projects[project.id] = project;
-    this.itemAdded.notify({ item: project });
-};*/
-
 ShoutModel.prototype.addItem = function (shout) {
-    //this.projects[project.id] = project;
-    //this.itemAdded.notify({ item: project });
-
-    alert('notify');
     this.shouts[shout.id] = shout;
     this.itemAdded.notify({ item: shout });
+};
+
+ShoutModel.prototype.updateItem = function (shout) {
+    this.shouts[shout.id] = shout;
+    this.itemUpdated.notify({ item: shout });
 };
 
 

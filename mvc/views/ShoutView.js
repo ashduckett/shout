@@ -9,6 +9,7 @@ function ShoutView(model, element) {
     this.lastPageButtonClicked = new Event(this);
     this.deleteShoutButtonClicked = new Event(this);
     this.addButtonClicked = new Event(this);
+    this.editShoutButtonClicked = new Event(this);
     
     // Attach the model's event handlers
     this.model.pageChanged.attach(function () {
@@ -20,6 +21,12 @@ function ShoutView(model, element) {
     });
 
     this.model.itemAdded.attach(function () {
+        _this.rebuildList();
+    });
+
+    this.model.itemUpdated.attach(function () {
+        console.log('list about to be rebuilt');
+        console.log(_this.model.shouts);
         _this.rebuildList();
     });
 
@@ -97,45 +104,31 @@ ShoutView.prototype.draw = function () {
         col3.style.textAlign = "center";
         col4.innerHTML = moment(val.time).format("h:mm A");
         col4.style.textAlign = "center";
-        //   col5.style.textAlign = "center";
-
-        // col5.innerHTML = 'Drag Here';
 
         var buttonBox = document.createElement('div');
         buttonBox.classList.add('button-box');
 
+        // Create edit button for shout row
+        _this.editButton = document.createElement('a');
+        _this.editButton.href = '#';
+        _this.editButton.classList.add('btn-default');
+        _this.editButton.classList.add('btn-hover-shout');
+        _this.editButton.classList.add('fa');
+        _this.editButton.classList.add('fa-edit');
+        _this.editButton.style.float = 'right';
+        _this.editButton.style.marginRight = '8px';
+        _this.editButton.style.marginLeft = '8px';
+        _this.editButton.style.backgroundColor = 'inherit';
 
-        var editButton = document.createElement('a');
-        //var linkText = document.createTextNode('Edit');
-        //editButton.appendChild(linkText);
-        editButton.href = '#';
-        editButton.classList.add('btn-default');
-        editButton.classList.add('btn-hover-shout');
-        editButton.classList.add('fa');
-        editButton.classList.add('fa-edit');
-        editButton.style.float = 'right';
-        editButton.style.marginRight = '8px';
-        editButton.style.marginLeft = '8px';
-        editButton.style.backgroundColor = 'inherit';
-
-        /*editButton.classList.add('center-v');*/
-        //editButton.style.textAlign = 'center';
-        // editButton.style.borderStyle = 'border-box';
-        // editButton.style.width = '50%';
-
-
+        // Create delete button for shout row
         _this.deleteButton = document.createElement('a');
         _this.deleteButton.href = '#';
         _this.deleteButton.classList.add('btn-default');
         _this.deleteButton.classList.add('btn-hover-shout');
         _this.deleteButton.style.backgroundColor = 'inherit';
-
         _this.deleteButton.style.marginRight = '8px';
         _this.deleteButton.style.marginLeft = '8px';
-
-        /*deleteButton.classList.add('center-v');*/
         _this.deleteButton.style.float = 'right';
-        //deleteButton.style.width = '50%';
         _this.deleteButton.classList.add('fa');
         _this.deleteButton.classList.add('fa-trash');
         _this.deleteButton.classList.add('delete-shout-button');
@@ -147,8 +140,19 @@ ShoutView.prototype.draw = function () {
             _this.deleteShoutButtonClicked.notify({ shout_id: id, project_id: project_id });
         });
 
+        $(_this.editButton).click(function () {
+            // Get the id of the shout you've hit the delete button for
+            alert('edit button clicked');
+            
+            var id = $(this).parent().parent().parent().data('id');
+            var project_id = $('li.selected').attr('data-id');
+            _this.editShoutButtonClicked.notify({ shout_id: id, project_id: project_id });
+            
+            
+        });
+        
         buttonBox.appendChild(_this.deleteButton);
-        buttonBox.appendChild(editButton);
+        buttonBox.appendChild(_this.editButton);
 
         editCol.appendChild(buttonBox);
 
@@ -278,15 +282,7 @@ ShoutView.prototype.draw = function () {
         var id = $('li.selected').attr('data-id');
         _this.lastPageButtonClicked.notify({ id: id });
     });
-
-
-
-
-
-
-
-
-
+    
 
     buttonBar.appendChild(_this.firstPageButton);
     buttonBar.appendChild(_this.previousButton);

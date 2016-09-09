@@ -1,4 +1,5 @@
 (function ($) {
+    // Clock doesn't use moment. It probably should. It would be very cool to be able to pass in a time with a setTime() function and have it interpret that time.
     $.fn.clock = function (time) {
         var now = new Date();
         var str = "";

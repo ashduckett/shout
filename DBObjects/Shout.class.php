@@ -166,26 +166,34 @@
             // Now we have the total number of pages...
             $numberOfPages = intval($numberOfPages);
         
-            error_log('number of pages! ' . $numberOfPages, 3, 'error_log.log');
-
-
             return $numberOfPages;
         
         }
 
-
-        public function JsonSerialize()
-        {
+        public function JsonSerialize() {
             $vars = get_object_vars($this);
-
             return $vars;
         }
 
+        // Invalid parameter number: number of bound variables does not match number of tokens
 
+        public function update() {
+            try {
+                $conn = parent::connect();
+                $sql = 'UPDATE ' . TBL_SHOUT . ' SET text = :text, date = :date, time = :time WHERE id = :id';
+                $st = $conn->prepare($sql);
+                $st->bindValue(':text', $this->getValue('text'), PDO::PARAM_STR);
+                $st->bindValue(':date', $this->getValue('date'), PDO::PARAM_STR);
+                $st->bindValue(':time', $this->getValue('time'), PDO::PARAM_STR);
+                $st->bindValue(':id', $this->getValue('id'), PDO::PARAM_STR);
 
-
-
-}
+                $st->execute();
+                DataObject::disconnect($conn);
+            } catch(Exception $e) {
+                error_log($e->getMessage(), 3, 'error_log.log');
+            }
+        }
+    }
 
 
 ?>

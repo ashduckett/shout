@@ -138,7 +138,7 @@ function Modal(clientWidth, clientHeight, modalTitle, url, callMeAfterLoading) {
 
         };
 
-        Modal.prototype.showModal = function () {
+        Modal.prototype.showModal = function (callback) {
 
             // Append currently invisible overlay
             document.body.appendChild(this.overlay);
@@ -150,7 +150,11 @@ function Modal(clientWidth, clientHeight, modalTitle, url, callMeAfterLoading) {
             document.body.appendChild(this.modalContainer);
 
             // Bring this, too, in slowly
-            $(this.modalContainer).fadeIn('slow');
+            $(this.modalContainer).fadeIn('slow', function () {
+                if (callback) {
+                    callback();
+                }
+            });
         };
 
     }
