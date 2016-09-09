@@ -1,6 +1,4 @@
 function ShoutController(model, view) {
-    // This is only instantiated once so it won't work a second time?
-    console.log('constructor function for shout called');
 
     this._model = model;
     this._view = view;
@@ -48,16 +46,7 @@ function ShoutController(model, view) {
             console.log('Shout time is ' + shoutTime);
             console.log('Shout text is ' + shoutText);
 
-
-            // function Shout(id, project_id, text, date, time) {
-            // This should be done as part of the mvc stuff so it updates when you add a new shout
             $.post("../save_shout.php", { shoutDate: shoutDate, shoutTime: shoutTime, projectId: projectId, shoutText: shoutText }, function (data) {
-                
-                
-                
-                // Seems to be nothing in data...
-                console.log('the id of the shout is... ' + data);
-
                 var newShout = new Shout(data, projectId, shoutText, shoutDate, shoutTime);
                 _this._model.addItem(newShout);
                 
@@ -73,7 +62,7 @@ function ShoutController(model, view) {
     
     this._view.deleteShoutButtonClicked.attach(function (sender, args) {
 
-        var yesNoModal = new CommonModal("Title passed in", "Are you sure you want to delete this Shout?", CommonModal.YES_NO);
+        var yesNoModal = new CommonModal("Confirm", "Are you sure you want to delete this Shout?", CommonModal.YES_NO);
 
         yesNoModal.addYesHandler(function () {
             $.post("../API.php", { object_id: args.shout_id, method: 'delete_by_id', type: 'Shout' })
