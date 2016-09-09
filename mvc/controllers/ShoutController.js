@@ -1,5 +1,4 @@
 function ShoutController(model, view) {
-
     this._model = model;
     this._view = view;
     var _this = this;
@@ -20,27 +19,19 @@ function ShoutController(model, view) {
         _this._model.setToLastPage(args.id, function () { });
     });
 
-    this._view.newShoutButtonClicked.attach(function (sender, args) {
+    this._view.addButtonClicked.attach(function () {
+        _this.addItem();
+    });
+
+    ShoutController.prototype.addItem = function () {
         var modal = new Modal(300, 200, 'Add Shout', '../modal_layouts/add_shout.php');
 
-
-        console.log('function being assigned to button');
         modal.addButton('Save', 'primary', function () {
-            // Reading new values?
-          
-
             projectId = $('li.selected').data('id');
 
-            var locale = window.navigator.userLanguage || window.navigator.language;
-
-            moment.locale(locale);
-
-            // Second time run and the dates and times are wrong.
-            // The JQuery selectors don't work the second time round.
             var shoutDate = moment($('.calendar').val(), "L").format('YYYY-MM-DD 00:00:00');
             var shoutTime = moment($('.clock').val(), "h:mm A").format('YYYY-MM-DD HH:mm:00');
             var shoutText = $('#shoutText').val();
-
 
             console.log('Shout date is ' + shoutDate);
             console.log('Shout time is ' + shoutTime);
@@ -49,7 +40,7 @@ function ShoutController(model, view) {
             $.post("../save_shout.php", { shoutDate: shoutDate, shoutTime: shoutTime, projectId: projectId, shoutText: shoutText }, function (data) {
                 var newShout = new Shout(data, projectId, shoutText, shoutDate, shoutTime);
                 _this._model.addItem(newShout);
-                
+
                 modal.hideModal();
             });
         });
@@ -57,8 +48,9 @@ function ShoutController(model, view) {
         modal.addButton('Cancel', 'default', function () {
             modal.hideModal();
         });
+
         modal.showModal();
-    });
+    };
     
     this._view.deleteShoutButtonClicked.attach(function (sender, args) {
 
@@ -74,11 +66,5 @@ function ShoutController(model, view) {
         });
         yesNoModal.show();
     });
-
-
-
-
-
-    
 }
  

@@ -11,9 +11,9 @@
         calString += '<table class="calendar-table">';
         calString += '</table>';
         calString += '</div>';
-        
+
         var currentMomentDate = new moment();
-        var locale = window.navigator.userLanguage || window.navigator.language;
+        var locale = "en-GB";//window.navigator.userLanguage || window.navigator.language;
 
         // Get hold of user's browser locale       
         moment.locale(locale);
