@@ -6,20 +6,13 @@
         <title></title>
         <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
            <style>
-                
-                .draggable {
-                    background-color: yellow;
-                    height: 50px;
-                    width: 200px;
-                    position: absolute; 
-                }
-                
-                
-            </style>
 
+            * {
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }               
 
-        <style>
-            
             .left, .right {
                 height: 100px;
                 width: 100px;
@@ -35,13 +28,16 @@
             .right {
                 background-color: blue;
                 display: inline-block;
+                float: right;
             }
             
             .splitter {
                 background-color: black;
                 height: 100px;
-                width: 40px;
+                width: 5px;
                 display: inline-block;
+                position: absolute;
+                cursor: col-resize;
             }
         </style>
 
@@ -50,7 +46,7 @@
             /*
             You should be able to get the divs on either side of the draggable one to follow it, which should give you the split pane effect.
             Not sure that this is the best way to do it, though. You can't get dragging behaviour with an element that's not position: absoluted.
-            
+
             */
 
             $(document).ready(function () {
@@ -58,12 +54,15 @@
                 var clickY = null;
 
                 var elementBeingDragged = null;
+                var parentWidth = $('.right').parent().width();
+                var amountToMinus = $('.splitter').width() + $('.left').width();
+
+                $('.right').css('width', 'calc(100% - ' + amountToMinus + 'px)');
+                
 
                 $('.draggable').mousedown(function (event) {
-                    console.log('mouse gone down on draggable element');
                     var parentOffset = $(this).offset();
                     clickX = event.pageX - parentOffset.left;
-                    //clickY = event.pageY - parentOffset.top;
                     elementBeingDragged = event.target;
 
                     // Escape default mouse down behaviour
@@ -82,36 +81,22 @@
 
                 $('html').mousemove(function (event) {
                     if (elementBeingDragged != null) {
-                        //elementBeingDragged.style.top = (event.pageY - clickY) + 'px';
                         elementBeingDragged.style.left = (event.pageX - clickX) + 'px';
 
-
                         var position = $(elementBeingDragged).position();
-
 
                         // This value should be the value of the left of the element being dragged
                         $('.left').width(position.left);
 
-
-                        // 100% minus the width of the div on the left plus the width of the bar
-                        var parentWidth = $('.right').parent().width();
-                        
-                       // alert(parentWidth);
-
-
-
-                        $('.right').width(position.left);
-
-
+                        // now set the width to be 100% minus the width of the other side and the splitter bar.
+                        var amountToMinus = $('.splitter').width() + $('.left').width();
+                        $('.right').css('width', 'calc(100% - ' + amountToMinus + 'px)');
                     }
                 });
 
                 $('.draggable').mousemove(function (event) {
                     if (elementBeingDragged != null) {
                         elementBeingDragged.style.left = (event.pageX - clickX) + 'px';
-                        console.log('dragging');
-
-
                     }
                     event.stopPropagation();
                 });
@@ -122,23 +107,15 @@
 
     </head>
     <body>
-
-
-        <div class="left"></div>
-        <div class="splitter draggable"></div>
         
-
-
-
-        <div class="right"></div>
-
-
-
-
-        <script>
-
-            // We want the div on the left to shrink as we move the splitter left.
-
-        </script>
+        <div class="left">
+            Here is come text. Hopefully it will adapt to the size of its container as you type.
+        </div>
+        <div class="splitter draggable"></div>
+        <div class="right">
+            Here is come text. Hopefully it will adapt to the size of its container as you type.    
+        </div>
     </body>
 </html>
+
+
