@@ -1,0 +1,33 @@
+ body {
+                /* Think about not relying on this. Incorprate the padding/margin/border into the calcs later */
+                margin: 0;
+            }               
+
+            .left, .right {
+                height: calc(100% - 50px);
+                /* width: 100px; */
+                
+                display: inline-block;
+            }
+            
+            .right {
+                
+                float: right;
+            }
+ 
+            .left {
+                
+            }
+            
+            .splitter {
+                background-color: black;
+                height: calc(100% - 50px);
+                width: 5px;
+                display: inline-block;
+                position: absolute;
+                cursor: col-resize;
+            }
+               
+            .splitter-view {
+                   height:  100px;
+               }

@@ -16,6 +16,7 @@
         <link rel="stylesheet" type="text/css" href="css/modal.css">
         <link rel="stylesheet" type="text/css" href="css/listview.css">
         <link rel="stylesheet" type="text/css" href="css/schedule.css">
+        <link rel="stylesheet" href="plugins/SplitterView/SplitterView.css" type="text/css">
         <link href="plugins/Calendar/calendar.css" type="text/css" rel="stylesheet">
         <link href="plugins/TimePicker/clock.css" type="text/css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -29,7 +30,9 @@
         <script src="mvc/models/ShoutModel.js"></script>
         <script src="mvc/views/ShoutView.js"></script>
         
-        
+
+
+        <script src="plugins/SplitterView/SplitterView.js"></script>
         
         <script src="js/nav.js"></script>
         <script src="js/Modal.js"></script>

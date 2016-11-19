@@ -1,121 +1,61 @@
 <!DOCTYPE html>
-
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title></title>
+        <title>Splitter View</title>
+        <link rel="stylesheet" href="plugins/SplitterView/SplitterView.css" type="text/css">
         <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-           <style>
-
-            * {
-                margin: 0;
-                padding: 0;
-                border: 0;
-            }               
-
-            .left, .right {
-                height: 100px;
-                width: 100px;
-                
-            }
-            
-            .left {
-              
-                background-color: red;
-                display: inline-block;
-            }
-            
-            .right {
-                background-color: blue;
-                display: inline-block;
-                float: right;
-            }
-            
-            .splitter {
-                background-color: black;
-                height: 100px;
-                width: 5px;
-                display: inline-block;
-                position: absolute;
-                cursor: col-resize;
-            }
-        </style>
-
+        <script src="plugins/SplitterView/SplitterView.js"></script>
+        
         <script>
-
-            /*
-            You should be able to get the divs on either side of the draggable one to follow it, which should give you the split pane effect.
-            Not sure that this is the best way to do it, though. You can't get dragging behaviour with an element that's not position: absoluted.
-
-            */
-
             $(document).ready(function () {
-                var clickX = null;
-                var clickY = null;
-
-                var elementBeingDragged = null;
-                var parentWidth = $('.right').parent().width();
-                var amountToMinus = $('.splitter').width() + $('.left').width();
-
-                $('.right').css('width', 'calc(100% - ' + amountToMinus + 'px)');
-                
-
-                $('.draggable').mousedown(function (event) {
-                    var parentOffset = $(this).offset();
-                    clickX = event.pageX - parentOffset.left;
-                    elementBeingDragged = event.target;
-
-                    // Escape default mouse down behaviour
-                    return false;
-                });
-
-                $('.draggable').mouseup(function (event) {
-                    elementBeingDragged = null;
-                    event.stopPropagation();
-                });
-
-
-                $('html').mouseup(function (event) {
-                    elementBeingDragged = null;
-                });
-
-                $('html').mousemove(function (event) {
-                    if (elementBeingDragged != null) {
-                        elementBeingDragged.style.left = (event.pageX - clickX) + 'px';
-
-                        var position = $(elementBeingDragged).position();
-
-                        // This value should be the value of the left of the element being dragged
-                        $('.left').width(position.left);
-
-                        // now set the width to be 100% minus the width of the other side and the splitter bar.
-                        var amountToMinus = $('.splitter').width() + $('.left').width();
-                        $('.right').css('width', 'calc(100% - ' + amountToMinus + 'px)');
-                    }
-                });
-
-                $('.draggable').mousemove(function (event) {
-                    if (elementBeingDragged != null) {
-                        elementBeingDragged.style.left = (event.pageX - clickX) + 'px';
-                    }
-                    event.stopPropagation();
-                });
-
+                $('.splitter-view').splitterView();
             });
+
+
         </script>
 
 
     </head>
     <body>
-        
-        <div class="left">
-            Here is come text. Hopefully it will adapt to the size of its container as you type.
-        </div>
-        <div class="splitter draggable"></div>
-        <div class="right">
-            Here is come text. Hopefully it will adapt to the size of its container as you type.    
+        <div class="splitter-view">
+            <div class="left">
+                Here is come text. Hopefully it will adapt to the size of its container as you type.
+            </div>
+            <div class="right">
+                Here is come text. Hopefully it will adapt to the size of its container as you type.    
+            </div>
         </div>
     </body>
 </html>
 
 
+<!--
+
+TODO:
+    Get it working even when you're not dragging on the html element. It won't work at the moment when used normally! DONE
+    Add limits so you can't drag too far in either direction. DONE
+
+
+
+    Now that limits can be set, should they be set as relative from the left or the right? 
+    I like the idea of setting them relative to the right because screen sizes will vary. Something to think about.
+
+
+
+    How could this be turned into a plugin? What would a user of the plugin need to do?
+
+    
+    They would need to create a container div with a class of splitter-view.
+    Inside it they would define the divs with the left and the right classes.
+
+    The height of the splitter view could be set to inherit so that it was the same as
+    the container? It worked.
+
+    
+
+
+
+
+
+-->

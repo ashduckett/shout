@@ -12,7 +12,7 @@
 .shout-table {
     margin: auto;
     padding: 0;
-    height: 700px;
+    height: 100%;
     position: relative;
 }
 
@@ -72,7 +72,7 @@
 
 .account-list-container {
     width: 200px;
-    height: calc(100% - 50px);
+    height: calc(100%);
     float: right;
     border-left: solid 1px rgb(221, 221, 221);
     box-sizing: border-box;
@@ -86,8 +86,8 @@
 }
 
 .schedule-workspace {
-    height: calc(100% - 50px);
-    width: calc(100% - 600px);
+    height: calc(100%);
+    width: calc(100% - 200px);
     float: left;
 }
 

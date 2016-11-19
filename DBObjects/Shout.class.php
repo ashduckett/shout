@@ -89,12 +89,19 @@
         // limit here will be 10, page No 1, 2, 3...1 10 1 is passed in.
 
         public static function getPage($pageNo, $limit, $project_id, &$shout_count, &$next_page, &$prev_page) {
+            
             // Get the total number of records
             $conn = parent::connect();
             $sql = "SELECT COUNT(*) FROM " . TBL_SHOUT . " WHERE project_id = :project_id";
             $st = $conn->prepare($sql);
             $st->bindValue(":project_id", $project_id);
-            $st->execute();
+           
+            try {
+                $st->execute();
+            } catch(Exception $e) {
+                error_log($e->getMessage(), 3, 'error_log.log');
+            }
+
             $no_of_rows = $st->fetchColumn();
 
 
