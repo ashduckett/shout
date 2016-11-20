@@ -3,10 +3,17 @@ jQuery.fn.splitterView = function () {
     // Create the splitter and add it to the page
     var splitter = $(document.createElement('div'));
 
+    // the left pane of the right splitpane has no width.
+
+    // Where should spl2 get its width from? Its content? Somewhere it's getting set to 200.
+
+
     splitter.addClass('splitter');
 
-    var left = this.find('.left');
-    var right = this.find('.right');
+    console.log('just added the splitter class to something');
+
+    var left = this.children('.left');
+    var right = this.children('.right');
 
 
     left.after(splitter);
@@ -46,7 +53,7 @@ jQuery.fn.splitterView = function () {
                 right.css('width', 'calc(100% - ' + amountToMinus + 'px)');
             }
         }
-    }.bind(this));
+    } .bind(this));
 
 
 
