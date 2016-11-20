@@ -62,7 +62,7 @@
 <script>
 
     $(function () {
-        $('.spl').splitterView();
+        //$('.spl').splitterView();
     });
 
 

@@ -35,7 +35,6 @@ ProjectController.prototype.addItem = function () {
         var projectName = $('#project-name').val();
         $.post("../save_project.php", { name: projectName }, function (data) {
             var newProject = new SchedulingProject(data, projectName);
-            console.log('adding project to model with id of ' + newProject.id);
             _this._model.addItem(newProject);
             modal.hideModal();
         });

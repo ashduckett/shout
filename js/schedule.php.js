@@ -5,7 +5,11 @@ $(document).ready(function () {
         var element = document.getElementsByClassName('listview')[0];
         var projectView = new SchedulingProjectView(projectModel, element);
         var controller = new ProjectController(projectModel, projectView);
+
+
         projectView.draw();
+        $('.spl').splitterView();       // Is this a hack? Possibly. The splitter isn't part of any one view.
+                                        // It works for now though. Sort later. Think later.
     });
 
     // Code for Add item button

@@ -78,7 +78,14 @@ SchedulingProjectView.prototype.draw = function () {
         deleteSpan.style.marginLeft = '5px';
         element.appendChild(icon);
 
+
+        // Can we tell the splitpane about the change here?
+        // Why is it called twice initially?
+
+
         $(this.element).append($(element));
+
+
     };
 
     $('.delete-side-icon, .edit-side-icon').hover(function () {
@@ -138,7 +145,6 @@ SchedulingProjectView.prototype.draw = function () {
 
         event.stopPropagation();
     });
-
 };
 
 SchedulingProjectView.prototype.rebuildList = function () {

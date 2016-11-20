@@ -20,14 +20,16 @@ jQuery.fn.splitterView = function () {
     // Left is 17...because the content hasn't loaded at that point.
     // When the content is loaded, the size of the left pane changes.
     // At which time, the 17px reported here is invalid.
-    
+
     // How can you get hold of this 133 before the content's loaded?
     // Maybe I need MVC stuff...
-    
+
     // I think you need to notify the splitpane control that data has been loaded
-    
-    var amountToMinus = $('.splitter').width() + 133;
-     $('.right').css('width', 'calc(100% - ' + amountToMinus + 'px)');
+
+    var amountToMinus = $('.splitter').width() + $('.left').width();
+
+
+    $('.right').css('width', 'calc(100% - ' + amountToMinus + 'px)');
 
 
     $(splitter).mousedown(function (event) {
@@ -65,6 +67,9 @@ jQuery.fn.splitterView = function () {
             }
         }
     });
+
+
+
 
 
 
