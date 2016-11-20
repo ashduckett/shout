@@ -64,4 +64,21 @@
     $(function () {
         $('.spl').splitterView();
     });
+
+
+/*
+    TODO:
+        Can you add a splitter bar to the add accounts section as well?
+        Can you make the splitter bar completely generic?
+        Can you get rid of the gap showing at the bottom of the screen?
+        Can you add restrictions on how far the splitter bars will go in both directions?
+        Can you make the splitter bar control look better? Maybe add a grip image?
+        Can you make the table responsive based on how must space it has?
+
+        
+
+*/
+
+
 </script>
+
