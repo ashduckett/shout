@@ -25,7 +25,7 @@ div.listview-header {
 }
             
 .listview-container {
-    height: calc(100% - 50px); 
+    height: calc(100% - 50px) !important;
     overflow: no-display;
 }
             

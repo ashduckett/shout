@@ -49,17 +49,19 @@
         <title>Shout</title>
     </head>
     <body>
-        <div class="main-container" style="height: 100vh">
-            <div class="menu">
-                <ul>
-                    <li><span class="menu-item">Shout...</span>
-                        <ul class="dropdown">
-                            <li>Social Media...</li>
-                            <li>My Profile...</li>
-                            <li id="menu-item-accounts">Accounts...</li>
-                            <li id="menu-item-scheduling">Scheduling...</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+        <div class="menu">
+            <ul>
+                <li><span class="menu-item">Shout...</span>
+                    <ul class="dropdown">
+                        <li>Social Media...</li>
+                        <li>My Profile...</li>
+                        <li id="menu-item-accounts">Accounts...</li>
+                        <li id="menu-item-scheduling">Scheduling...</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-container">
+            
         

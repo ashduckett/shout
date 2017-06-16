@@ -16,7 +16,7 @@
 
     </style>
 
-        <div class="sidebar">
+<!--        <div class="sidebar">
             <ul class="sidebar-listing">
                 <li class="sidebar-header">Social Media</li>
                 <li class="sidebar-item" id="new-project">New Project</li>
@@ -28,44 +28,20 @@
                 <li class="sidebar-item disabled">Export From...</li>
                 <li class="sidebar-item disabled">Advanced...</li>
             </ul>
-        </div>                               
-        <div class="spl" style="height: calc(100vh - 50px); width: calc(100% - 200px); float: left;">
-            <div class="left">
-                <div class="listview-container" style="height: 100%; width: inherit;">
-                    <ul class="listview"></ul>
-                </div>
-            </div>
-            
-            
-            <div class="right" style="height: 100%;">
-
-
-
-                <div class="spl2" style="float: right; height: 100vh; width: 100%;">
-                    <div class="left">
-                        <div class="schedule-workspace">
-                            <div class="shout-table"></div>        
-                        </div>
-                    </div>
-                    
-              <div class="right">
-                        <div class="account-list-container" style="width: 100%;">
-                            <div class="account-list-container-account-list"></div>
-                            <div class="account-list-container-buttons">
-                                <a href="#">Add/Remove Accounts...</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>                        
-
-        
-        
-        
-        
-        
+        </div>                               -->
+        <!--<div class="listview-container" style="height: 100%; width: inherit;">
+            <ul class="listview"></ul>
         </div>
-
+        <div class="schedule-workspace">
+            <div class="shout-table"></div>        
+        </div>
+        <div class="account-list-container" style="width: 100%;">
+            <div class="account-list-container-account-list"></div>
+            <div class="account-list-container-buttons">
+                <a href="#">Add/Remove Accounts...</a>
+            </div>
+        </div>
+        -->
             
 
 <?php

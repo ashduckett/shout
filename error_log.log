@@ -10,4 +10,16 @@ inside insert function!Shout Object
         )
 
 )
+SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invalid date' for column 'date' at row 1inside insert function!Shout Object
+(
+    [data:protected] => Array
+        (
+            [id] => 
+            [project_id] => 1
+            [text] => 
+            [date] => Invalid date
+            [time] => Invalid date
+        )
+
+)
 SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invalid date' for column 'date' at row 1

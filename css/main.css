@@ -142,4 +142,8 @@
     color: black;
 }
 
-
+/* This will always be the main content container. Add tabs, add what you like, this is the mother of all containers */
+ .main-container {
+    /* Take into consideration the height of nav bar */
+    height: calc(100vh - 50px);
+ }
