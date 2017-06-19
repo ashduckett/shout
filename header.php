@@ -25,11 +25,9 @@
 
 
         <script src="js/jquery.min.js"></script>
-
         <script src="js/Draggable.js"></script>
         <script src="js/DraggableCol.js"></script>
         <script src="js/DraggableRow.js"></script>
-
 
         <script src="mvc/Event.js"></script>
         <script src="mvc/controllers/ProjectController.js"></script>
