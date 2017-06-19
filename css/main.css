@@ -86,9 +86,9 @@
 }
 
 .schedule-workspace {
-    height: calc(100%);
-    width: calc(100% - 200px);
-    float: left;
+    height: 100%;
+    display: flex;
+   
 }
 
 .account-list-container-buttons {
@@ -146,4 +146,25 @@
  .main-container {
     /* Take into consideration the height of nav bar */
     height: calc(100vh - 50px);
+    background-color: beige;
+    display: flex;
  }
+
+ .side {
+     background-color: yellow;
+     height: 100%;
+     flex: 0.1;
+ }
+
+  .schedule-workspace {
+     background-color: red;
+     height: 100%;
+     flex-grow: 0.9;
+
+}
+
+/*
+    main-container has flex;
+    side-bar has flex 0.1;
+
+*/

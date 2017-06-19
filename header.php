@@ -21,7 +21,16 @@
         <link href="plugins/TimePicker/clock.css" type="text/css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         
+
+
+
         <script src="js/jquery.min.js"></script>
+
+        <script src="js/Draggable.js"></script>
+        <script src="js/DraggableCol.js"></script>
+        <script src="js/DraggableRow.js"></script>
+
+
         <script src="mvc/Event.js"></script>
         <script src="mvc/controllers/ProjectController.js"></script>
         <script src="mvc/models/ProjectModel.js"></script>

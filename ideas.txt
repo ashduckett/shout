@@ -13,3 +13,23 @@ This should be unnecessary with MVC. Although you don't want to end up loading a
 When you do a load shouts, you'll need to know
     * Which project the shouts are for
     * Which page to load
+
+
+
+
+
+
+
+
+
+
+UI Redesign
+
+Tall menu down the side.
+Projects and their organisation in the main view as draggable cols.
+Accounts added don't need to be down the entire right hand side.
+
+Maybe a popup? Like a speech bubble that appears on clicking a nearby button that you can easily dismiss.
+This would be another jQuery plugin.
+
+So all we need are the tools down the left side and something to take up the rest of the room to the right of it.
