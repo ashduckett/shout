@@ -2,7 +2,7 @@ $(document).ready(function () {
     var projectModel = new SchedulingProjectModel();
 
     projectModel.loadProjects(function () {
-        console.log("Starting callback");
+        
         var element = document.getElementsByClassName('listview')[0];
         var projectView = new SchedulingProjectView(projectModel, element);
         var controller = new ProjectController(projectModel, projectView);
@@ -15,7 +15,7 @@ $(document).ready(function () {
 
         var controller = new RowColumnController(canvas, projectModel);
         controller.update();        
-        console.log('got here');
+
 
                 
 
