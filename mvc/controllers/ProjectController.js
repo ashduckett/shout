@@ -1,6 +1,5 @@
 function ProjectController(model, view) {
-    
-    
+     
     
     this._model = model;
     this._view = view;
@@ -12,6 +11,7 @@ function ProjectController(model, view) {
     });
 
     this._view.addButtonClicked.attach(function () {
+
         _this.addItem();
     });
 
@@ -22,11 +22,10 @@ function ProjectController(model, view) {
     this._view.projectItemClicked.attach(function (sender, args) {
         _this.updateShoutTable(args.id, 1);
     });
-
-
 }
 
 ProjectController.prototype.addItem = function () {
+
     var _this = this;
     var modal = new Modal(500, 200, 'Add Project', '../modal_layouts/add_project.php');
 

@@ -1,25 +1,1483 @@
-inside insert function!Shout Object
+project id:Array
 (
-    [data:protected] => Array
+)
+project id:Array
+(
+)
+project id:Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
         (
-            [id] => 
-            [project_id] => 2
-            [text] => 
-            [date] => Invalid date
-            [time] => Invalid date
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
         )
 
 )
-SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invalid date' for column 'date' at row 1inside insert function!Shout Object
+3project id:3Array
 (
-    [data:protected] => Array
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
         (
-            [id] => 
-            [project_id] => 1
-            [text] => 
-            [date] => Invalid date
-            [time] => Invalid date
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
         )
 
 )
-SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: 'Invalid date' for column 'date' at row 1
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+3project id:3Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)
+1project id:1Array
+(
+)
+2project id:2shout found!Array
+(
+    [0] => Shout Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 1
+                    [project_id] => 2
+                    [text] => text
+                    [date] => 2010-06-05 11:11:11
+                    [time] => 2010-06-05 11:11:11
+                )
+
+        )
+
+)
+3project id:3Array
+(
+)

@@ -1,10 +1,11 @@
 function SchedulingProject(id, name) {
     this.id = id;
     this.name = name;
+    this.shouts = [];
 }
 
 function SchedulingProjectModel() {
-    this.projects = {};
+    this.projects = [];
     this.itemAdded = new Event(this);
     this.itemRemoved = new Event(this);
     this.itemUpdated = new Event(this);
@@ -16,13 +17,57 @@ SchedulingProjectModel.prototype.loadProjects = function (callMeOnSuccess) {
     var _this = this;
 
     $.post('../API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
+        console.log("Entered post request completion method");
         var obj = JSON.parse(data);
         $.each(obj, function (key, val) {
+            console.log("Inside first each loop");
             _this.projects[val.data.id] = new SchedulingProject(val.data.id, val.data.name);
+            console.log('Name: ' + _this.projects[val.data.id].name);
+        
+            var project_id = val.data.id;
+            
+            
+        });
+        console.log("Finished for each loop");
+
+        var model = new ShoutModel();
+        model.loadAllShouts(function() {
+            if(model.shouts.length > 0) {
+                model.shouts.forEach(function(element) {
+                    _this.projects[element.project_id].shouts.push(element);
+                    
+                });
+            }
+            console.log(_this.projects);
+        console.log("Calling callback");
+
+        // Experiment code
+        var projects = _this.projects;
+
+        projects.forEach(function(element) {
+            console.log(element.shouts);
         });
 
-        callMeOnSuccess();
+        // End experiment code
+
+        callMeOnSuccess();   
+            console.log('All shouts obtained');
+        });
+
+        /*
+            Each project should have an array. Each project should be obtainable by id. Each project is currently in memory.
+
+            // Step one: Allow all projects to load completely.
+            // Step two: Load all of the shouts in the callback.
+            // Step three: Get hold of the project in memory by id and append its shout.
+
+        */
+
+
+
+         
     });
+    
 };
 
 SchedulingProjectModel.prototype.getProjects = function () {

@@ -26,8 +26,6 @@
 
         <script src="js/jquery.min.js"></script>
         <script src="js/Draggable.js"></script>
-        <script src="js/DraggableCol.js"></script>
-        <script src="js/DraggableRow.js"></script>
 
         <script src="mvc/Event.js"></script>
         <script src="mvc/controllers/ProjectController.js"></script>
@@ -48,7 +46,7 @@
         <script src="plugins/Calendar/calendar.js" type="text/javascript"></script>
         <script src="plugins/TimePicker/clock.js" type="text/javascript"></script>
         
-        
+        <script src="js/RowColumnMVC.js"></script>
         <script src="js/main.js"></script>
 
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300">
@@ -68,7 +66,6 @@
                 </li>
             </ul>
         </div>
-
         <div class="main-container">
             
         

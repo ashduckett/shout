@@ -86,6 +86,38 @@ ShoutModel.prototype.setToLastPage = function (project_id, callMeOnSuccess) {
     }
 }
 
+ShoutModel.prototype.loadShoutsForProject = function(project_id, callMeOnSuccess) {
+    var _this = this;
+
+    _this.shouts = [];
+
+    $.getJSON('../get_all_shouts_for_project.php', { project_id: project_id }, function (data) {
+        var allShouts = data.shouts;
+
+        $.each(allShouts, function (key, val) {
+            _this.shouts[val.data.id] = new Shout(val.data.id, val.data.project_id, val.data.text, val.data.date, val.data.time);
+        });
+        console.log("PHP file accessed successfully.");
+        callMeOnSuccess();
+    });
+};
+
+ShoutModel.prototype.loadAllShouts = function(callMeOnSuccess) {
+    var _this = this;
+
+    _this.shouts = [];
+
+    $.getJSON('../get_all_shouts.php', function (data) {
+        var allShouts = data.shouts;
+
+        $.each(allShouts, function (key, val) {
+            _this.shouts[val.data.id] = new Shout(val.data.id, val.data.project_id, val.data.text, val.data.date, val.data.time);
+        });
+
+        callMeOnSuccess();
+    });
+};
+
 ShoutModel.prototype.loadShouts = function (project_id, pageNo, callMeOnSuccess) {
     var _this = this;
 

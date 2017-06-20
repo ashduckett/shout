@@ -21,6 +21,7 @@ function SchedulingProjectView(model, element) {
     });
 
     $('#new-project').click(function () {
+        console.log('something happened');
         _this.addButtonClicked.notify();
     });
 }
@@ -31,7 +32,7 @@ SchedulingProjectView.prototype.draw = function () {
     var list = document.createElement('ul');
     var projects = this.model.getProjects();
 
-    _this.element.innerHTML = "";
+ //   _this.element.innerHTML = "";
 
     for (var i in projects) {
 

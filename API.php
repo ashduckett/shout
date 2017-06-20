@@ -13,7 +13,6 @@ $type = $_POST['type'];
 
 switch($method) {
     case 'get_all':
-        console.log('got to the right case');
         switch($type) {
             case 'SchedulingProject':
                 $projects = SchedulingProject::getAll();

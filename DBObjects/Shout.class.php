@@ -49,6 +49,8 @@
 
 
          public static function findByProjectId($project_id) {
+            error_log('project id:', 3, 'error_log.log');
+            error_log($project_id, 3, 'error_log.log');
             $conn = DataObject::connect();
             $sql = "SELECT * FROM shout WHERE project_id = :project_id";
             $st = $conn->prepare($sql);
@@ -57,9 +59,12 @@
             $shouts = array();
 
             foreach($st->fetchAll() as $row) {
+                error_log('shout found!', 3, 'error_log.log');
                 $shouts[] = new Shout($row);
             }
             parent::disconnect($conn);
+
+
             return $shouts;
         }
 

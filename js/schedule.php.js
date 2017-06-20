@@ -2,14 +2,23 @@ $(document).ready(function () {
     var projectModel = new SchedulingProjectModel();
 
     projectModel.loadProjects(function () {
+        console.log("Starting callback");
         var element = document.getElementsByClassName('listview')[0];
         var projectView = new SchedulingProjectView(projectModel, element);
         var controller = new ProjectController(projectModel, projectView);
 
 
-        projectView.draw();
-        $('.spl').splitterView();       // Is this a hack? Possibly. The splitter isn't part of any one view.
-                                        // It works for now though. Sort later. Think later.
+
+
+        var canvas = $('.column-container');
+        // Fully load the projects and shouts
+
+        var controller = new RowColumnController(canvas, projectModel);
+        controller.update();        
+        console.log('got here');
+
+                
+
     });
 
     // Code for Add item button
