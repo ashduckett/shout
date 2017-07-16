@@ -1,7 +1,15 @@
+var Row = function(domElement) {
+    this.id = null;
+    this.domElement = domElement;
+};
+
+
 var Column = function(domElement) {
-    
+    // Database id
+    this.id = null;
+
     // Row DOM elements
-    this.rows = [];
+    this.rows = {};
 
     // The column DOM element
     this.domElement = domElement;
@@ -9,36 +17,14 @@ var Column = function(domElement) {
 
 // When in use, this should be the only thing we need.
 var RowColumnController = function(element, projectModel) {
-    // Here we should build up the model.
-    // Once all this code has run, the update method is called from outside in shcedule.php.js
 
     // Keep model
     this.model = projectModel;
 
     // Create an instance of the view, telling it the model.
     this.view = new RowColumnView(element, projectModel);
-    
-    
-    // In theory, now, the view can be built using the data it has of the model.
 
-    // There has to be a better way to do this.
-    // Somehow I want to be wiser...
-    var index = 0;
-    this.model.projects.forEach(function(element) {
-
-        
-
-       // this.addColumn();
-
-        var shouts = element.shouts;
-
-        shouts.forEach(function(element) {
-        //    this.addRow(index);
-
-        }, this);
-        index++;
-
-    }, this);     
+    // Now that this has run, update will be called from outside.
 };
 
 RowColumnController.prototype.update = function() {
@@ -57,17 +43,16 @@ RowColumnController.prototype.addRow = function(rowIndex) {
 var RowColumnView = function(element, model) {
     this.element = $(element);
     this.model = model;
+
     /* Setup CSS */
-    
     this.element.css('width', '100%');
     this.element.css('height', '100%');
     this.element.css('position', 'relative');
 
-    // This will store objects of type Column.
-    // Try to get rid of this in favour of the one below.
-    this.columns = [];
-
-    this.columnsByProjectId = [];
+    // Dictionary to hold columns by project id.
+    // Start with Column objects because these hold an array for rows. This will eventually have to be a dictionary as well.
+    // How then do we deal with order?
+    this.columnsByProjectId = {};
 };
 
 // You know you need to store the dom element.
@@ -86,42 +71,27 @@ RowColumnView.prototype.draw = function() {
     var currentTop = 0;
 
     this.model.projects.forEach(function(element) {
-        this.addColumn(currentLeft);
+        col = this.addColumn(currentLeft);
         currentLeft += 100 + 1;
 
-        element.shouts.forEach(function() {
-            
-            this.addRow(currentIndex, currentTop);
+        // New storage system
+        this.columnsByProjectId[element.id] = col;
+        this.columnsByProjectId[element.id].id = element.id;
+
+        // New storage system
+        element.shouts.forEach(function(shout) {
+            console.log(shout);
+            this.columnsByProjectId[element.id].rows[shout.id] = this.addRow(element.id, currentIndex, currentTop);
             currentTop += 65 + 1;
         }, this);
         currentTop = 0;
         currentIndex++;
-
-
-
     }, this);
 
-
-
-
-    /*
-
-
-
-    var currentLeft = 0;
-    this.columns.forEach(function(element) {
-        element.domElement.css('left', currentLeft + 'px');
-        currentLeft += element.domElement.width() + 1;
-
-        var currentTop = 0;
-        element.rows.forEach(function(row) {
-            row.css('top', currentTop + 'px');
-            element.domElement.append(row);
-            currentTop += row.height() + 1;
-        });
-        this.element.append(element.domElement);
-    }, this);
-*/
+    // Spit out columnsByProjectId and you should find you have all of the projects and all of the shouts.
+    console.log('current view model');
+    console.log(this.columnsByProjectId);
+   
 };
 
 // This is called once, via RowColumnController.view when it loads.
@@ -150,8 +120,11 @@ RowColumnView.prototype.addColumn = function(left) {
     // At which point is self.columns populated?
     var setters = $(column).draggable(null, null, function() {
 
-        self.columns.forEach(function(element) {
-            var element = element.domElement;
+        // We want to iterate over all column objects (for in loops are ineffecient so find an alternative later)
+        for (var property in self.columnsByProjectId) {
+
+            // This equates to an array of three columns Column objects they are.
+            var element = self.columnsByProjectId[property].domElement;
             if(!$(element).hasClass('dragging')) {
                  if(event.pageX > $(element).offset().left && event.pageX < $(element).offset().left + $(element).width()) {
                     // If we are inside one of the columns not being dragged, move the column
@@ -168,34 +141,42 @@ RowColumnView.prototype.addColumn = function(left) {
                     return false;
                 }
             }
-        });
+        }
     });
-    console.log(column);
+
    this.element.append(column);
 
     // Maybe you don't need to store an entire Column object. We already have the model?
     // If you took it out, though, you couldn't iterate over for when you want to do swapsies.
-    this.columns.push(new Column(column));
+    
+    var newColumn = new Column(column);
+    
+    return newColumn;
 };
 
-RowColumnView.prototype.addRow = function(columnIndex, top) {
+// Change this to work like addColumn with storing the things by id.`
+
+RowColumnView.prototype.addRow = function(projectId, columnIndex, top) {
     
     // This will still work. I wanted them stored by id!
-    var column = this.columns[columnIndex];
-    
+    var column = this.columnsByProjectId[projectId];
+
     var row = $(document.createElement('div'));
     row.css('height', '65px');
     row.css('width', '100%');
     row.css('background-color', 'orange');
     row.css('z-index', '999999999999999999');
-    console.log(top);
     row.css('top', top + 'px');
 
 
     var setters = $(row).draggable(null, null, function() {
+        // Currently the rows are arrays so this is fine as it is.
         var rows = column.rows;
 
-        $(rows).each(function(index, row) {
+        // for (var property in self.columnsByProjectId) {
+        for (var property in rows) {
+            var row = $(rows[property].domElement);
+            //$(rows).each(function(index, row) {
             if(!$(row).hasClass('dragging')) {
                 if(event.pageY < $(row).offset().top + $(row).height() && event.pageY > $(row).offset().top) {
                     var tempReturn = $(row).position();
@@ -207,8 +188,15 @@ RowColumnView.prototype.addRow = function(columnIndex, top) {
                     return false;
                 }
             }
-        });
+        }
     });
-    $(column.domElement).append(row);
-    column.rows.push(row);
+        // Add row to the view
+        $(column.domElement).append(row);
+    
+        return new Row(row);
 };
+
+
+// Get the project ids stored into the Column object.
+// Indexing by id is only so useful since you need to be able to get hold of your data and getting the key of
+// an object seems inunituitive.

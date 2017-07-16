@@ -21,7 +21,6 @@ function SchedulingProjectView(model, element) {
     });
 
     $('#new-project').click(function () {
-        console.log('something happened');
         _this.addButtonClicked.notify();
     });
 }

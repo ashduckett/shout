@@ -4,8 +4,6 @@
 require_once 'DBObjects/SchedulingProject.class.php';
 require_once 'DBObjects/Shout.class.php';
 
-console.log('script hit');
-
 $method = $_POST['method'];
 $type = $_POST['type'];
 

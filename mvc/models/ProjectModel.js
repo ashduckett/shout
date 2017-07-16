@@ -17,18 +17,11 @@ SchedulingProjectModel.prototype.loadProjects = function (callMeOnSuccess) {
     var _this = this;
 
     $.post('../API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
-        console.log("Entered post request completion method");
         var obj = JSON.parse(data);
         $.each(obj, function (key, val) {
-            console.log("Inside first each loop");
             _this.projects[val.data.id] = new SchedulingProject(val.data.id, val.data.name);
-            console.log('Name: ' + _this.projects[val.data.id].name);
-        
             var project_id = val.data.id;
-            
-            
         });
-        console.log("Finished for each loop");
 
         var model = new ShoutModel();
         model.loadAllShouts(function() {
@@ -38,20 +31,9 @@ SchedulingProjectModel.prototype.loadProjects = function (callMeOnSuccess) {
                     
                 });
             }
-            console.log(_this.projects);
-        console.log("Calling callback");
-
-        // Experiment code
-        var projects = _this.projects;
-
-        projects.forEach(function(element) {
-            console.log(element.shouts);
-        });
-
-        // End experiment code
 
         callMeOnSuccess();   
-            console.log('All shouts obtained');
+
         });
 
         /*
