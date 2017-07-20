@@ -16,7 +16,8 @@ function SchedulingProjectModel() {
 SchedulingProjectModel.prototype.loadProjects = function (callMeOnSuccess) {
     var _this = this;
 
-    $.post('../API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
+    $.post('../../API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
+        console.log('post posted');
         var obj = JSON.parse(data);
         $.each(obj, function (key, val) {
             _this.projects[val.data.id] = new SchedulingProject(val.data.id, val.data.name);
