@@ -11,7 +11,7 @@ function Modal(clientWidth, clientHeight, modalTitle, url, callMeAfterLoading) {
     if (typeof this.createModalContainer != "function") {
 
         Modal.prototype.createModalContainer = function () {
-
+ 
             var modalContainer = document.createElement("div");
             var headerHeight = 50;
             var footerHeight = 50;
