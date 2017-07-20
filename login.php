@@ -39,7 +39,7 @@
             
  
             
-            .glowing-border {
+.glowing-border {
     border: 2px solid #dadada;
     border-radius: 7px;
     height: 20px;
