@@ -41,7 +41,7 @@
         
         <script src="js/nav.js"></script>
         <script src="js/Modal.js"></script>
-        <script src="js/schedule.php.js"></script>
+        <script src="js/schedule.js"></script>
         <script src="plugins/Calendar/moment.js" type="text/javascript"></script>
         <script src="plugins/Calendar/calendar.js" type="text/javascript"></script>
         <script src="plugins/TimePicker/clock.js" type="text/javascript"></script>
