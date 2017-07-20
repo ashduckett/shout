@@ -78,7 +78,6 @@ function Modal(clientWidth, clientHeight, modalTitle, url, callMeAfterLoading) {
             $.get(context.url, function (data) {
                 $('.modal-content').html(data);
                 $('.modal-content').height(height);
-                //$('.modal-content').width(width);
 
                 if (callMeAfterLoading) {
                     callMeAfterLoading();
@@ -97,7 +96,6 @@ function Modal(clientWidth, clientHeight, modalTitle, url, callMeAfterLoading) {
                 document.body.removeChild(context.modalContainer);
             });
         };
-
 
         Modal.prototype.createOverlay = function () {
 

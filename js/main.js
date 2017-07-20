@@ -11,6 +11,6 @@ $(document).ready(function () {
     });
 
     $('#menu-item-scheduling').click(function () {
-        window.open('../schedule.php', '_self');
+        window.open('/shout/schedule.php', '_self');
     });
 });

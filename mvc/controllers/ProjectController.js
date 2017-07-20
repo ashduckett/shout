@@ -11,7 +11,6 @@ function ProjectController(model, view) {
     });
 
     this._view.addButtonClicked.attach(function () {
-
         _this.addItem();
     });
 
@@ -27,7 +26,7 @@ function ProjectController(model, view) {
 ProjectController.prototype.addItem = function () {
 
     var _this = this;
-    var modal = new Modal(500, 200, 'Add Project', '../modal_layouts/add_project.php');
+    var modal = new Modal(500, 200, 'Add Project', '/shout/modal_layouts/add_project.php');
 
     modal.addButton('Save', 'primary', function () {
         var name = $('#project-name').val();

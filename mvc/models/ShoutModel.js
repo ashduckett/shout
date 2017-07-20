@@ -91,7 +91,7 @@ ShoutModel.prototype.loadShoutsForProject = function(project_id, callMeOnSuccess
 
     _this.shouts = [];
 
-    $.getJSON('../get_all_shouts_for_project.php', { project_id: project_id }, function (data) {
+    $.getJSON('/shout/get_all_shouts_for_project.php', { project_id: project_id }, function (data) {
         var allShouts = data.shouts;
 
         $.each(allShouts, function (key, val) {
@@ -107,7 +107,7 @@ ShoutModel.prototype.loadAllShouts = function(callMeOnSuccess) {
 
     _this.shouts = [];
 
-    $.getJSON('../get_all_shouts.php', function (data) {
+    $.getJSON('/shout/get_all_shouts.php', function (data) {
         var allShouts = data.shouts;
 
         $.each(allShouts, function (key, val) {
@@ -122,7 +122,7 @@ ShoutModel.prototype.loadShouts = function (project_id, pageNo, callMeOnSuccess)
     var _this = this;
 
     _this.shouts = {};
-    $.getJSON('../get_shout_page.php', { page_no: pageNo, project_id: project_id }, function (data) {
+    $.getJSON('/shout/get_shout_page.php', { page_no: pageNo, project_id: project_id }, function (data) {
         var allShouts = data.shouts;
 
         _this.totalNumberOfPages = data.page_count;
