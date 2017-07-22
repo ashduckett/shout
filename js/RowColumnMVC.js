@@ -22,7 +22,7 @@ var RowColumnController = function(element, projectModel) {
     this.model = projectModel;
 
     // Create an instance of the view, telling it the model.
-    this.view = new RowColumnView(element, projectModel);
+    this.view = new RowColumnView(element, projectModel, this);
 
     // Now that this has run, update will be called from outside.
 };
@@ -39,10 +39,22 @@ RowColumnController.prototype.addRow = function(rowIndex) {
     this.view.addRow(rowIndex);
 };
 
+RowColumnController.prototype.addShout = function(shout) {
+    console.log('Add shout called ');
+
+    //this.model.addItem(shout);
+
+    console.log(this.model.projects[shout.project_id]);
+
+    this.model.projects[shout.project_id].shouts.push(shout);
+    this.view.draw();
+};
+
 /* View code */
-var RowColumnView = function(element, model) {
+var RowColumnView = function(element, model, controller) {
     this.element = $(element);
-    this.model = model;
+    this.model = model;         // this shouldn't be here
+    this.controller = controller;
 
     /* Setup CSS */
     this.element.css('width', '100%');
@@ -70,14 +82,18 @@ RowColumnView.prototype.draw = function() {
     var currentIndex = 0;
     var currentTop = 0;
 
+    // console.log(this.model);
+
     this.model.projects.forEach(function(element) {
-        col = this.addColumn(currentLeft);
+      //  console.log(element);
+        col = this.addColumn(currentLeft, element.id);
         currentLeft += 100 + 1;
 
         // New storage system
         this.columnsByProjectId[element.id] = col;
         this.columnsByProjectId[element.id].id = element.id;
-
+        //console.log('element:');
+        //console.log(element);
         // New storage system
         element.shouts.forEach(function(shout) {
             this.columnsByProjectId[element.id].rows[shout.id] = this.addRow(element.id, currentIndex, currentTop + 26);
@@ -95,7 +111,7 @@ RowColumnView.prototype.draw = function() {
 // Since it has to be called for each column, it kind of makes sense to leave it in
 // its own method.
 // The draw method, however, should be the only thing that calls it.
-RowColumnView.prototype.addColumn = function(left) {
+RowColumnView.prototype.addColumn = function(left, projectId) {
     var column = $(document.createElement('div'));
 
     // Setup CSS
@@ -111,18 +127,50 @@ RowColumnView.prototype.addColumn = function(left) {
     let toolbar = $(document.createElement('div'));
     toolbar.css('width', '100%');
     toolbar.css('height', '25px');
-    toolbar.css('background-color', 'red');
+    toolbar.css('background-color', 'rgb(150, 150, 150)');
     toolbar.css('pointer-events', 'none');
 
-    // Experiment to fix issue with the cols moving to the wrong place
-   /* toolbar.mousedown(function() {
-        return false;
-    });*/
-    // end experiment
+    let addShoutLink = $(document.createElement('a'));
+    addShoutLink.attr('href', '#');
+    addShoutLink.text('+');
+    addShoutLink.css('pointer-events', 'auto');
+    //let self = this;
+    // How are we gon' get the project id?
+    addShoutLink.click(function() {
+        var modal = new Modal(300, 200, 'Add Shout', '../modal_layouts/add_shout.php');
+
+        modal.addButton('Save', 'primary', function () {
+           // projectId = $('li.selected').data('id');
+
+            var shoutDate = moment($('.calendar').val(), "L").format('YYYY-MM-DD 00:00:00');
+            var shoutTime = moment($('.clock').val(), "h:mm A").format('YYYY-MM-DD HH:mm:00');
+            var shoutText = $('#shoutText').val();
+
+            $.post("../save_shout.php", { shoutDate: shoutDate, shoutTime: shoutTime, projectId: projectId, shoutText: shoutText }, function (data) {
+                var newShout = new Shout(data, projectId, shoutText, shoutDate, shoutTime);
+                
+                // Here we need to talk to the controller
+                //self._model.addItem(newShout);
+
+                self.controller.addShout(newShout);
+
+                //self.draw();
+
+                
+
+                modal.hideModal();
+            });
+        });
+
+        modal.addButton('Cancel', 'default', function () {
+            modal.hideModal();
+        });
+
+        modal.showModal();
+    });
 
 
-
-
+    toolbar.append(addShoutLink);
     column.append(toolbar);
 
 

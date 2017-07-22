@@ -11,6 +11,10 @@ function SchedulingProjectModel() {
     this.itemUpdated = new Event(this);
 }
 
+SchedulingProjectModel.prototype.addShout = function(project_id, shout) {
+    this.projects[project_id].shouts.push(shout);
+};
+
 
 
 SchedulingProjectModel.prototype.loadProjects = function (callMeOnSuccess) {

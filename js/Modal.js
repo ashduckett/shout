@@ -1,4 +1,3 @@
-
 function Modal(clientWidth, clientHeight, modalTitle, url, callMeAfterLoading) {
     this.clientWidth = clientWidth;
     this.clientHeight = clientHeight;
@@ -53,7 +52,7 @@ function Modal(clientWidth, clientHeight, modalTitle, url, callMeAfterLoading) {
             modalContainer.style.borderRadius = "11px";
             modalContainer.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)";
             modalContainer.style.boxSizing = "border-box";
-
+            modalContainer.style.zIndex = 99999;
 
             var content = document.createElement("div");
             content.style.width = "100%";
