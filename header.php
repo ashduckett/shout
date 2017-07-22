@@ -20,11 +20,10 @@
         <link href="plugins/Calendar/calendar.css" type="text/css" rel="stylesheet">
         <link href="plugins/TimePicker/clock.css" type="text/css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        
-
-
 
         <script src="js/jquery.min.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/ScheduleMVC.js"></script>
         <script src="js/Draggable.js"></script>
 
         <script src="mvc/Event.js"></script>
@@ -35,8 +34,6 @@
         <script src="mvc/models/ShoutModel.js"></script>
         <script src="mvc/views/ShoutView.js"></script>
         
-
-
         <script src="plugins/SplitterView/SplitterView.js"></script>
         
         <script src="js/nav.js"></script>

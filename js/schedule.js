@@ -1,25 +1,7 @@
 $(document).ready(function () {
-    var projectModel = new SchedulingProjectModel();
 
-    projectModel.loadProjects(function () {
-        
-        var element = document.getElementsByClassName('listview')[0];
-        var projectView = new SchedulingProjectView(projectModel, element);
-        var controller = new ProjectController(projectModel, projectView);
-
-
-
-
-        var canvas = $('.column-container');
-        // Fully load the projects and shouts
-
-        var controller = new RowColumnController(canvas, projectModel);
-        controller.update();        
-
-
-                
-
-    });
+    let scheduleController = new Controller($('.schedule-workspace'));
+    
 
     // Code for Add item button
     $('#generate-schedule').click(function () {

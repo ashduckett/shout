@@ -1,9 +1,13 @@
 function ProjectController(model, view) {
-     
-    
     this._model = model;
     this._view = view;
     
+
+    console.log('view passed in ');
+    console.log(this._view);
+    // We want to update the view. What is this?
+
+
     var _this = this;
 
     this._view.editButtonClicked.attach(function (sender, args) {
@@ -24,16 +28,23 @@ function ProjectController(model, view) {
 }
 
 ProjectController.prototype.addItem = function () {
-
+    console.log('add item called. About to display modal.');
     var _this = this;
-    var modal = new Modal(500, 200, 'Add Project', '/shout/modal_layouts/add_project.php');
+    var modal = new Modal(500, 200, 'Add Project', rootFolder + '/modal_layouts/add_project.php');
 
     modal.addButton('Save', 'primary', function () {
         var name = $('#project-name').val();
         var projectName = $('#project-name').val();
+
         $.post("../save_project.php", { name: projectName }, function (data) {
             var newProject = new SchedulingProject(data, projectName);
+
+            console.log('about to call addItem on model');
             _this._model.addItem(newProject);
+
+            console.log(_this.view);
+
+
             modal.hideModal();
         });
     });

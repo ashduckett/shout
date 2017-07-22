@@ -107,7 +107,7 @@ ShoutModel.prototype.loadAllShouts = function(callMeOnSuccess) {
 
     _this.shouts = [];
 
-    $.getJSON('/shout/get_all_shouts.php', function (data) {
+    $.getJSON(rootFolder + '/get_all_shouts.php', function (data) {
         var allShouts = data.shouts;
 
         $.each(allShouts, function (key, val) {

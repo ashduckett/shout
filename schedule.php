@@ -1,7 +1,7 @@
 <?php
     require_once 'header.php';
 ?>
-    <div class="sidebar">
+    <!-- <div class="sidebar">
         <ul class="sidebar-listing">
             <li class="sidebar-header">Social Media</li>
             <li class="sidebar-item" id="new-project">New Project</li>
@@ -13,10 +13,12 @@
             <li class="sidebar-item disabled">Export From...</li>
             <li class="sidebar-item disabled">Advanced...</li>
         </ul>
-    </div>
+    </div> -->
+
+
 
     <div class="schedule-workspace">
-        <div class="column-container"></div>
+        <!-- <div class="column-container"></div> -->
     </div>
 
 <?php

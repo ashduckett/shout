@@ -80,18 +80,12 @@ RowColumnView.prototype.draw = function() {
 
         // New storage system
         element.shouts.forEach(function(shout) {
-            console.log(shout);
-            this.columnsByProjectId[element.id].rows[shout.id] = this.addRow(element.id, currentIndex, currentTop);
+            this.columnsByProjectId[element.id].rows[shout.id] = this.addRow(element.id, currentIndex, currentTop + 26);
             currentTop += 65 + 1;
         }, this);
         currentTop = 0;
         currentIndex++;
     }, this);
-
-    // Spit out columnsByProjectId and you should find you have all of the projects and all of the shouts.
-    console.log('current view model');
-    console.log(this.columnsByProjectId);
-   
 };
 
 // This is called once, via RowColumnController.view when it loads.
@@ -111,6 +105,26 @@ RowColumnView.prototype.addColumn = function(left) {
     column.css('position', 'absolute');
     column.css('top', '0');
     column.css('left', left);
+
+
+
+    let toolbar = $(document.createElement('div'));
+    toolbar.css('width', '100%');
+    toolbar.css('height', '25px');
+    toolbar.css('background-color', 'red');
+    toolbar.css('pointer-events', 'none');
+
+    // Experiment to fix issue with the cols moving to the wrong place
+   /* toolbar.mousedown(function() {
+        return false;
+    });*/
+    // end experiment
+
+
+
+
+    column.append(toolbar);
+
 
     // we need to set the left on each iteration and we can't do that when adding a single column.
     // Need a new plan. I still like the idea of maybe getColumnElement(left) 
@@ -144,7 +158,16 @@ RowColumnView.prototype.addColumn = function(left) {
         }
     });
 
-   this.element.append(column);
+
+    // We need to add something to the column.
+    // We also need the id of the project
+
+
+
+    this.element.append(column);
+
+
+
 
     // Maybe you don't need to store an entire Column object. We already have the model?
     // If you took it out, though, you couldn't iterate over for when you want to do swapsies.
