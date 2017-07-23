@@ -1,14 +1,17 @@
+// Rename this to Schedule
 function SchedulingProject(id, name) {
     this.id = id;
     this.name = name;
     this.shouts = [];
 }
 
+
+
 function SchedulingProjectModel() {
     this.projects = [];
-    this.itemAdded = new Event(this);
+/*    this.itemAdded = new Event(this);
     this.itemRemoved = new Event(this);
-    this.itemUpdated = new Event(this);
+    this.itemUpdated = new Event(this);*/
 }
 
 SchedulingProjectModel.prototype.addShout = function(project_id, shout) {
@@ -19,7 +22,7 @@ SchedulingProjectModel.prototype.addShout = function(project_id, shout) {
 
 SchedulingProjectModel.prototype.loadProjects = function (callMeOnSuccess) {
     var _this = this;
-    console.log(rootFolder)
+
     $.post(rootFolder + '/API.php', { method: 'get_all', type: 'SchedulingProject' }, function (data) {
         console.log('post posted');
         var obj = JSON.parse(data);
@@ -49,12 +52,7 @@ SchedulingProjectModel.prototype.loadProjects = function (callMeOnSuccess) {
             // Step three: Get hold of the project in memory by id and append its shout.
 
         */
-
-
-
-         
     });
-    
 };
 
 SchedulingProjectModel.prototype.getProjects = function () {
@@ -71,16 +69,16 @@ SchedulingProjectModel.prototype.getProjectById = function (id) {
 // The view knows then to do something.
 SchedulingProjectModel.prototype.addItem = function (project) {
     this.projects[project.id] = project;
-    this.itemAdded.notify({ item: project });
+//    this.itemAdded.notify({ item: project });
 };
 
 SchedulingProjectModel.prototype.removeProjectWithId = function (id) {
     var project = this.projects[id];
     delete this.projects[id];
-    this.itemRemoved.notify({ item: project });
+//    this.itemRemoved.notify({ item: project });
 };
 
 SchedulingProjectModel.prototype.updateProject = function (project) {
     this.projects[project.id] = project;
-    this.itemUpdated.notify({ item: project });
+//    this.itemUpdated.notify({ item: project });
 };

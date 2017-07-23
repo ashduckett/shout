@@ -1,4 +1,4 @@
-// Assuming data coming in in what format?
+
 // This is just one item, the model is a collection
 function Shout(id, project_id, text, date, time) {
     this.id = id;
@@ -18,7 +18,6 @@ function ShoutModel() {
     this.itemUpdated = new Event(this);
 }
 
-
 ShoutModel.prototype.removeItem = function (args) {
 
     var _this = this;
@@ -26,8 +25,6 @@ ShoutModel.prototype.removeItem = function (args) {
     delete this.shouts[args.shout_id];
     this.itemRemoved.notify({ id: args.shout_id });
 
-    // reload the page...maybe I should ditch the extra visits to the db and load everything
-    // at once?
     this.loadShouts(args.project_id, _this.currentPage, function () {
         _this.pageChanged.notify();
     });
@@ -42,7 +39,6 @@ ShoutModel.prototype.updateItem = function (shout) {
     this.shouts[shout.id] = shout;
     this.itemUpdated.notify({ item: shout });
 };
-
 
 ShoutModel.prototype.setToFirstPage = function (project_id, callMeOnSuccess) {
     var _this = this;
@@ -97,7 +93,6 @@ ShoutModel.prototype.loadShoutsForProject = function(project_id, callMeOnSuccess
         $.each(allShouts, function (key, val) {
             _this.shouts[val.data.id] = new Shout(val.data.id, val.data.project_id, val.data.text, val.data.date, val.data.time);
         });
-        console.log("PHP file accessed successfully.");
         callMeOnSuccess();
     });
 };

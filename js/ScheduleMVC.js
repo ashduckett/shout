@@ -54,7 +54,7 @@ View.prototype.getSideBar = function() {
     socialMediaHeader.addClass('sidebar-header');
 
     let mnuItemNewProject = $(document.createElement('li'));
-    mnuItemNewProject.text('New Project');
+    mnuItemNewProject.text('New Schedule');
     mnuItemNewProject.addClass('sidebar-item');
     mnuItemNewProject.attr('id', 'new-project');
 

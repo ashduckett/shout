@@ -93,8 +93,9 @@ RowColumnView.prototype.draw = function() {
         this.columnsByProjectId[element.id].id = element.id;
 
         element.shouts.forEach(function(shout) {
-            this.columnsByProjectId[element.id].rows[shout.id] = this.addRow(element.id, currentIndex, currentTop + 26);
-            currentTop += 65 + 1;
+            console.log(shout);
+            this.columnsByProjectId[element.id].rows[shout.id] = this.addRow(element.id, currentIndex, currentTop + 26, shout);
+            currentTop += 200 + 1;
         }, this);
 
         currentTop = 0;
@@ -119,6 +120,7 @@ RowColumnView.prototype.addColumn = function(left, projectId) {
     column.css('position', 'absolute');
     column.css('top', '0');
     column.css('left', left);
+    column.css('overflow-y', 'auto');
 
     let toolbar = $(document.createElement('div'));
     toolbar.css('width', '100%');
@@ -287,28 +289,31 @@ RowColumnView.prototype.addColumn = function(left, projectId) {
 };
 
 // Change this to work like addColumn with storing the things by id.`
-
-RowColumnView.prototype.addRow = function(projectId, columnIndex, top) {
+// This is wrong, don't pass the shout into the view. Use the controller to get the shout...
+RowColumnView.prototype.addRow = function(projectId, columnIndex, top, shout) {
     
     // This will still work. I wanted them stored by id!
     var column = this.columnsByProjectId[projectId];
 
+
     var row = $(document.createElement('div'));
-    row.css('height', '65px');
+    row.addClass('row');
+    row.css('height', '200px');
     row.css('width', '100%');
-    row.css('background-color', 'orange');
+    row.css('background-color', 'white');
     row.css('z-index', '999999999999999999');
     row.css('top', top + 'px');
 
+    let id = null;
 
     var setters = $(row).draggable(null, null, function() {
         // Currently the rows are arrays so this is fine as it is.
         var rows = column.rows;
 
-        // for (var property in self.columnsByProjectId) {
         for (var property in rows) {
             var row = $(rows[property].domElement);
-            //$(rows).each(function(index, row) {
+            id = rows[property].id;
+
             if(!$(row).hasClass('dragging')) {
                 if(event.pageY < $(row).offset().top + $(row).height() && event.pageY > $(row).offset().top) {
                     var tempReturn = $(row).position();
@@ -323,6 +328,35 @@ RowColumnView.prototype.addRow = function(projectId, columnIndex, top) {
         }
     });
         // Add row to the view
+        let imageContainer = $(document.createElement('div'));
+        imageContainer.width(50);
+        imageContainer.height(50);
+        imageContainer.css('background-color', 'red');
+        imageContainer.css('margin', '10px');
+
+        let image = $(document.createElement('img'));
+        image.css('display', 'block');
+        image.css('height', '100%');
+        image.css('width', '100%');
+        image.attr('src', 'https://unsplash.it/g/50/50');
+        imageContainer.append(image);
+
+        row.append(imageContainer);
+
+        
+        // Now an area for the text
+        let textArea = $(document.createElement('div'));
+        textArea.css('width', '90%');
+        textArea.css('height', '60%');
+        textArea.css('margin', 'auto');
+        textArea.css('font-family', 'Just Another Hand')
+        textArea.css('font-size', '20px')
+
+        textArea.text(shout.text);
+
+        row.append(textArea);
+
+
         $(column.domElement).append(row);
     
         return new Row(row);

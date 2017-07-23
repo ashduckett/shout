@@ -11,6 +11,7 @@
 <html>
     <head>
         <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Just+Another+Hand" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="stylesheet" type="text/css" href="css/nav.css">
         <link rel="stylesheet" type="text/css" href="css/modal.css">
@@ -27,12 +28,11 @@
         <script src="js/Draggable.js"></script>
 
         <script src="mvc/Event.js"></script>
-        <script src="mvc/controllers/ProjectController.js"></script>
         <script src="mvc/models/ProjectModel.js"></script>
-        <script src="mvc/views/ProjectView.js"></script>
-        <script src="mvc/controllers/ShoutController.js"></script>
+        <!-- <script src="mvc/views/ProjectView.js"></script> -->
+        <!-- <script src="mvc/controllers/ShoutController.js"></script> -->
         <script src="mvc/models/ShoutModel.js"></script>
-        <script src="mvc/views/ShoutView.js"></script>
+        <!-- <script src="mvc/views/ShoutView.js"></script> -->
         
         <script src="plugins/SplitterView/SplitterView.js"></script>
         
