@@ -12,7 +12,7 @@ let Controller = function(element) {
 
     this.model.projects.loadProjects(function() {
         // It's not until the model is loaded that we can create the RowColumnController
-        self.rowColumnController = new RowColumnController(self.view.rowColumnSubview, self.model.projects);
+        self.rowColumnController = new RowColumnController(self.view.rowColumnSubview, self.model.projects, self);
         
         // Draw the menu and the row column stuff
         self.update();
@@ -21,13 +21,16 @@ let Controller = function(element) {
 
 Controller.prototype.update = function() {
     this.view.draw();
-
 };
 
-// Ideally we'd be passing in an instance of project here...
 Controller.prototype.addProject = function(project) {
     console.log('controller about to add project');
     this.model.projects.addItem(project);
+    this.update();
+};
+
+Controller.prototype.removeProject = function(projectId) {
+    this.model.projects.removeProjectWithId(projectId);
     this.update();
 };
 
@@ -60,11 +63,6 @@ View.prototype.getSideBar = function() {
     mnuItemNewImport.addClass('sidebar-item');
     mnuItemNewImport.addClass('disabled');
 
-    let mnuItemAddItem = $(document.createElement('li'));
-    mnuItemAddItem.text('Add Item...');
-    mnuItemAddItem.addClass('sidebar-item');
-    mnuItemAddItem.addClass('disabled');
-
     let projectHeader = $(document.createElement('li'));
     projectHeader.text('Project');
     projectHeader.addClass('sidebar-header');
@@ -95,7 +93,6 @@ View.prototype.getSideBar = function() {
     sideBarListing.append(mnuItemNewProject);
     sideBarListing.append(mnuItemNewImport);
     sideBarListing.append(projectHeader);
-    sideBarListing.append(mnuItemAddItem);
     sideBarListing.append(mnuItemGenerateSchedule);
     sideBarListing.append(mnuItemImportTo);
     sideBarListing.append(mnuItemExportFrom);

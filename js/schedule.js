@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    $('.schedule-workspace').css('overflow', 'hidden');
     let scheduleController = new Controller($('.schedule-workspace'));
     
 
