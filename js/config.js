@@ -1,9 +1,4 @@
-//$(document).ready(function() {
-
-//});
-
 let rootFolder = "";
-
 
 switch(document.location.hostname) {
     case 'localhost':

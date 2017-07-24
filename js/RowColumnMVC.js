@@ -1,34 +1,47 @@
-var Row = function(domElement) {
-    this.id = null;
-    this.domElement = domElement;
-};
+// Controller is notified of a user action by the view.
 
+// Controller updates model
+
+
+// I don't like this marrying of dom elements to ids. It's view and it's model. But it has to be done
+// somehow...how?
+var Row = function(domElement) {
+    this.id = null;                                         // model
+    this.domElement = domElement;                           // view
+};
 
 var Column = function(domElement) {
     // Database id
-    this.id = null;
+    this.id = null;                                         // model
 
     // Row DOM elements
-    this.rows = {};
+    this.rows = {};                                         // view
 
     // The column DOM element
-    this.domElement = domElement;
+    this.domElement = domElement;                           // view
 };
 
 // When in use, this should be the only thing we need.
-var RowColumnController = function(element, projectModel, parentController) {
 
-    this.parentController = parentController
+// Maybe what we need is some kind of storage system inside the controller to match up projects to their ids and such?
 
+
+// When the user adds a project, what can the controller know?
+
+var RowColumnController = function(element, projectModel) {
+
+    // Controller needs to know about its model so this is fine.
     this.model = projectModel;
+    let jsonModel = JSON.stringify(this.model);
 
     // Create an instance of the view, telling it the model.
-    this.view = new RowColumnView(element, projectModel, this);
-
-    // Now that this has run, update will be called from outside.
+    // You shouldn't need to tell it the model. You should update it yourself based on the model.
+    // The view doesn't need to know about its model. Or shouldn't rather.
+    this.view = new RowColumnView(element, projectModel, this, jsonModel);
 };
 
 RowColumnController.prototype.update = function() {
+    // This makes sense here
     this.view.draw();
 };
 
@@ -40,21 +53,43 @@ RowColumnController.prototype.addRow = function(rowIndex) {
     this.view.addRow(rowIndex);
 };
 
-RowColumnController.prototype.addShout = function(shout) {
-    this.model.projects[shout.project_id].shouts.push(shout);
-    this.view.draw();
+// passing in a shout here may not make sense since it won't have an id.
+RowColumnController.prototype.addShout = function(projectId, callback) {
+
+    let self = this;
+
+    $.post("../save_shout.php", { shoutDate: this.view.getDate(), shoutTime: this.view.getTime(), projectId: projectId, shoutText: this.view.getText() }, function (data) {
+        let newShout = new Shout(data, projectId, self.view.getText(), self.view.getDate(), self.view.getTime());
+
+        // Use the projectId to add a shout to a project in the model.
+        self.model.addShout(projectId, newShout)
+        self.view.jsonModel = JSON.stringify(self.model);
+        self.view.draw();
+        callback();
+                
+    });
 };
 
-RowColumnController.prototype.deleteProject = function(projectId) {
-    this.model.removeProjectWithId(projectId);
-    this.view.draw();
+RowColumnController.prototype.deleteProject = function(projectId, callback) {
+    let self = this;
+
+    $.post("../API.php", { object_id: projectId, method: 'delete_by_id', type: 'SchedulingProject' }).done(function (data) {
+        self.model.removeProjectWithId(projectId);
+        self.view.jsonModel = JSON.stringify(self.model);
+        
+        // I want it to draw after the modal's faded out
+        self.view.draw();
+        callback();
+   });
 };
 
 /* View code */
-var RowColumnView = function(element, model, controller) {
+var RowColumnView = function(element, model, controller, jsonModel) {
     this.element = $(element);
-    this.model = model;         // this shouldn't be here
+    this.model = model;         // this shouldn't be here or should it?
     this.controller = controller;
+
+    this.jsonModel = jsonModel;
 
     /* Setup CSS */
     this.element.css('width', '100%');
@@ -65,87 +100,96 @@ var RowColumnView = function(element, model, controller) {
     // Start with Column objects because these hold an array for rows. This will eventually have to be a dictionary as well.
     // How then do we deal with order?
     this.columnsByProjectId = {};
+
+    this.date = null;
+    this.time = null;
+    this.text = null;
 };
+
+RowColumnView.prototype.setDate = function(date) {
+    this.date = date;
+};
+
+RowColumnView.prototype.setTime = function(time) {
+    this.time = time;
+};
+
+RowColumnView.prototype.setText = function(text) {
+    this.text = text;
+};
+
+// Get the current view's values
+RowColumnView.prototype.getDate = function() {
+    return this.date;
+};
+
+RowColumnView.prototype.getTime = function() {
+    return this.time;
+};
+
+RowColumnView.prototype.getText = function() {
+    return this.text;
+};
+
+
+
+// We add to the model and then call draw. Where do we add to the model?
+// From the controller?
+
+
 
 // You know you need to store the dom element.
 // But this should live in the view.
 // It should also be indexed by the project id.
 
 RowColumnView.prototype.draw = function() {
-    var elementToDrawTo = this.element;
+    let elementToDrawTo = this.element;
 
     // Clear out the element for a fresh redraw
     this.element.html('');
 
-    var currentLeft = 0;
-    var self = this;
+    let currentLeft = 0;
+    let self = this;
+    let currentIndex = 0;
+    let currentTop = 0;
+    let parsedJSON = JSON.parse(this.jsonModel);
 
-    var currentIndex = 0;
-    var currentTop = 0;
-
-    this.model.projects.forEach(function(element) {
-
-        col = this.addColumn(currentLeft, element.id);
+    $.each(parsedJSON.projects, function(index, project) {
+        let col = self.addColumn(currentLeft, project.id);
         currentLeft += 250 + 1;
 
         // New storage system
-        this.columnsByProjectId[element.id] = col;
-        this.columnsByProjectId[element.id].id = element.id;
+        self.columnsByProjectId[project.id] = col;
+        self.columnsByProjectId[project.id].id = project.id;
 
-        element.shouts.forEach(function(shout) {
-            console.log(shout);
-            this.columnsByProjectId[element.id].rows[shout.id] = this.addRow(element.id, currentIndex, currentTop + 26, shout);
+        project.shouts.forEach(function(shout) {
+            this.columnsByProjectId[project.id].rows[shout.id] = this.addRow(project.id, currentIndex, currentTop + 26, shout);
             currentTop += 200 + 1;
-        }, this);
+        }, self);
 
         currentTop = 0;
         currentIndex++;
-    }, this);
+    });
 };
 
-// This is called once, via RowColumnController.view when it loads.
-// It is actually only adding a single column
-// It creates the column, and then it adds it to the column array.
-// So you can't just run it and have all your columns.
-// Since it has to be called for each column, it kind of makes sense to leave it in
-// its own method.
-// The draw method, however, should be the only thing that calls it.
 RowColumnView.prototype.addColumn = function(left, projectId) {
     var column = $(document.createElement('div'));
-
-    // Setup CSS
-    column.css('width', '250px');
-    column.css('height', '100%');
-    column.css('background-color', 'gray');
-    column.css('position', 'absolute');
-    column.css('top', '0');
+    column.addClass('column');
     column.css('left', left);
-    column.css('overflow-y', 'auto');
 
     let toolbar = $(document.createElement('div'));
-    toolbar.css('width', '100%');
-    toolbar.css('height', '25px');
-    toolbar.css('background-color', 'rgb(150, 150, 150)');
-    toolbar.css('text-align', 'right');
-    toolbar.css('pointer-events', 'none');
-    toolbar.css('display', 'flex');
-    toolbar.addClass('toolbar');
+    toolbar.addClass('project-toolbar');
 
     let addShoutLink = $(document.createElement('a'));
     addShoutLink.attr('href', '#');
+
     let icon = $(document.createElement('i'));
     icon.addClass('fa');
     icon.addClass('fa-plus');
     icon.attr('aria-hidden', 'true');
+
     addShoutLink.append(icon);
-    addShoutLink.css('pointer-events', 'auto');
-    addShoutLink.addClass('link');
-    addShoutLink.css('margin-left', 'auto');
-    addShoutLink.css('margin-right', '7px');
-    addShoutLink.css('margin-top', 'auto');
-    addShoutLink.css('margin-bottom', 'auto');
-    addShoutLink.css('text-decoration', 'none');
-    addShoutLink.css('color', 'white');
+    addShoutLink.addClass('addShoutLink');
 
     addShoutLink.mousedown(function() {
         event.preventDefault();
@@ -165,19 +209,21 @@ RowColumnView.prototype.addColumn = function(left, projectId) {
         return false;
     });
 
+
+    // This needs to pass in just the id to the controller so it knows which one to add the shout to.
     addShoutLink.click(function() {
         var modal = new Modal(300, 200, 'Add Shout', '../modal_layouts/add_shout.php');
 
         modal.addButton('Save', 'primary', function () {
+            let shoutDate = moment($('.calendar').val(), "L").format('YYYY-MM-DD 00:00:00');
+            let shoutTime = moment($('.clock').val(), "h:mm A").format('YYYY-MM-DD HH:mm:00');
+            let shoutText = $('#shoutText').val();
 
-            var shoutDate = moment($('.calendar').val(), "L").format('YYYY-MM-DD 00:00:00');
-            var shoutTime = moment($('.clock').val(), "h:mm A").format('YYYY-MM-DD HH:mm:00');
-            var shoutText = $('#shoutText').val();
+            self.setDate(shoutDate);
+            self.setTime(shoutTime);
+            self.setText(shoutText);
 
-            $.post("../save_shout.php", { shoutDate: shoutDate, shoutTime: shoutTime, projectId: projectId, shoutText: shoutText }, function (data) {
-                var newShout = new Shout(data, projectId, shoutText, shoutDate, shoutTime);
-
-                self.controller.addShout(newShout);
+            self.controller.addShout(projectId, function() {
                 modal.hideModal();
             });
         });
@@ -211,20 +257,16 @@ RowColumnView.prototype.addColumn = function(left, projectId) {
         event.stopPropagation();
         return false;
     });
- 
 
     delProjectLink.click(function() {
         var deleteProjectModal = new Modal(400, 100, "Confirm", "modal_layouts/delete_project.php");
-
+        
         deleteProjectModal.addButton('Cancel', 'default', function () {
             deleteProjectModal.hideModal();
         });
 
         deleteProjectModal.addButton('Confirm', 'primary', function () {
-            $.post("../API.php", { object_id: projectId, method: 'delete_by_id', type: 'SchedulingProject' })
-                .done(function (data) {
-        
-                self.controller.deleteProject(projectId);
+            self.controller.deleteProject(projectId, function() {
                 deleteProjectModal.hideModal();
             });
         });
@@ -295,13 +337,8 @@ RowColumnView.prototype.addRow = function(projectId, columnIndex, top, shout) {
     // This will still work. I wanted them stored by id!
     var column = this.columnsByProjectId[projectId];
 
-
     var row = $(document.createElement('div'));
     row.addClass('row');
-    row.css('height', '200px');
-    row.css('width', '100%');
-    row.css('background-color', 'white');
-    row.css('z-index', '999999999999999999');
     row.css('top', top + 'px');
 
     let id = null;

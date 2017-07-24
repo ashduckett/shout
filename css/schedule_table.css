@@ -1,0 +1,36 @@
+/* A row is actually a shout in a project */
+.row {
+    height: 200px;
+    width: 100%;
+    background-color: white;
+}
+
+.project-toolbar {
+    width: 100%;
+    height: 25px;
+    background-color: rgb(150, 150, 150);
+    text-align: right;
+    pointer-events: none;
+    display: flex;
+}
+
+/* Column is a project */
+.column {
+    width: 250px;
+    height: 100%;
+    background-color: gray;
+    position: absolute;
+    top: 0;
+    overflow-y: auto;
+}
+
+/* The link in the toolbar of a project */
+.addShoutLink {
+    pointer-events: auto;
+    margin-left: auto;
+    margin-right: 7px;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-decoration: none;
+    color: white;
+}

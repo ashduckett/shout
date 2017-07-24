@@ -1,18 +1,13 @@
-let Model = function() {
-    // This is capable of loading the projects
-    this.projects = new SchedulingProjectModel();
-};
-
 let Controller = function(element) {
     this.view = new View(element, this);
-    this.model = new Model();
+    this.model = new SchedulingProjectModel();
     this.rowColumnController = null;
 
     let self = this;
 
-    this.model.projects.loadProjects(function() {
+    this.model.loadProjects(function() {
         // It's not until the model is loaded that we can create the RowColumnController
-        self.rowColumnController = new RowColumnController(self.view.rowColumnSubview, self.model.projects, self);
+        self.rowColumnController = new RowColumnController(self.view.rowColumnSubview, self.model, self);
         
         // Draw the menu and the row column stuff
         self.update();
@@ -23,21 +18,32 @@ Controller.prototype.update = function() {
     this.view.draw();
 };
 
-Controller.prototype.addProject = function(project) {
-    console.log('controller about to add project');
-    this.model.projects.addItem(project);
-    this.update();
-};
+Controller.prototype.addProject = function(callback) {
+    // First construct a project
+    let self = this
+    let projectName = this.view.getProjectName();
 
-Controller.prototype.removeProject = function(projectId) {
-    this.model.projects.removeProjectWithId(projectId);
-    this.update();
+    $.post("../save_project.php", { name: projectName }, function (data) {
+        // Create a new project based on the view and where data is the id
+        var newProject = new SchedulingProject(data, projectName);
+        
+        self.model.addItem(newProject);
+        self.rowColumnController.view.jsonModel = JSON.stringify(self.model);
+        self.update();
+
+        if(callback && typeof callback === 'function') {
+            callback();
+        }
+    });
 };
 
 let View = function(element, controller) {
     this.element = element;
     this.controller = controller;
     this.rowColumnSubview = $(document.createElement('div'));
+
+    // The latest project name
+    this.projectName = null;
 };
 
 View.prototype.getSideBar = function() {
@@ -110,12 +116,12 @@ View.prototype.getSideBar = function() {
         var modal = new Modal(500, 200, 'Add Project', rootFolder + '/modal_layouts/add_project.php');
 
         modal.addButton('Save', 'primary', function () {
-            var name = $('#project-name').val();
-            var projectName = $('#project-name').val();
+            _this.setProjectName($('#project-name').val());
 
-            $.post("../save_project.php", { name: projectName }, function (data) {
-                var newProject = new SchedulingProject(data, projectName);
-                _this.controller.addProject(newProject);
+            _this.controller.addProject(function() {
+                _this.controller.update();
+                
+                
                 modal.hideModal();
             });
         });
@@ -130,16 +136,29 @@ View.prototype.getSideBar = function() {
     return sidebar
 };
 
+View.prototype.setProjectName = function(name) {
+    this.projectName = name;
+};
+
+View.prototype.getProjectName = function(name) {
+    return this.projectName;
+};
+
 
 // We need a draw function
 View.prototype.draw = function() {
+    
+    // Clear out the element's html
     this.element.html('');
+    
     // Draw the sidebar
     this.element.append(this.getSideBar());
 
-    // Add the empty row column stuff
+    // Add the project/shout view
     this.element.append(this.rowColumnSubview);
 
     // Update the rows and the columns
+
+    // What is rowColumnController? It's an instance of RowColumnController
     this.controller.rowColumnController.update();
 };

@@ -15,7 +15,7 @@
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="stylesheet" type="text/css" href="css/nav.css">
         <link rel="stylesheet" type="text/css" href="css/modal.css">
-        <link rel="stylesheet" type="text/css" href="css/listview.css">
+        <link rel="stylesheet" type="text/css" href="css/schedule_table.css">
         <link rel="stylesheet" type="text/css" href="css/schedule.css">
         <link rel="stylesheet" href="plugins/SplitterView/SplitterView.css" type="text/css">
         <link href="plugins/Calendar/calendar.css" type="text/css" rel="stylesheet">
@@ -29,10 +29,8 @@
 
         <script src="mvc/Event.js"></script>
         <script src="mvc/models/ProjectModel.js"></script>
-        <!-- <script src="mvc/views/ProjectView.js"></script> -->
-        <!-- <script src="mvc/controllers/ShoutController.js"></script> -->
         <script src="mvc/models/ShoutModel.js"></script>
-        <!-- <script src="mvc/views/ShoutView.js"></script> -->
+
         
         <script src="plugins/SplitterView/SplitterView.js"></script>
         

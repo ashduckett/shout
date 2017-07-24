@@ -93,6 +93,8 @@ ShoutModel.prototype.loadShoutsForProject = function(project_id, callMeOnSuccess
         $.each(allShouts, function (key, val) {
             _this.shouts[val.data.id] = new Shout(val.data.id, val.data.project_id, val.data.text, val.data.date, val.data.time);
         });
+
+
         callMeOnSuccess();
     });
 };
@@ -106,8 +108,13 @@ ShoutModel.prototype.loadAllShouts = function(callMeOnSuccess) {
         var allShouts = data.shouts;
 
         $.each(allShouts, function (key, val) {
-            _this.shouts[val.data.id] = new Shout(val.data.id, val.data.project_id, val.data.text, val.data.date, val.data.time);
+            //_this.shouts[val.data.id] = new Shout(val.data.id, val.data.project_id, val.data.text, val.data.date, val.data.time);
+            _this.shouts.push(new Shout(val.data.id, val.data.project_id, val.data.text, val.data.date, val.data.time));
         });
+
+        console.log('shouts');
+        console.log(_this.shouts);
+        console.log('end shouts');
 
         callMeOnSuccess();
     });
