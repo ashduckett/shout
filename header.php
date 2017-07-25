@@ -27,7 +27,8 @@
         <script src="js/ScheduleMVC.js"></script>
         <script src="js/Draggable.js"></script>
 
-        <script src="mvc/Event.js"></script>
+        <script src="mvc/Event.js"></script> 
+        <script src="mvc/models/ModelObject.js"></script>
         <script src="mvc/models/Project.js"></script>
         <script src="mvc/models/ProjectCollection.js"></script>
         <script src="mvc/models/ShoutModel.js"></script>
