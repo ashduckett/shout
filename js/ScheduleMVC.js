@@ -1,6 +1,6 @@
 let Controller = function(element) {
     this.view = new View(element, this);
-    this.model = new SchedulingProjectModel();
+    this.model = new ProjectCollection();
     this.rowColumnController = null;
 
     let self = this;
@@ -25,7 +25,7 @@ Controller.prototype.addProject = function(callback) {
 
     $.post("../save_project.php", { name: projectName }, function (data) {
         // Create a new project based on the view and where data is the id
-        var newProject = new SchedulingProject(data, projectName);
+        var newProject = new Project(data, projectName);
         
         self.model.addItem(newProject);
         self.rowColumnController.view.jsonModel = JSON.stringify(self.model);
