@@ -1,3 +1,5 @@
+// addItem and addProject do the same thing.
+
 class ProjectCollection {
     constructor() {
         this.projects = []
@@ -43,10 +45,6 @@ class ProjectCollection {
 
     getProjectById(id) {
         return this.projects[id];
-    }
-    
-    addItem(project) {
-        this.projects.push(project);
     }
 
     removeProjectWithId(id) {
