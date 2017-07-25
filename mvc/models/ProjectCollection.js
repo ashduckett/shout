@@ -1,5 +1,3 @@
-// addItem and addProject do the same thing.
-
 class ProjectCollection {
     constructor() {
         this.projects = []
