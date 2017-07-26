@@ -4,7 +4,8 @@ class ProjectCollection {
     }
 
     addProject(project) {
-        this.projects.push(project);    
+        this.projects.push(project);
+      //  this.broadcast(project, 'addition')
     }
 
     addShout(projectId, shout) {

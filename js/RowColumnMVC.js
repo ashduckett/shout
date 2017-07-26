@@ -1,10 +1,3 @@
-// Controller is notified of a user action by the view.
-
-// Controller updates model
-
-
-// I don't like this marrying of dom elements to ids. It's view and it's model. But it has to be done
-// somehow...how?
 var Row = function(domElement) {
     this.id = null;                                         // model
     this.domElement = domElement;                           // view
@@ -29,28 +22,51 @@ var Column = function(domElement) {
 // When the user adds a project, what can the controller know?
 
 var RowColumnController = function(element, projectModel) {
+    console.log('constructor called');
+    $(element).addClass('wholeContainer')
 
+    this.rowColContainer = $(document.createElement('div'))
+    this.sidebarContainer = $(document.createElement('div'))
+
+    
+
+    this.sidebarView = new SidebarView(this.sidebarContainer, this);
+    let self = this;
     // Controller needs to know about its model so this is fine.
-    this.model = projectModel;
-    let jsonModel = JSON.stringify(this.model);
+    this.model = new ProjectCollection();
+
+    // Initialise model
+    this.model.loadProjects(function() {
+        // It's not until the model is loaded that we can create the RowColumnController
+       // self.rowColumnController = new RowColumnController(self.view.rowColumnSubview, self.model, self);
+        
+        // Draw the menu and the row column stuff
+        
+        self.jsonModel = JSON.stringify(self.model);
+        self.sidebarView.draw();
+        self.view.draw();
+    
+        element.append(self.sidebarContainer);
+        element.append(self.rowColContainer)
+    });
+    
+    
+
+
+
+
+    
 
     // Create an instance of the view, telling it the model.
     // You shouldn't need to tell it the model. You should update it yourself based on the model.
     // The view doesn't need to know about its model. Or shouldn't rather.
-    this.view = new RowColumnView(element, projectModel, this, jsonModel);
+    this.view = new RowColumnView(this.rowColContainer, projectModel, this, this.jsonModel);
+
+   // this.update();
 };
 
 RowColumnController.prototype.update = function() {
-    // This makes sense here
     this.view.draw();
-};
-
-RowColumnController.prototype.addColumn = function() {
-    this.view.addColumn();
-}
-
-RowColumnController.prototype.addRow = function(rowIndex) {
-    this.view.addRow(rowIndex);
 };
 
 // passing in a shout here may not make sense since it won't have an id.
@@ -70,6 +86,10 @@ RowColumnController.prototype.addShout = function(projectId, callback) {
     });
 };
 
+RowColumnController.prototype.userDidCreateNewProject = function(name) {
+    this.addProject(name);
+}
+
 RowColumnController.prototype.deleteProject = function(projectId, callback) {
     let self = this;
 
@@ -81,6 +101,24 @@ RowColumnController.prototype.deleteProject = function(projectId, callback) {
         self.view.draw();
         callback();
    });
+};
+
+RowColumnController.prototype.addProject = function(name) {
+    // First construct a project
+    let self = this
+
+    $.post("../save_project.php", { name: name }, function (data) {
+        // Create a new project based on the view and where data is the id
+        var newProject = new Project(data, name);
+        
+        self.model.addProject(newProject);
+        self.view.jsonModel = JSON.stringify(self.model);
+        self.update();
+
+      //  if(callback && typeof callback === 'function') {
+      //      callback();
+      //  }
+    });
 };
 
 /* View code */
@@ -143,16 +181,21 @@ RowColumnView.prototype.getText = function() {
 // It should also be indexed by the project id.
 
 RowColumnView.prototype.draw = function() {
+    console.log('drawing rows and columns');
+
     let elementToDrawTo = this.element;
 
     // Clear out the element for a fresh redraw
-    this.element.html('');
+   // this.element.html('');
+
+
 
     let currentLeft = 0;
     let self = this;
     let currentIndex = 0;
     let currentTop = 0;
-    let parsedJSON = JSON.parse(this.jsonModel);
+
+    let parsedJSON = JSON.parse(this.controller.jsonModel);
 
     $.each(parsedJSON.projects, function(index, project) {
         let col = self.addColumn(currentLeft, project.id);
@@ -170,6 +213,10 @@ RowColumnView.prototype.draw = function() {
         currentTop = 0;
         currentIndex++;
     });
+
+
+
+
 };
 
 RowColumnView.prototype.addColumn = function(left, projectId) {
@@ -292,7 +339,7 @@ RowColumnView.prototype.addColumn = function(left, projectId) {
             // This equates to an array of three columns Column objects they are.
             var element = self.columnsByProjectId[property].domElement;
             if(!$(element).hasClass('dragging')) {
-               // console.log(element)
+
                 if(event.pageX > $(element).offset().left && event.pageX < $(element).offset().left + $(element).width()) {
                     // If we are inside one of the columns not being dragged, move the column
                     // we're dragging over to the returnPosition, and update the returnPosition
@@ -311,20 +358,7 @@ RowColumnView.prototype.addColumn = function(left, projectId) {
         }
     });
 
-
-    // We need to add something to the column.
-    // We also need the id of the project
-
-
-
     this.element.append(column);
-
-
-
-
-    // Maybe you don't need to store an entire Column object. We already have the model?
-    // If you took it out, though, you couldn't iterate over for when you want to do swapsies.
-    
     var newColumn = new Column(column);
     
     return newColumn;
@@ -364,39 +398,41 @@ RowColumnView.prototype.addRow = function(projectId, columnIndex, top, shout) {
             }
         }
     });
-        // Add row to the view
-        let imageContainer = $(document.createElement('div'));
-        imageContainer.width(50);
-        imageContainer.height(50);
-        imageContainer.css('background-color', 'red');
-        imageContainer.css('margin', '10px');
 
-        let image = $(document.createElement('img'));
-        image.css('display', 'block');
-        image.css('height', '100%');
-        image.css('width', '100%');
-        image.attr('src', 'https://unsplash.it/g/50/50');
-        imageContainer.append(image);
+    // Add row to the view
+    let imageContainer = $(document.createElement('div'));
+    imageContainer.width(50);
+    imageContainer.height(50);
+    imageContainer.css('background-color', 'red');
+    imageContainer.css('margin', '10px');
 
-        row.append(imageContainer);
+    let image = $(document.createElement('img'));
+    image.css('display', 'block');
+    image.css('height', '100%');
+    image.css('width', '100%');
+    image.attr('src', 'https://unsplash.it/g/50/50');
+    imageContainer.append(image);
 
-        
-        // Now an area for the text
-        let textArea = $(document.createElement('div'));
-        textArea.css('width', '90%');
-        textArea.css('height', '60%');
-        textArea.css('margin', 'auto');
-        textArea.css('font-family', 'Just Another Hand')
-        textArea.css('font-size', '20px')
+    row.append(imageContainer);
 
-        textArea.text(shout.text);
-
-        row.append(textArea);
-
-
-        $(column.domElement).append(row);
     
-        return new Row(row);
+    // Now an area for the text
+    let textArea = $(document.createElement('div'));
+    textArea.css('width', '90%');
+    textArea.css('height', '60%');
+    textArea.css('margin', 'auto');
+    textArea.css('font-family', 'Just Another Hand')
+    textArea.css('font-size', '20px')
+
+    textArea.text(shout.text);
+
+    row.append(textArea);
+
+
+    $(column.domElement).append(row);
+
+    // This is the only place this is instantiated
+    return new Row(row);
 };
 
 

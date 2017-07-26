@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('.schedule-workspace').css('overflow', 'hidden');
-    let scheduleController = new Controller($('.schedule-workspace'));
+    let scheduleController = new RowColumnController($('.schedule-workspace'));
     
 
     // Code for Add item button

@@ -1,5 +1,4 @@
 <?php
-
     session_start();
     if(!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== 'yes') {
         header('HTTP/1.1 302 Redirect');
@@ -24,7 +23,7 @@
 
         <script src="js/jquery.min.js"></script>
         <script src="js/config.js"></script>
-        <script src="js/ScheduleMVC.js"></script>
+        <script src="js/SidebarView.js"></script>
         <script src="js/Draggable.js"></script>
 
         <script src="mvc/Event.js"></script> 
