@@ -22,9 +22,11 @@ var RowColumnController = function(element, projectModel) {
     $(element).addClass('wholeContainer')
 
     this.rowColContainer = $(document.createElement('div'))
-    this.sidebarContainer = $(document.createElement('div'))
 
-    this.sidebarView = new SidebarView(this.sidebarContainer, this);
+    this.sidebarView = new SidebarView(element, this);
+    console.log('sidebarview');
+    console.log(this.sidebarView)
+
     let self = this;
     // Controller needs to know about its model so this is fine.
     this.model = new ProjectCollection();
@@ -35,7 +37,10 @@ var RowColumnController = function(element, projectModel) {
         self.sidebarView.draw();
         self.view.draw();
     
-        element.append(self.sidebarContainer);
+        element.append(self.sidebarContainer)
+
+
+
         element.append(self.rowColContainer)
     });
 
