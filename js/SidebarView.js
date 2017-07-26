@@ -74,7 +74,6 @@ class SidebarView {
     }
 
     draw() {
-        //this.rowColumnSubview.append(this.getSideBar())
         this.element.append(this.getSideBar());
     }
 }

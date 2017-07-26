@@ -5,6 +5,7 @@ class ProjectCollection {
 
     addProject(project) {
         this.projects.push(project);
+        console.log(project)
       //  this.broadcast(project, 'addition')
     }
 
@@ -47,7 +48,13 @@ class ProjectCollection {
     }
 
     removeProjectWithId(id) {
-        this.projects = this.projects.filter(project => {project.id !== id});
+        console.log('id received ' + id)
+        console.log('projects before removal')
+        console.log(this.projects)
+
+        this.projects = this.projects.filter(project => project.id !== id);
+        console.log('projects after')
+        console.log(this.projects)
     }
 
     updateProject(project) {
