@@ -3,9 +3,21 @@ class SidebarView {
         this.element = element;
         this.controller = controller;
         this.rowColumnSubview = $(document.createElement('div'));
+    }
 
-        // The latest project name. Can this go now?
-        this.projectName = null;
+    createListItem(text, classNames, id) {
+        let listItem = $(document.createElement('li'))
+        listItem.text(text)
+
+        for(var i = 0; i < classNames.length; i++) {
+            listItem.addClass(classNames[i]);
+        }
+
+        if(id) {
+            listItem.attr('id', id);
+        }
+
+        return listItem;
     }
 
     getSideBar() {
@@ -16,45 +28,14 @@ class SidebarView {
         let sideBarListing = $(document.createElement('ul'));
         sideBarListing.addClass('sidebar-listing');
 
-        // One header
-        let socialMediaHeader = $(document.createElement('li'));
-        socialMediaHeader.text('Social Media');
-        socialMediaHeader.addClass('sidebar-header');
-
-        let mnuItemNewProject = $(document.createElement('li'));
-        mnuItemNewProject.text('New Schedule');
-        mnuItemNewProject.addClass('sidebar-item');
-        mnuItemNewProject.attr('id', 'new-project');
-
-        let mnuItemNewImport = $(document.createElement('li'));
-        mnuItemNewImport.text('Import...');
-        mnuItemNewImport.addClass('sidebar-item');
-        mnuItemNewImport.addClass('disabled');
-
-        let projectHeader = $(document.createElement('li'));
-        projectHeader.text('Project');
-        projectHeader.addClass('sidebar-header');
-
-        let mnuItemGenerateSchedule = $(document.createElement('li'));
-        mnuItemGenerateSchedule.text('Generate Schedule...');
-        mnuItemGenerateSchedule.addClass('sidebar-item');
-        mnuItemGenerateSchedule.addClass('disabled');
-        mnuItemGenerateSchedule.attr('id', 'generate-schedule');
-
-        let mnuItemImportTo = $(document.createElement('li'));
-        mnuItemImportTo.text('Import To...');
-        mnuItemImportTo.addClass('sidebar-item');
-        mnuItemImportTo.addClass('disabled');
-
-        let mnuItemExportFrom = $(document.createElement('li'));
-        mnuItemExportFrom.text('Export From...');
-        mnuItemExportFrom.addClass('sidebar-item');
-        mnuItemExportFrom.addClass('disabled');
-
-        let mnuItemAdvanced = $(document.createElement('li'));
-        mnuItemAdvanced.text('Advanced...');
-        mnuItemAdvanced.addClass('sidebar-item');
-        mnuItemAdvanced.addClass('disabled');
+        let socialMediaHeader = this.createListItem('Social Media', ['sidebar-header'])
+        let mnuItemNewProject = this.createListItem('New Schedule', ['sidebar-item'], 'new-project')
+        let mnuItemNewImport = this.createListItem('Impore...', ['sidebar-item', 'disabled'])
+        let projectHeader = this.createListItem('Project', ['sidebar-header'])
+        let mnuItemGenerateSchedule = this.createListItem('Generare Schedule...', ['sidebar-item', 'disabled'], 'generate-schedule')
+        let mnuItemImportTo = this.createListItem('Import To...', ['sidebar-item', 'disabled'])
+        let mnuItemExportFrom = this.createListItem('Export From...', ['sidebar-item', 'disabled'])
+        let mnuItemAdvanced = this.createListItem('Advanced...', ['sidebar-item', 'disabled'])
 
         sideBarListing.append(socialMediaHeader);
         sideBarListing.append(mnuItemNewProject);

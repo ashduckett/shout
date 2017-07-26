@@ -31,8 +31,6 @@
         <script src="mvc/models/Project.js"></script>
         <script src="mvc/models/ProjectCollection.js"></script>
         <script src="mvc/models/ShoutModel.js"></script>
-
-        
         <script src="plugins/SplitterView/SplitterView.js"></script>
         
         <script src="js/nav.js"></script>

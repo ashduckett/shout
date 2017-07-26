@@ -1,3 +1,7 @@
+// Do you actually want to use JSON?
+// I've read that the view should know nothing of the model.
+// If you have enough controls on the view, maybe this is entirely possible
+
 var Row = function(domElement) {
     this.id = null;                                         // model
     this.domElement = domElement;                           // view
@@ -14,21 +18,11 @@ var Column = function(domElement) {
     this.domElement = domElement;                           // view
 };
 
-// When in use, this should be the only thing we need.
-
-// Maybe what we need is some kind of storage system inside the controller to match up projects to their ids and such?
-
-
-// When the user adds a project, what can the controller know?
-
 var RowColumnController = function(element, projectModel) {
-    console.log('constructor called');
     $(element).addClass('wholeContainer')
 
     this.rowColContainer = $(document.createElement('div'))
     this.sidebarContainer = $(document.createElement('div'))
-
-    
 
     this.sidebarView = new SidebarView(this.sidebarContainer, this);
     let self = this;
@@ -37,11 +31,6 @@ var RowColumnController = function(element, projectModel) {
 
     // Initialise model
     this.model.loadProjects(function() {
-        // It's not until the model is loaded that we can create the RowColumnController
-       // self.rowColumnController = new RowColumnController(self.view.rowColumnSubview, self.model, self);
-        
-        // Draw the menu and the row column stuff
-        
         self.jsonModel = JSON.stringify(self.model);
         self.sidebarView.draw();
         self.view.draw();
@@ -49,13 +38,6 @@ var RowColumnController = function(element, projectModel) {
         element.append(self.sidebarContainer);
         element.append(self.rowColContainer)
     });
-    
-    
-
-
-
-
-    
 
     // Create an instance of the view, telling it the model.
     // You shouldn't need to tell it the model. You should update it yourself based on the model.
